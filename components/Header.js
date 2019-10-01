@@ -1,20 +1,21 @@
 import Link from "next/link";
 
-const linkStyle = {
-  marginRight: 15
-};
-
 const Header = () => (
-  <div>
-    <Link href="/">
-      <a style={linkStyle}>Home</a>
-    </Link>
-    <Link href="/about">
-      <a style={linkStyle}>About</a>
-    </Link>
-    <Link href="/page">
-      <a style={linkStyle}>Page</a>
-    </Link>
+  <div className="header">
+    <div className="header-inner">
+      <Link href="/">
+        <a>Home</a>
+      </Link>
+      <Link href="/about">
+        <a>About</a>
+      </Link>
+      <Link href="/show">
+        <a>Show</a>
+      </Link>
+      <Link href="/page">
+        <a>page</a>
+      </Link>
+    </div>
   </div>
 );
 

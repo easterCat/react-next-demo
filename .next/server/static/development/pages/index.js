@@ -88,10 +88,21 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ({
+
+/***/ "./assets/css/styles.less":
+/*!********************************!*\
+  !*** ./assets/css/styles.less ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
 
 /***/ "./components/Header.js":
 /*!******************************!*\
@@ -110,45 +121,61 @@ var _jsxFileName = "/Users/mac/Projects/next-demo/components/Header.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
-const linkStyle = {
-  marginRight: 15
-};
 
 const Header = () => __jsx("div", {
+  className: "header",
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 8
+    lineNumber: 4
+  },
+  __self: undefined
+}, __jsx("div", {
+  className: "header-inner",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 5
   },
   __self: undefined
 }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
   href: "/",
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 9
+    lineNumber: 6
   },
   __self: undefined
 }, __jsx("a", {
-  style: linkStyle,
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 10
+    lineNumber: 7
   },
   __self: undefined
 }, "Home")), __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
   href: "/about",
   __source: {
     fileName: _jsxFileName,
+    lineNumber: 9
+  },
+  __self: undefined
+}, __jsx("a", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 10
+  },
+  __self: undefined
+}, "About")), __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
+  href: "/show",
+  __source: {
+    fileName: _jsxFileName,
     lineNumber: 12
   },
   __self: undefined
 }, __jsx("a", {
-  style: linkStyle,
   __source: {
     fileName: _jsxFileName,
     lineNumber: 13
   },
   __self: undefined
-}, "About")), __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
+}, "Show")), __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
   href: "/page",
   __source: {
     fileName: _jsxFileName,
@@ -156,13 +183,12 @@ const Header = () => __jsx("div", {
   },
   __self: undefined
 }, __jsx("a", {
-  style: linkStyle,
   __source: {
     fileName: _jsxFileName,
     lineNumber: 16
   },
   __self: undefined
-}, "Page")));
+}, "page"))));
 
 /* harmony default export */ __webpack_exports__["default"] = (Header);
 
@@ -180,30 +206,34 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Header */ "./components/Header.js");
+/* harmony import */ var _assets_css_styles_less__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../assets/css/styles.less */ "./assets/css/styles.less");
+/* harmony import */ var _assets_css_styles_less__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_assets_css_styles_less__WEBPACK_IMPORTED_MODULE_2__);
 var _jsxFileName = "/Users/mac/Projects/next-demo/components/MyLayout.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
-const layoutStyle = {
-  margin: 20,
-  padding: 20,
-  border: "1px solid #DDD"
-};
+
 
 const Layout = props => __jsx("div", {
-  style: layoutStyle,
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 10
+    lineNumber: 5
   },
   __self: undefined
 }, __jsx(_Header__WEBPACK_IMPORTED_MODULE_1__["default"], {
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 11
+    lineNumber: 6
   },
   __self: undefined
-}), props.children);
+}), __jsx("div", {
+  className: "content",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 7
+  },
+  __self: undefined
+}, props.children));
 
 /* harmony default export */ __webpack_exports__["default"] = (Layout);
 
@@ -888,7 +918,9 @@ function withRouter(ComposedComponent) {
   WithRouteWrapper.contextTypes = {
     router: _propTypes.default.object
   };
-  WithRouteWrapper.getInitialProps = ComposedComponent.getInitialProps;
+  WithRouteWrapper.getInitialProps = ComposedComponent.getInitialProps // This is needed to allow checking for custom getInitialProps in _app
+  ;
+  WithRouteWrapper.origGetInitialProps = ComposedComponent.origGetInitialProps;
 
   if (true) {
     const name = ComposedComponent.displayName || ComposedComponent.name || 'Unknown';
@@ -1587,30 +1619,20 @@ class Router {
     if ( // @ts-ignore workaround for dead-code elimination
     (self.__HAS_SPR || "development" !== 'production') && Component.__NEXT_SPR) {
       let status;
-      const url = ctx.asPath ? ctx.asPath : url_1.format({
-        pathname: ctx.pathname,
-        query: ctx.query
-      });
-      props = await fetch(url, {
-        headers: {
-          'content-type': 'application/json'
-        }
-      }).then(res => {
+      const {
+        pathname
+      } = url_1.parse(ctx.asPath || ctx.pathname);
+      props = await fetch(`/_next/data${pathname}.json`).then(res => {
         if (!res.ok) {
           status = res.status;
           throw new Error('failed to load prerender data');
         }
 
         return res.json();
-      }).then(pageProps => {
-        return {
-          pageProps
-        };
       }).catch(err => {
-        return {
-          error: err.message,
-          status
-        };
+        console.error(`Failed to load data`, status, err);
+        window.location.href = pathname;
+        return new _Promise(() => {});
       });
     } else {
       const AppTree = this._wrapApp(App);
@@ -1914,94 +1936,93 @@ module.exports = __webpack_require__(/*! ./dist/client/link */ "./node_modules/n
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var styled_jsx_style__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-jsx/style */ "styled-jsx/style");
-/* harmony import */ var styled_jsx_style__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(styled_jsx_style__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _components_MyLayout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/MyLayout */ "./components/MyLayout.js");
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! isomorphic-unfetch */ "isomorphic-unfetch");
-/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var antd_lib_card__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! antd/lib/card */ "antd/lib/card");
+/* harmony import */ var antd_lib_card__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(antd_lib_card__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var antd_lib_avatar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! antd/lib/avatar */ "antd/lib/avatar");
+/* harmony import */ var antd_lib_avatar__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(antd_lib_avatar__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var antd_lib_typography__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! antd/lib/typography */ "antd/lib/typography");
+/* harmony import */ var antd_lib_typography__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(antd_lib_typography__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var styled_jsx_style__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! styled-jsx/style */ "styled-jsx/style");
+/* harmony import */ var styled_jsx_style__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(styled_jsx_style__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _components_MyLayout__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/MyLayout */ "./components/MyLayout.js");
+/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! isomorphic-unfetch */ "isomorphic-unfetch");
+/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_6__);
+
+
+
 var _jsxFileName = "/Users/mac/Projects/next-demo/pages/index.tsx";
 
 
-var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
+var __jsx = react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement;
 
 
+const {
+  Title,
+  Paragraph,
+  Text
+} = antd_lib_typography__WEBPACK_IMPORTED_MODULE_2___default.a;
 
-
-const PostLink = ({
-  show
-}) => __jsx("li", {
-  className: "jsx-3950785544",
+const Index = props => __jsx(_components_MyLayout__WEBPACK_IMPORTED_MODULE_5__["default"], {
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 6
+    lineNumber: 37
   },
   __self: undefined
-}, __jsx(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
-  href: "/show/[id]",
-  as: `/show/${show.id}`,
+}, __jsx(Title, {
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 7
+    lineNumber: 38
   },
   __self: undefined
-}, __jsx("a", {
-  className: "jsx-3950785544",
+}, "Batman TV Shows"), __jsx(Paragraph, {
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 8
-  },
-  __self: undefined
-}, show.name)), __jsx(styled_jsx_style__WEBPACK_IMPORTED_MODULE_0___default.a, {
-  id: "3950785544",
-  __self: undefined
-}, "li.jsx-3950785544{list-style:none;margin:5px 0;}a.jsx-3950785544{-webkit-text-decoration:none;text-decoration:none;color:blue;font-family:\"Arial\";}a.jsx-3950785544:hover{opacity:0.6;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9tYWMvUHJvamVjdHMvbmV4dC1kZW1vL3BhZ2VzL2luZGV4LnRzeCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFTZ0IsQUFHeUIsQUFLSyxBQU1ULFlBQ2QsSUFYZSxhQUNmLHFCQUlhLFdBQ1Msb0JBQ3RCIiwiZmlsZSI6Ii9Vc2Vycy9tYWMvUHJvamVjdHMvbmV4dC1kZW1vL3BhZ2VzL2luZGV4LnRzeCIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBMYXlvdXQgZnJvbSBcIi4uL2NvbXBvbmVudHMvTXlMYXlvdXRcIjtcbmltcG9ydCBMaW5rIGZyb20gXCJuZXh0L2xpbmtcIjtcbmltcG9ydCBmZXRjaCBmcm9tIFwiaXNvbW9ycGhpYy11bmZldGNoXCI7XG5cbmNvbnN0IFBvc3RMaW5rID0gKHsgc2hvdyB9OiB7IHNob3c6IGFueSB9KSA9PiAoXG4gIDxsaT5cbiAgICA8TGluayBocmVmPVwiL3Nob3cvW2lkXVwiIGFzPXtgL3Nob3cvJHtzaG93LmlkfWB9PlxuICAgICAgPGE+e3Nob3cubmFtZX08L2E+XG4gICAgPC9MaW5rPlxuICAgIDxzdHlsZSBqc3g+e2BcbiAgICAgIGxpIHtcbiAgICAgICAgbGlzdC1zdHlsZTogbm9uZTtcbiAgICAgICAgbWFyZ2luOiA1cHggMDtcbiAgICAgIH1cblxuICAgICAgYSB7XG4gICAgICAgIHRleHQtZGVjb3JhdGlvbjogbm9uZTtcbiAgICAgICAgY29sb3I6IGJsdWU7XG4gICAgICAgIGZvbnQtZmFtaWx5OiBcIkFyaWFsXCI7XG4gICAgICB9XG5cbiAgICAgIGE6aG92ZXIge1xuICAgICAgICBvcGFjaXR5OiAwLjY7XG4gICAgICB9XG4gICAgYH08L3N0eWxlPlxuICA8L2xpPlxuKTtcblxuY29uc3QgSW5kZXggPSAocHJvcHM6IERlZmF1bHRQcm9wcykgPT4gKFxuICA8TGF5b3V0PlxuICAgIDxoMT5CYXRtYW4gVFYgU2hvd3M8L2gxPlxuICAgIDxoMj5IZWxsbyB1c2VyQWdlbnQgaXMge3Byb3BzLnVzZXJBZ2VudH08L2gyPlxuICAgIDx1bD5cbiAgICAgIHtwcm9wcy5zaG93cy5tYXAoKHNob3c6IGFueSkgPT4gKFxuICAgICAgICA8UG9zdExpbmsga2V5PXtzaG93LmlkfSBzaG93PXtzaG93fSAvPlxuICAgICAgKSl9XG4gICAgPC91bD5cbiAgICA8c3R5bGUganN4PntgXG4gICAgICBoMSxcbiAgICAgIGEge1xuICAgICAgICBmb250LWZhbWlseTogXCJBcmlhbFwiO1xuICAgICAgfVxuXG4gICAgICB1bCB7XG4gICAgICAgIHBhZGRpbmc6IDA7XG4gICAgICB9XG4gICAgYH08L3N0eWxlPlxuICA8L0xheW91dD5cbik7XG5cbmludGVyZmFjZSBJQ29udGV4dCB7XG4gIHJlcTogSVJlcTtcbn1cblxuaW50ZXJmYWNlIElSZXEge1xuICBoZWFkZXJzOiBJSGVhZGVycztcbn1cblxuaW50ZXJmYWNlIElIZWFkZXJzIHtcbiAgXCJ1c2VyLWFnZW50XCI6IHN0cmluZztcbn1cblxuaW50ZXJmYWNlIERlZmF1bHRQcm9wcyB7XG4gIHNob3dzOiBhbnk7XG4gIHVzZXJBZ2VudDogU3RyaW5nO1xufVxuXG5pbnRlcmZhY2UgSUl0ZW0ge1xuICBzaG93OiBvYmplY3Q7XG59XG5cbkluZGV4LmdldEluaXRpYWxQcm9wcyA9IGFzeW5jIGZ1bmN0aW9uKGNvbnRleHQ6IElDb250ZXh0KSB7XG4gIGNvbnN0IHJlcyA9IGF3YWl0IGZldGNoKFwiaHR0cHM6Ly9hcGkudHZtYXplLmNvbS9zZWFyY2gvc2hvd3M/cT1iYXRtYW5cIik7XG4gIGNvbnN0IGRhdGEgPSBhd2FpdCByZXMuanNvbigpO1xuICBjb25zdCB1c2VyQWdlbnQgPSBjb250ZXh0LnJlcVxuICAgID8gY29udGV4dC5yZXEuaGVhZGVyc1tcInVzZXItYWdlbnRcIl1cbiAgICA6IG5hdmlnYXRvci51c2VyQWdlbnQ7XG4gIHJldHVybiB7XG4gICAgc2hvd3M6IGRhdGEubWFwKChpdGVtOiBJSXRlbSk6IG9iamVjdCA9PiBpdGVtLnNob3cpLFxuICAgIHVzZXJBZ2VudFxuICB9O1xufTtcblxuZXhwb3J0IGRlZmF1bHQgSW5kZXg7XG4iXX0= */\n/*@ sourceURL=/Users/mac/Projects/next-demo/pages/index.tsx */"));
-
-const Index = props => __jsx(_components_MyLayout__WEBPACK_IMPORTED_MODULE_2__["default"], {
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 30
-  },
-  __self: undefined
-}, __jsx("h1", {
-  className: "jsx-4181757484",
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 31
-  },
-  __self: undefined
-}, "Batman TV Shows"), __jsx("h2", {
-  className: "jsx-4181757484",
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 32
+    lineNumber: 39
   },
   __self: undefined
 }, "Hello userAgent is ", props.userAgent), __jsx("ul", {
   className: "jsx-4181757484",
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 33
+    lineNumber: 40
   },
   __self: undefined
-}, props.shows.map(show => __jsx(PostLink, {
+}, props.shows.map((show, index) => __jsx(antd_lib_card__WEBPACK_IMPORTED_MODULE_0___default.a, {
   key: show.id,
-  show: show,
+  style: {
+    width: "100%",
+    marginTop: 16
+  },
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 35
+    lineNumber: 42
   },
   __self: undefined
-}))), __jsx(styled_jsx_style__WEBPACK_IMPORTED_MODULE_0___default.a, {
+}, __jsx(antd_lib_card__WEBPACK_IMPORTED_MODULE_0___default.a.Meta, {
+  avatar: __jsx(antd_lib_avatar__WEBPACK_IMPORTED_MODULE_1___default.a, {
+    src: show.image.medium,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 44
+    },
+    __self: undefined
+  }),
+  title: show.name,
+  description: show.summary,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 43
+  },
+  __self: undefined
+})))), __jsx(styled_jsx_style__WEBPACK_IMPORTED_MODULE_3___default.a, {
   id: "4181757484",
   __self: undefined
-}, "h1.jsx-4181757484,a.jsx-4181757484{font-family:\"Arial\";}ul.jsx-4181757484{padding:0;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9tYWMvUHJvamVjdHMvbmV4dC1kZW1vL3BhZ2VzL2luZGV4LnRzeCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFxQ2dCLEFBSTZCLEFBSVYsVUFDWixVQUpBIiwiZmlsZSI6Ii9Vc2Vycy9tYWMvUHJvamVjdHMvbmV4dC1kZW1vL3BhZ2VzL2luZGV4LnRzeCIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBMYXlvdXQgZnJvbSBcIi4uL2NvbXBvbmVudHMvTXlMYXlvdXRcIjtcbmltcG9ydCBMaW5rIGZyb20gXCJuZXh0L2xpbmtcIjtcbmltcG9ydCBmZXRjaCBmcm9tIFwiaXNvbW9ycGhpYy11bmZldGNoXCI7XG5cbmNvbnN0IFBvc3RMaW5rID0gKHsgc2hvdyB9OiB7IHNob3c6IGFueSB9KSA9PiAoXG4gIDxsaT5cbiAgICA8TGluayBocmVmPVwiL3Nob3cvW2lkXVwiIGFzPXtgL3Nob3cvJHtzaG93LmlkfWB9PlxuICAgICAgPGE+e3Nob3cubmFtZX08L2E+XG4gICAgPC9MaW5rPlxuICAgIDxzdHlsZSBqc3g+e2BcbiAgICAgIGxpIHtcbiAgICAgICAgbGlzdC1zdHlsZTogbm9uZTtcbiAgICAgICAgbWFyZ2luOiA1cHggMDtcbiAgICAgIH1cblxuICAgICAgYSB7XG4gICAgICAgIHRleHQtZGVjb3JhdGlvbjogbm9uZTtcbiAgICAgICAgY29sb3I6IGJsdWU7XG4gICAgICAgIGZvbnQtZmFtaWx5OiBcIkFyaWFsXCI7XG4gICAgICB9XG5cbiAgICAgIGE6aG92ZXIge1xuICAgICAgICBvcGFjaXR5OiAwLjY7XG4gICAgICB9XG4gICAgYH08L3N0eWxlPlxuICA8L2xpPlxuKTtcblxuY29uc3QgSW5kZXggPSAocHJvcHM6IERlZmF1bHRQcm9wcykgPT4gKFxuICA8TGF5b3V0PlxuICAgIDxoMT5CYXRtYW4gVFYgU2hvd3M8L2gxPlxuICAgIDxoMj5IZWxsbyB1c2VyQWdlbnQgaXMge3Byb3BzLnVzZXJBZ2VudH08L2gyPlxuICAgIDx1bD5cbiAgICAgIHtwcm9wcy5zaG93cy5tYXAoKHNob3c6IGFueSkgPT4gKFxuICAgICAgICA8UG9zdExpbmsga2V5PXtzaG93LmlkfSBzaG93PXtzaG93fSAvPlxuICAgICAgKSl9XG4gICAgPC91bD5cbiAgICA8c3R5bGUganN4PntgXG4gICAgICBoMSxcbiAgICAgIGEge1xuICAgICAgICBmb250LWZhbWlseTogXCJBcmlhbFwiO1xuICAgICAgfVxuXG4gICAgICB1bCB7XG4gICAgICAgIHBhZGRpbmc6IDA7XG4gICAgICB9XG4gICAgYH08L3N0eWxlPlxuICA8L0xheW91dD5cbik7XG5cbmludGVyZmFjZSBJQ29udGV4dCB7XG4gIHJlcTogSVJlcTtcbn1cblxuaW50ZXJmYWNlIElSZXEge1xuICBoZWFkZXJzOiBJSGVhZGVycztcbn1cblxuaW50ZXJmYWNlIElIZWFkZXJzIHtcbiAgXCJ1c2VyLWFnZW50XCI6IHN0cmluZztcbn1cblxuaW50ZXJmYWNlIERlZmF1bHRQcm9wcyB7XG4gIHNob3dzOiBhbnk7XG4gIHVzZXJBZ2VudDogU3RyaW5nO1xufVxuXG5pbnRlcmZhY2UgSUl0ZW0ge1xuICBzaG93OiBvYmplY3Q7XG59XG5cbkluZGV4LmdldEluaXRpYWxQcm9wcyA9IGFzeW5jIGZ1bmN0aW9uKGNvbnRleHQ6IElDb250ZXh0KSB7XG4gIGNvbnN0IHJlcyA9IGF3YWl0IGZldGNoKFwiaHR0cHM6Ly9hcGkudHZtYXplLmNvbS9zZWFyY2gvc2hvd3M/cT1iYXRtYW5cIik7XG4gIGNvbnN0IGRhdGEgPSBhd2FpdCByZXMuanNvbigpO1xuICBjb25zdCB1c2VyQWdlbnQgPSBjb250ZXh0LnJlcVxuICAgID8gY29udGV4dC5yZXEuaGVhZGVyc1tcInVzZXItYWdlbnRcIl1cbiAgICA6IG5hdmlnYXRvci51c2VyQWdlbnQ7XG4gIHJldHVybiB7XG4gICAgc2hvd3M6IGRhdGEubWFwKChpdGVtOiBJSXRlbSk6IG9iamVjdCA9PiBpdGVtLnNob3cpLFxuICAgIHVzZXJBZ2VudFxuICB9O1xufTtcblxuZXhwb3J0IGRlZmF1bHQgSW5kZXg7XG4iXX0= */\n/*@ sourceURL=/Users/mac/Projects/next-demo/pages/index.tsx */"));
+}, "h1.jsx-4181757484,a.jsx-4181757484{font-family:\"Arial\";}ul.jsx-4181757484{padding:0;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9tYWMvUHJvamVjdHMvbmV4dC1kZW1vL3BhZ2VzL2luZGV4LnRzeCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFrRGdCLEFBSTZCLEFBSVYsVUFDWixVQUpBIiwiZmlsZSI6Ii9Vc2Vycy9tYWMvUHJvamVjdHMvbmV4dC1kZW1vL3BhZ2VzL2luZGV4LnRzeCIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBMYXlvdXQgZnJvbSBcIi4uL2NvbXBvbmVudHMvTXlMYXlvdXRcIjtcbmltcG9ydCBmZXRjaCBmcm9tIFwiaXNvbW9ycGhpYy11bmZldGNoXCI7XG5pbXBvcnQgeyBUeXBvZ3JhcGh5LCBDYXJkLCBBdmF0YXIgfSBmcm9tIFwiYW50ZFwiO1xuY29uc3QgeyBUaXRsZSwgUGFyYWdyYXBoLCBUZXh0IH0gPSBUeXBvZ3JhcGh5O1xuXG5pbnRlcmZhY2UgSUNvbnRleHQge1xuICByZXE6IElSZXE7XG59XG5cbmludGVyZmFjZSBJUmVxIHtcbiAgaGVhZGVyczogSUhlYWRlcnM7XG59XG5cbmludGVyZmFjZSBJSGVhZGVycyB7XG4gIFwidXNlci1hZ2VudFwiOiBzdHJpbmc7XG59XG5cbmludGVyZmFjZSBEZWZhdWx0UHJvcHMge1xuICBzaG93czogYW55W107XG4gIHVzZXJBZ2VudDogU3RyaW5nO1xufVxuXG5pbnRlcmZhY2UgSUl0ZW0ge1xuICBzaG93OiBvYmplY3Q7XG59XG5cbmludGVyZmFjZSBJU2hvdyB7XG4gIGlkOiBzdHJpbmc7XG4gIG5hbWU6IHN0cmluZztcbiAgc3VtbWFyeTogc3RyaW5nO1xuICBpbWFnZToge1xuICAgIG1lZGl1bTogc3RyaW5nO1xuICB9O1xufVxuXG5jb25zdCBJbmRleCA9IChwcm9wczogRGVmYXVsdFByb3BzKSA9PiAoXG4gIDxMYXlvdXQ+XG4gICAgPFRpdGxlPkJhdG1hbiBUViBTaG93czwvVGl0bGU+XG4gICAgPFBhcmFncmFwaD5IZWxsbyB1c2VyQWdlbnQgaXMge3Byb3BzLnVzZXJBZ2VudH08L1BhcmFncmFwaD5cbiAgICA8dWw+XG4gICAgICB7cHJvcHMuc2hvd3MubWFwKChzaG93OiBJU2hvdywgaW5kZXg6IG51bWJlcikgPT4gKFxuICAgICAgICA8Q2FyZCBrZXk9e3Nob3cuaWR9IHN0eWxlPXt7IHdpZHRoOiBcIjEwMCVcIiwgbWFyZ2luVG9wOiAxNiB9fT5cbiAgICAgICAgICA8Q2FyZC5NZXRhXG4gICAgICAgICAgICBhdmF0YXI9ezxBdmF0YXIgc3JjPXtzaG93LmltYWdlLm1lZGl1bX0gLz59XG4gICAgICAgICAgICB0aXRsZT17c2hvdy5uYW1lfVxuICAgICAgICAgICAgZGVzY3JpcHRpb249e3Nob3cuc3VtbWFyeX1cbiAgICAgICAgICAvPlxuICAgICAgICA8L0NhcmQ+XG4gICAgICApKX1cbiAgICA8L3VsPlxuICAgIDxzdHlsZSBqc3g+e2BcbiAgICAgIGgxLFxuICAgICAgYSB7XG4gICAgICAgIGZvbnQtZmFtaWx5OiBcIkFyaWFsXCI7XG4gICAgICB9XG5cbiAgICAgIHVsIHtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgIH1cbiAgICBgfTwvc3R5bGU+XG4gIDwvTGF5b3V0PlxuKTtcblxuSW5kZXguZ2V0SW5pdGlhbFByb3BzID0gYXN5bmMgZnVuY3Rpb24oY29udGV4dDogSUNvbnRleHQpIHtcbiAgY29uc3QgcmVzID0gYXdhaXQgZmV0Y2goXCJodHRwczovL2FwaS50dm1hemUuY29tL3NlYXJjaC9zaG93cz9xPWJhdG1hblwiKTtcbiAgY29uc3QgZGF0YSA9IGF3YWl0IHJlcy5qc29uKCk7XG4gIGNvbnN0IHVzZXJBZ2VudCA9IGNvbnRleHQucmVxXG4gICAgPyBjb250ZXh0LnJlcS5oZWFkZXJzW1widXNlci1hZ2VudFwiXVxuICAgIDogbmF2aWdhdG9yLnVzZXJBZ2VudDtcbiAgcmV0dXJuIHtcbiAgICBzaG93czogZGF0YS5tYXAoKGl0ZW06IElJdGVtKTogb2JqZWN0ID0+IGl0ZW0uc2hvdyksXG4gICAgdXNlckFnZW50XG4gIH07XG59O1xuXG5leHBvcnQgZGVmYXVsdCBJbmRleDtcbiJdfQ== */\n/*@ sourceURL=/Users/mac/Projects/next-demo/pages/index.tsx */"));
 
 Index.getInitialProps = async function (context) {
-  const res = await isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_4___default()("https://api.tvmaze.com/search/shows?q=batman");
+  const res = await isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_6___default()("https://api.tvmaze.com/search/shows?q=batman");
   const data = await res.json();
   const userAgent = context.req ? context.req.headers["user-agent"] : navigator.userAgent;
   return {
@@ -2014,7 +2035,7 @@ Index.getInitialProps = async function (context) {
 
 /***/ }),
 
-/***/ 3:
+/***/ 5:
 /*!*******************************!*\
   !*** multi ./pages/index.tsx ***!
   \*******************************/
@@ -2023,6 +2044,39 @@ Index.getInitialProps = async function (context) {
 
 module.exports = __webpack_require__(/*! /Users/mac/Projects/next-demo/pages/index.tsx */"./pages/index.tsx");
 
+
+/***/ }),
+
+/***/ "antd/lib/avatar":
+/*!**********************************!*\
+  !*** external "antd/lib/avatar" ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("antd/lib/avatar");
+
+/***/ }),
+
+/***/ "antd/lib/card":
+/*!********************************!*\
+  !*** external "antd/lib/card" ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("antd/lib/card");
+
+/***/ }),
+
+/***/ "antd/lib/typography":
+/*!**************************************!*\
+  !*** external "antd/lib/typography" ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("antd/lib/typography");
 
 /***/ }),
 

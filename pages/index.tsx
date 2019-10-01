@@ -1,52 +1,7 @@
 import Layout from "../components/MyLayout";
-import Link from "next/link";
 import fetch from "isomorphic-unfetch";
-
-const PostLink = ({ show }: { show: any }) => (
-  <li>
-    <Link href="/show/[id]" as={`/show/${show.id}`}>
-      <a>{show.name}</a>
-    </Link>
-    <style jsx>{`
-      li {
-        list-style: none;
-        margin: 5px 0;
-      }
-
-      a {
-        text-decoration: none;
-        color: blue;
-        font-family: "Arial";
-      }
-
-      a:hover {
-        opacity: 0.6;
-      }
-    `}</style>
-  </li>
-);
-
-const Index = (props: DefaultProps) => (
-  <Layout>
-    <h1>Batman TV Shows</h1>
-    <h2>Hello userAgent is {props.userAgent}</h2>
-    <ul>
-      {props.shows.map((show: any) => (
-        <PostLink key={show.id} show={show} />
-      ))}
-    </ul>
-    <style jsx>{`
-      h1,
-      a {
-        font-family: "Arial";
-      }
-
-      ul {
-        padding: 0;
-      }
-    `}</style>
-  </Layout>
-);
+import { Typography, Card, Avatar } from "antd";
+const { Title, Paragraph, Text } = Typography;
 
 interface IContext {
   req: IReq;
@@ -61,13 +16,50 @@ interface IHeaders {
 }
 
 interface DefaultProps {
-  shows: any;
+  shows: any[];
   userAgent: String;
 }
 
 interface IItem {
   show: object;
 }
+
+interface IShow {
+  id: string;
+  name: string;
+  summary: string;
+  image: {
+    medium: string;
+  };
+}
+
+const Index = (props: DefaultProps) => (
+  <Layout>
+    <Title>Batman TV Shows</Title>
+    <Paragraph>Hello userAgent is {props.userAgent}</Paragraph>
+    <ul>
+      {props.shows.map((show: IShow, index: number) => (
+        <Card key={show.id} style={{ width: "100%", marginTop: 16 }}>
+          <Card.Meta
+            avatar={<Avatar src={show.image.medium} />}
+            title={show.name}
+            description={show.summary}
+          />
+        </Card>
+      ))}
+    </ul>
+    <style jsx>{`
+      h1,
+      a {
+        font-family: "Arial";
+      }
+
+      ul {
+        padding: 0;
+      }
+    `}</style>
+  </Layout>
+);
 
 Index.getInitialProps = async function(context: IContext) {
   const res = await fetch("https://api.tvmaze.com/search/shows?q=batman");

@@ -730,7 +730,7 @@ class Head extends _react.Component {
 
     return files.map(file => {
       // Only render .css files here
-      if (!/\.css$/.exec(file)) {
+      if (!/\.css$/.test(file)) {
         return null;
       }
 
@@ -897,7 +897,18 @@ class Head extends _react.Component {
       });
     }
 
-    return _react.default.createElement("head", this.props, children, head, _react.default.createElement("meta", {
+    return _react.default.createElement("head", this.props, this.context._documentProps.isDevelopment && this.context._documentProps.hasCssMode && _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("style", {
+      "data-next-hydrating": true,
+      dangerouslySetInnerHTML: {
+        __html: "body{display:none}"
+      }
+    }), _react.default.createElement("noscript", {
+      "data-next-hydrating": true
+    }, _react.default.createElement("style", {
+      dangerouslySetInnerHTML: {
+        __html: "body{display:unset}"
+      }
+    }))), children, head, _react.default.createElement("meta", {
       name: "next-head-count",
       content: _react.default.Children.count(head || []).toString()
     }), inAmpMode && _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("meta", {
@@ -943,7 +954,12 @@ class Head extends _react.Component {
       as: "script",
       nonce: this.props.nonce,
       crossOrigin: this.props.crossOrigin || undefined
-    }), this.getPreloadDynamicChunks(), this.getPreloadMainLinks(), this.getCssLinks(), styles || null));
+    }), this.getPreloadDynamicChunks(), this.getPreloadMainLinks(), this.context._documentProps.isDevelopment && this.context._documentProps.hasCssMode && // this element is used to mount development styles so the
+    // ordering matches production
+    // (by default, style-loader injects at the bottom of <head />)
+    _react.default.createElement("noscript", {
+      id: "__next_css__DO_NOT_USE__"
+    }), this.getCssLinks(), styles || null));
   }
 
 }
@@ -1006,7 +1022,7 @@ class NextScript extends _react.Component {
 
       if (false) {}
 
-      if (files.includes(bundle.file)) return null;
+      if (!/\.js$/.test(bundle.file) || files.includes(bundle.file)) return null;
       return _react.default.createElement("script", (0, _extends2.default)({
         async: true,
         key: bundle.file,
@@ -1032,7 +1048,7 @@ class NextScript extends _react.Component {
     } = this.context;
     return files.map(file => {
       // Only render .js files here
-      if (!/\.js$/.exec(file)) {
+      if (!/\.js$/.test(file)) {
         return null;
       }
 

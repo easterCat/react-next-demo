@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "next",
+    "dev": "next -p 6688",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 8866",
     "export": "next export",
     "analyze": "cross-env BUNDLE_ANALYZE=both next build",
     "analyze:server": "cross-env BUNDLE_ANALYZE=server next build",
@@ -18,18 +18,23 @@
   "license": "ISC",
   "dependencies": {
     "@zeit/next-bundle-analyzer": "^0.1.2",
+    "@zeit/next-less": "^1.0.1",
+    "antd": "^3.23.5",
+    "firebase": "^6.5.0",
     "isomorphic-unfetch": "^3.0.0",
-    "next": "^9.0.6",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
-    "react-markdown": "^4.2.2",
-    "firebase": "^6.5.0"
+    "less": "^3.10.3",
+    "next": "^9.0.7",
+    "react": "^16.10.1",
+    "react-dom": "^16.10.1",
+    "react-markdown": "^4.2.2"
   },
   "devDependencies": {
     "@types/node": "^12.7.8",
     "@types/react": "^16.9.3",
     "@types/react-dom": "^16.9.1",
+    "babel-plugin-import": "^1.12.2",
     "cross-env": "^6.0.0",
+    "less-loader": "^5.0.0",
     "typescript": "^3.6.3"
   }
 }

@@ -1,5 +1,35 @@
-const fetch = require("isomorphic-unfetch");
-const withBundleAnalyzer = require("@zeit/next-bundle-analyzer");
+// const fetch = require("isomorphic-unfetch");
+// const withBundleAnalyzer = require("@zeit/next-bundle-analyzer");
+const withLess = require("@zeit/next-less");
+
+if (typeof require !== "undefined") {
+  require.extensions[".less"] = file => {};
+}
+
+function HACK_removeMinimizeOptionFromCssLoaders(config) {
+  console.warn(
+    "HACK: Removing `minimize` option from `css-loader` entries in Webpack config"
+  );
+  config.module.rules.forEach(rule => {
+    if (Array.isArray(rule.use)) {
+      rule.use.forEach(u => {
+        if (u.loader === "css-loader" && u.options) {
+          delete u.options.minimize;
+        }
+      });
+    }
+  });
+}
+
+module.exports = withLess({
+  lessLoaderOptions: {
+    javascriptEnabled: true
+  },
+  webpack(config) {
+    HACK_removeMinimizeOptionFromCssLoaders(config);
+    return config;
+  }
+});
 
 // module.exports = {
 //   exportPathMap: async function() {
@@ -25,17 +55,17 @@ const withBundleAnalyzer = require("@zeit/next-bundle-analyzer");
 //   }
 // };
 
-module.exports = withBundleAnalyzer({
-  analyzeServer: ["server", "both"].includes(process.env.BUNDLE_ANALYZE),
-  analyzeBrowser: ["browser", "both"].includes(process.env.BUNDLE_ANALYZE),
-  bundleAnalyzerConfig: {
-    server: {
-      analyzerMode: "static",
-      reportFilename: "../bundles/server.html"
-    },
-    browser: {
-      analyzerMode: "static",
-      reportFilename: "../bundles/client.html"
-    }
-  }
-});
+// module.exports = withBundleAnalyzer({
+//   analyzeServer: ["server", "both"].includes(process.env.BUNDLE_ANALYZE),
+//   analyzeBrowser: ["browser", "both"].includes(process.env.BUNDLE_ANALYZE),
+//   bundleAnalyzerConfig: {
+//     server: {
+//       analyzerMode: "static",
+//       reportFilename: "../bundles/server.html"
+//     },
+//     browser: {
+//       analyzerMode: "static",
+//       reportFilename: "../bundles/client.html"
+//     }
+//   }
+// });
