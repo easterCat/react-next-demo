@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -117,7 +117,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_1__);
-var _jsxFileName = "/Users/mac/Projects/next-demo/components/Header.js";
+var _jsxFileName = "/Users/mac/Projects/react-next-demo/components/Header.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -208,7 +208,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Header */ "./components/Header.js");
 /* harmony import */ var _assets_css_styles_less__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../assets/css/styles.less */ "./assets/css/styles.less");
 /* harmony import */ var _assets_css_styles_less__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_assets_css_styles_less__WEBPACK_IMPORTED_MODULE_2__);
-var _jsxFileName = "/Users/mac/Projects/next-demo/components/MyLayout.js";
+var _jsxFileName = "/Users/mac/Projects/react-next-demo/components/MyLayout.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -1952,7 +1952,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _jsxFileName = "/Users/mac/Projects/next-demo/pages/index.tsx";
+var _jsxFileName = "/Users/mac/Projects/react-next-demo/pages/index.tsx";
 
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement;
@@ -2019,7 +2019,7 @@ const Index = props => __jsx(_components_MyLayout__WEBPACK_IMPORTED_MODULE_5__["
 })))), __jsx(styled_jsx_style__WEBPACK_IMPORTED_MODULE_3___default.a, {
   id: "4181757484",
   __self: undefined
-}, "h1.jsx-4181757484,a.jsx-4181757484{font-family:\"Arial\";}ul.jsx-4181757484{padding:0;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9tYWMvUHJvamVjdHMvbmV4dC1kZW1vL3BhZ2VzL2luZGV4LnRzeCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFrRGdCLEFBSTZCLEFBSVYsVUFDWixVQUpBIiwiZmlsZSI6Ii9Vc2Vycy9tYWMvUHJvamVjdHMvbmV4dC1kZW1vL3BhZ2VzL2luZGV4LnRzeCIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBMYXlvdXQgZnJvbSBcIi4uL2NvbXBvbmVudHMvTXlMYXlvdXRcIjtcbmltcG9ydCBmZXRjaCBmcm9tIFwiaXNvbW9ycGhpYy11bmZldGNoXCI7XG5pbXBvcnQgeyBUeXBvZ3JhcGh5LCBDYXJkLCBBdmF0YXIgfSBmcm9tIFwiYW50ZFwiO1xuY29uc3QgeyBUaXRsZSwgUGFyYWdyYXBoLCBUZXh0IH0gPSBUeXBvZ3JhcGh5O1xuXG5pbnRlcmZhY2UgSUNvbnRleHQge1xuICByZXE6IElSZXE7XG59XG5cbmludGVyZmFjZSBJUmVxIHtcbiAgaGVhZGVyczogSUhlYWRlcnM7XG59XG5cbmludGVyZmFjZSBJSGVhZGVycyB7XG4gIFwidXNlci1hZ2VudFwiOiBzdHJpbmc7XG59XG5cbmludGVyZmFjZSBEZWZhdWx0UHJvcHMge1xuICBzaG93czogYW55W107XG4gIHVzZXJBZ2VudDogU3RyaW5nO1xufVxuXG5pbnRlcmZhY2UgSUl0ZW0ge1xuICBzaG93OiBvYmplY3Q7XG59XG5cbmludGVyZmFjZSBJU2hvdyB7XG4gIGlkOiBzdHJpbmc7XG4gIG5hbWU6IHN0cmluZztcbiAgc3VtbWFyeTogc3RyaW5nO1xuICBpbWFnZToge1xuICAgIG1lZGl1bTogc3RyaW5nO1xuICB9O1xufVxuXG5jb25zdCBJbmRleCA9IChwcm9wczogRGVmYXVsdFByb3BzKSA9PiAoXG4gIDxMYXlvdXQ+XG4gICAgPFRpdGxlPkJhdG1hbiBUViBTaG93czwvVGl0bGU+XG4gICAgPFBhcmFncmFwaD5IZWxsbyB1c2VyQWdlbnQgaXMge3Byb3BzLnVzZXJBZ2VudH08L1BhcmFncmFwaD5cbiAgICA8dWw+XG4gICAgICB7cHJvcHMuc2hvd3MubWFwKChzaG93OiBJU2hvdywgaW5kZXg6IG51bWJlcikgPT4gKFxuICAgICAgICA8Q2FyZCBrZXk9e3Nob3cuaWR9IHN0eWxlPXt7IHdpZHRoOiBcIjEwMCVcIiwgbWFyZ2luVG9wOiAxNiB9fT5cbiAgICAgICAgICA8Q2FyZC5NZXRhXG4gICAgICAgICAgICBhdmF0YXI9ezxBdmF0YXIgc3JjPXtzaG93LmltYWdlLm1lZGl1bX0gLz59XG4gICAgICAgICAgICB0aXRsZT17c2hvdy5uYW1lfVxuICAgICAgICAgICAgZGVzY3JpcHRpb249e3Nob3cuc3VtbWFyeX1cbiAgICAgICAgICAvPlxuICAgICAgICA8L0NhcmQ+XG4gICAgICApKX1cbiAgICA8L3VsPlxuICAgIDxzdHlsZSBqc3g+e2BcbiAgICAgIGgxLFxuICAgICAgYSB7XG4gICAgICAgIGZvbnQtZmFtaWx5OiBcIkFyaWFsXCI7XG4gICAgICB9XG5cbiAgICAgIHVsIHtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgIH1cbiAgICBgfTwvc3R5bGU+XG4gIDwvTGF5b3V0PlxuKTtcblxuSW5kZXguZ2V0SW5pdGlhbFByb3BzID0gYXN5bmMgZnVuY3Rpb24oY29udGV4dDogSUNvbnRleHQpIHtcbiAgY29uc3QgcmVzID0gYXdhaXQgZmV0Y2goXCJodHRwczovL2FwaS50dm1hemUuY29tL3NlYXJjaC9zaG93cz9xPWJhdG1hblwiKTtcbiAgY29uc3QgZGF0YSA9IGF3YWl0IHJlcy5qc29uKCk7XG4gIGNvbnN0IHVzZXJBZ2VudCA9IGNvbnRleHQucmVxXG4gICAgPyBjb250ZXh0LnJlcS5oZWFkZXJzW1widXNlci1hZ2VudFwiXVxuICAgIDogbmF2aWdhdG9yLnVzZXJBZ2VudDtcbiAgcmV0dXJuIHtcbiAgICBzaG93czogZGF0YS5tYXAoKGl0ZW06IElJdGVtKTogb2JqZWN0ID0+IGl0ZW0uc2hvdyksXG4gICAgdXNlckFnZW50XG4gIH07XG59O1xuXG5leHBvcnQgZGVmYXVsdCBJbmRleDtcbiJdfQ== */\n/*@ sourceURL=/Users/mac/Projects/next-demo/pages/index.tsx */"));
+}, "h1.jsx-4181757484,a.jsx-4181757484{font-family:\"Arial\";}ul.jsx-4181757484{padding:0;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9tYWMvUHJvamVjdHMvcmVhY3QtbmV4dC1kZW1vL3BhZ2VzL2luZGV4LnRzeCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFrRGdCLEFBSTZCLEFBSVYsVUFDWixVQUpBIiwiZmlsZSI6Ii9Vc2Vycy9tYWMvUHJvamVjdHMvcmVhY3QtbmV4dC1kZW1vL3BhZ2VzL2luZGV4LnRzeCIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBMYXlvdXQgZnJvbSBcIi4uL2NvbXBvbmVudHMvTXlMYXlvdXRcIjtcbmltcG9ydCBmZXRjaCBmcm9tIFwiaXNvbW9ycGhpYy11bmZldGNoXCI7XG5pbXBvcnQgeyBUeXBvZ3JhcGh5LCBDYXJkLCBBdmF0YXIgfSBmcm9tIFwiYW50ZFwiO1xuY29uc3QgeyBUaXRsZSwgUGFyYWdyYXBoLCBUZXh0IH0gPSBUeXBvZ3JhcGh5O1xuXG5pbnRlcmZhY2UgSUNvbnRleHQge1xuICByZXE6IElSZXE7XG59XG5cbmludGVyZmFjZSBJUmVxIHtcbiAgaGVhZGVyczogSUhlYWRlcnM7XG59XG5cbmludGVyZmFjZSBJSGVhZGVycyB7XG4gIFwidXNlci1hZ2VudFwiOiBzdHJpbmc7XG59XG5cbmludGVyZmFjZSBEZWZhdWx0UHJvcHMge1xuICBzaG93czogYW55W107XG4gIHVzZXJBZ2VudDogU3RyaW5nO1xufVxuXG5pbnRlcmZhY2UgSUl0ZW0ge1xuICBzaG93OiBvYmplY3Q7XG59XG5cbmludGVyZmFjZSBJU2hvdyB7XG4gIGlkOiBzdHJpbmc7XG4gIG5hbWU6IHN0cmluZztcbiAgc3VtbWFyeTogc3RyaW5nO1xuICBpbWFnZToge1xuICAgIG1lZGl1bTogc3RyaW5nO1xuICB9O1xufVxuXG5jb25zdCBJbmRleCA9IChwcm9wczogRGVmYXVsdFByb3BzKSA9PiAoXG4gIDxMYXlvdXQ+XG4gICAgPFRpdGxlPkJhdG1hbiBUViBTaG93czwvVGl0bGU+XG4gICAgPFBhcmFncmFwaD5IZWxsbyB1c2VyQWdlbnQgaXMge3Byb3BzLnVzZXJBZ2VudH08L1BhcmFncmFwaD5cbiAgICA8dWw+XG4gICAgICB7cHJvcHMuc2hvd3MubWFwKChzaG93OiBJU2hvdywgaW5kZXg6IG51bWJlcikgPT4gKFxuICAgICAgICA8Q2FyZCBrZXk9e3Nob3cuaWR9IHN0eWxlPXt7IHdpZHRoOiBcIjEwMCVcIiwgbWFyZ2luVG9wOiAxNiB9fT5cbiAgICAgICAgICA8Q2FyZC5NZXRhXG4gICAgICAgICAgICBhdmF0YXI9ezxBdmF0YXIgc3JjPXtzaG93LmltYWdlLm1lZGl1bX0gLz59XG4gICAgICAgICAgICB0aXRsZT17c2hvdy5uYW1lfVxuICAgICAgICAgICAgZGVzY3JpcHRpb249e3Nob3cuc3VtbWFyeX1cbiAgICAgICAgICAvPlxuICAgICAgICA8L0NhcmQ+XG4gICAgICApKX1cbiAgICA8L3VsPlxuICAgIDxzdHlsZSBqc3g+e2BcbiAgICAgIGgxLFxuICAgICAgYSB7XG4gICAgICAgIGZvbnQtZmFtaWx5OiBcIkFyaWFsXCI7XG4gICAgICB9XG5cbiAgICAgIHVsIHtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgIH1cbiAgICBgfTwvc3R5bGU+XG4gIDwvTGF5b3V0PlxuKTtcblxuSW5kZXguZ2V0SW5pdGlhbFByb3BzID0gYXN5bmMgZnVuY3Rpb24oY29udGV4dDogSUNvbnRleHQpIHtcbiAgY29uc3QgcmVzID0gYXdhaXQgZmV0Y2goXCJodHRwczovL2FwaS50dm1hemUuY29tL3NlYXJjaC9zaG93cz9xPWJhdG1hblwiKTtcbiAgY29uc3QgZGF0YSA9IGF3YWl0IHJlcy5qc29uKCk7XG4gIGNvbnN0IHVzZXJBZ2VudCA9IGNvbnRleHQucmVxXG4gICAgPyBjb250ZXh0LnJlcS5oZWFkZXJzW1widXNlci1hZ2VudFwiXVxuICAgIDogbmF2aWdhdG9yLnVzZXJBZ2VudDtcbiAgcmV0dXJuIHtcbiAgICBzaG93czogZGF0YS5tYXAoKGl0ZW06IElJdGVtKTogb2JqZWN0ID0+IGl0ZW0uc2hvdyksXG4gICAgdXNlckFnZW50XG4gIH07XG59O1xuXG5leHBvcnQgZGVmYXVsdCBJbmRleDtcbiJdfQ== */\n/*@ sourceURL=/Users/mac/Projects/react-next-demo/pages/index.tsx */"));
 
 Index.getInitialProps = async function (context) {
   const res = await isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_6___default()("https://api.tvmaze.com/search/shows?q=batman");
@@ -2035,14 +2035,14 @@ Index.getInitialProps = async function (context) {
 
 /***/ }),
 
-/***/ 5:
+/***/ 3:
 /*!*******************************!*\
   !*** multi ./pages/index.tsx ***!
   \*******************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/mac/Projects/next-demo/pages/index.tsx */"./pages/index.tsx");
+module.exports = __webpack_require__(/*! /Users/mac/Projects/react-next-demo/pages/index.tsx */"./pages/index.tsx");
 
 
 /***/ }),

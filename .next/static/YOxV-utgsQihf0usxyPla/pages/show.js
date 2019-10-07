@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[10],{"1m+X":function(n,t,o){"use strict";o.r(t);var w=o("q1tI"),e=o.n(w).a.createElement;t.default=function(){return e("p",null,"This is show content.")}},ObqQ:function(n,t,o){(window.__NEXT_P=window.__NEXT_P||[]).push(["/show",function(){return o("1m+X")}])}},[["ObqQ",1,0]]]);
