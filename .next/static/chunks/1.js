@@ -4315,7 +4315,7 @@ exports.EVENTS = {
     They should probably be removed eventually.
 */
 __export(__webpack_require__(/*! ./FeedHandler */ "./node_modules/htmlparser2/lib/FeedHandler.js"));
-__export(__webpack_require__(/*! ./WritableStream */ 3));
+__export(__webpack_require__(/*! ./WritableStream */ 4));
 __export(__webpack_require__(/*! ./CollectingHandler */ "./node_modules/htmlparser2/lib/CollectingHandler.js"));
 var DomUtils = __importStar(__webpack_require__(/*! domutils */ "./node_modules/domutils/lib/index.js"));
 exports.DomUtils = DomUtils;
@@ -20454,7 +20454,7 @@ function extend() {
 
 /***/ }),
 
-/***/ 3:
+/***/ 4:
 /*!**********************************!*\
   !*** ./WritableStream (ignored) ***!
   \**********************************/

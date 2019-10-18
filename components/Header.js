@@ -54,6 +54,27 @@ export default class Header extends Component {
     this.setState({
       active
     });
+    sessionStorage.setItem("active", active);
+  }
+
+  componentDidMount() {
+    const logged = sessionStorage.getItem("logged");
+    const active = sessionStorage.getItem("active") || "home";
+
+    let state = {
+      active
+    };
+
+    if (logged && logged === "1") {
+      state = Object.assign(
+        {},
+        {
+          logged: true
+        }
+      );
+    }
+
+    this.setState(state);
   }
 
   render() {

@@ -1,15 +1,14 @@
 // const fetch = require("isomorphic-unfetch");
 // const withBundleAnalyzer = require("@zeit/next-bundle-analyzer");
 const withLess = require("@zeit/next-less");
+const FilterWarningsPlugin = require("webpack-filter-warnings-plugin");
 
 if (typeof require !== "undefined") {
   require.extensions[".less"] = file => {};
 }
 
 function HACK_removeMinimizeOptionFromCssLoaders(config) {
-  console.warn(
-    "HACK: Removing `minimize` option from `css-loader` entries in Webpack config"
-  );
+  console.warn("HACK: Removing `minimize` option from `css-loader` entries in Webpack config");
   config.module.rules.forEach(rule => {
     if (Array.isArray(rule.use)) {
       rule.use.forEach(u => {
@@ -26,6 +25,11 @@ module.exports = withLess({
     javascriptEnabled: true
   },
   webpack(config) {
+    config.plugins.push(
+      new FilterWarningsPlugin({
+        exclude: /mini-css-extract-plugin[^]*Conflicting order between:/
+      })
+    );
     HACK_removeMinimizeOptionFromCssLoaders(config);
     return config;
   }

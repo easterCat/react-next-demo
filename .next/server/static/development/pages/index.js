@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -143,43 +143,46 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var antd_lib_button__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(antd_lib_button__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var antd_lib_dropdown__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! antd/lib/dropdown */ "antd/lib/dropdown");
 /* harmony import */ var antd_lib_dropdown__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(antd_lib_dropdown__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var antd_lib_menu__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! antd/lib/menu */ "antd/lib/menu");
-/* harmony import */ var antd_lib_menu__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(antd_lib_menu__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var antd_lib_icon__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! antd/lib/icon */ "antd/lib/icon");
-/* harmony import */ var antd_lib_icon__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(antd_lib_icon__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! classnames */ "classnames");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! next/router */ "next/router");
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/object/assign */ "./node_modules/@babel/runtime-corejs2/core-js/object/assign.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var antd_lib_menu__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! antd/lib/menu */ "antd/lib/menu");
+/* harmony import */ var antd_lib_menu__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(antd_lib_menu__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var antd_lib_icon__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! antd/lib/icon */ "antd/lib/icon");
+/* harmony import */ var antd_lib_icon__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(antd_lib_icon__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! classnames */ "classnames");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! next/router */ "next/router");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_8__);
+
 
 
 
 
 var _jsxFileName = "/Users/mac/Projects/react-next-demo/components/Header.js";
-var __jsx = react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement;
+var __jsx = react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement;
 
 
 
 
 
-const menu = __jsx(antd_lib_menu__WEBPACK_IMPORTED_MODULE_2___default.a, {
+const menu = __jsx(antd_lib_menu__WEBPACK_IMPORTED_MODULE_3___default.a, {
   __source: {
     fileName: _jsxFileName,
     lineNumber: 8
   },
   __self: undefined
-}, __jsx(antd_lib_menu__WEBPACK_IMPORTED_MODULE_2___default.a.Item, {
+}, __jsx(antd_lib_menu__WEBPACK_IMPORTED_MODULE_3___default.a.Item, {
   key: "0",
   __source: {
     fileName: _jsxFileName,
     lineNumber: 9
   },
   __self: undefined
-}, __jsx(next_link__WEBPACK_IMPORTED_MODULE_6___default.a, {
+}, __jsx(next_link__WEBPACK_IMPORTED_MODULE_7___default.a, {
   href: "/",
   __source: {
     fileName: _jsxFileName,
@@ -192,21 +195,21 @@ const menu = __jsx(antd_lib_menu__WEBPACK_IMPORTED_MODULE_2___default.a, {
     lineNumber: 11
   },
   __self: undefined
-}, __jsx(antd_lib_icon__WEBPACK_IMPORTED_MODULE_3___default.a, {
+}, __jsx(antd_lib_icon__WEBPACK_IMPORTED_MODULE_4___default.a, {
   type: "user",
   __source: {
     fileName: _jsxFileName,
     lineNumber: 12
   },
   __self: undefined
-}), "\u6211\u7684\u4E3B\u9875"))), __jsx(antd_lib_menu__WEBPACK_IMPORTED_MODULE_2___default.a.Item, {
+}), "\u6211\u7684\u4E3B\u9875"))), __jsx(antd_lib_menu__WEBPACK_IMPORTED_MODULE_3___default.a.Item, {
   key: "1",
   __source: {
     fileName: _jsxFileName,
     lineNumber: 17
   },
   __self: undefined
-}, __jsx(next_link__WEBPACK_IMPORTED_MODULE_6___default.a, {
+}, __jsx(next_link__WEBPACK_IMPORTED_MODULE_7___default.a, {
   href: "/article",
   __source: {
     fileName: _jsxFileName,
@@ -219,21 +222,21 @@ const menu = __jsx(antd_lib_menu__WEBPACK_IMPORTED_MODULE_2___default.a, {
     lineNumber: 19
   },
   __self: undefined
-}, __jsx(antd_lib_icon__WEBPACK_IMPORTED_MODULE_3___default.a, {
+}, __jsx(antd_lib_icon__WEBPACK_IMPORTED_MODULE_4___default.a, {
   type: "user",
   __source: {
     fileName: _jsxFileName,
     lineNumber: 20
   },
   __self: undefined
-}), "\u6211\u7684\u4E13\u8F91"))), __jsx(antd_lib_menu__WEBPACK_IMPORTED_MODULE_2___default.a.Item, {
+}), "\u6211\u7684\u4E13\u8F91"))), __jsx(antd_lib_menu__WEBPACK_IMPORTED_MODULE_3___default.a.Item, {
   key: "2",
   __source: {
     fileName: _jsxFileName,
     lineNumber: 25
   },
   __self: undefined
-}, __jsx(next_link__WEBPACK_IMPORTED_MODULE_6___default.a, {
+}, __jsx(next_link__WEBPACK_IMPORTED_MODULE_7___default.a, {
   href: "/about",
   __source: {
     fileName: _jsxFileName,
@@ -246,61 +249,61 @@ const menu = __jsx(antd_lib_menu__WEBPACK_IMPORTED_MODULE_2___default.a, {
     lineNumber: 27
   },
   __self: undefined
-}, __jsx(antd_lib_icon__WEBPACK_IMPORTED_MODULE_3___default.a, {
+}, __jsx(antd_lib_icon__WEBPACK_IMPORTED_MODULE_4___default.a, {
   type: "user",
   __source: {
     fileName: _jsxFileName,
     lineNumber: 28
   },
   __self: undefined
-}), "\u6211\u7684\u6587\u7AE0"))), __jsx(antd_lib_menu__WEBPACK_IMPORTED_MODULE_2___default.a.Divider, {
+}), "\u6211\u7684\u6587\u7AE0"))), __jsx(antd_lib_menu__WEBPACK_IMPORTED_MODULE_3___default.a.Divider, {
   __source: {
     fileName: _jsxFileName,
     lineNumber: 33
   },
   __self: undefined
-}), __jsx(antd_lib_menu__WEBPACK_IMPORTED_MODULE_2___default.a.Item, {
+}), __jsx(antd_lib_menu__WEBPACK_IMPORTED_MODULE_3___default.a.Item, {
   key: "3",
   __source: {
     fileName: _jsxFileName,
     lineNumber: 34
   },
   __self: undefined
-}, "\u6211\u7684\u6536\u85CF"), __jsx(antd_lib_menu__WEBPACK_IMPORTED_MODULE_2___default.a.Item, {
+}, "\u6211\u7684\u6536\u85CF"), __jsx(antd_lib_menu__WEBPACK_IMPORTED_MODULE_3___default.a.Item, {
   key: "4",
   __source: {
     fileName: _jsxFileName,
     lineNumber: 35
   },
   __self: undefined
-}, "\u6211\u7684\u94B1\u5305"), __jsx(antd_lib_menu__WEBPACK_IMPORTED_MODULE_2___default.a.Item, {
+}, "\u6211\u7684\u94B1\u5305"), __jsx(antd_lib_menu__WEBPACK_IMPORTED_MODULE_3___default.a.Item, {
   key: "5",
   __source: {
     fileName: _jsxFileName,
     lineNumber: 36
   },
   __self: undefined
-}, "\u6211\u7684\u5565"), __jsx(antd_lib_menu__WEBPACK_IMPORTED_MODULE_2___default.a.Item, {
+}, "\u6211\u7684\u5565"), __jsx(antd_lib_menu__WEBPACK_IMPORTED_MODULE_3___default.a.Item, {
   key: "6",
   __source: {
     fileName: _jsxFileName,
     lineNumber: 37
   },
   __self: undefined
-}, "\u6211\u7684\u5565"), __jsx(antd_lib_menu__WEBPACK_IMPORTED_MODULE_2___default.a.Divider, {
+}, "\u6211\u7684\u5565"), __jsx(antd_lib_menu__WEBPACK_IMPORTED_MODULE_3___default.a.Divider, {
   __source: {
     fileName: _jsxFileName,
     lineNumber: 38
   },
   __self: undefined
-}), __jsx(antd_lib_menu__WEBPACK_IMPORTED_MODULE_2___default.a.Item, {
+}), __jsx(antd_lib_menu__WEBPACK_IMPORTED_MODULE_3___default.a.Item, {
   key: "7",
   __source: {
     fileName: _jsxFileName,
     lineNumber: 39
   },
   __self: undefined
-}, "\u6211\u7684\u8BBE\u7F6E"), __jsx(antd_lib_menu__WEBPACK_IMPORTED_MODULE_2___default.a.Item, {
+}, "\u6211\u7684\u8BBE\u7F6E"), __jsx(antd_lib_menu__WEBPACK_IMPORTED_MODULE_3___default.a.Item, {
   key: "8",
   __source: {
     fileName: _jsxFileName,
@@ -309,7 +312,7 @@ const menu = __jsx(antd_lib_menu__WEBPACK_IMPORTED_MODULE_2___default.a, {
   __self: undefined
 }, "\u9000\u51FA"));
 
-class Header extends react__WEBPACK_IMPORTED_MODULE_4__["Component"] {
+class Header extends react__WEBPACK_IMPORTED_MODULE_5__["Component"] {
   constructor(props) {
     super(props);
     this.state = {
@@ -322,6 +325,23 @@ class Header extends react__WEBPACK_IMPORTED_MODULE_4__["Component"] {
     this.setState({
       active
     });
+    sessionStorage.setItem("active", active);
+  }
+
+  componentDidMount() {
+    const logged = sessionStorage.getItem("logged");
+    const active = sessionStorage.getItem("active") || "home";
+    let state = {
+      active
+    };
+
+    if (logged && logged === "1") {
+      state = _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_2___default()({}, {
+        logged: true
+      });
+    }
+
+    this.setState(state);
   }
 
   render() {
@@ -329,35 +349,35 @@ class Header extends react__WEBPACK_IMPORTED_MODULE_4__["Component"] {
       className: "nav nav-main header",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 61
+        lineNumber: 82
       },
       __self: this
     }, __jsx("div", {
       className: " header-inner",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 62
+        lineNumber: 83
       },
       __self: this
     }, __jsx("div", {
       className: "header-content",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 63
+        lineNumber: 84
       },
       __self: this
     }, __jsx("div", {
       className: "header-left",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 64
+        lineNumber: 85
       },
       __self: this
     }, __jsx("div", {
       className: "logo",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 65
+        lineNumber: 86
       },
       __self: this
     }, __jsx("img", {
@@ -365,99 +385,99 @@ class Header extends react__WEBPACK_IMPORTED_MODULE_4__["Component"] {
       alt: "logo",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 66
+        lineNumber: 87
       },
       __self: this
     }))), __jsx("div", {
       className: "header-menu",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 69
+        lineNumber: 90
       },
       __self: this
     }, __jsx("div", {
       onClick: () => {
         this.changeActive("home");
       },
-      className: classnames__WEBPACK_IMPORTED_MODULE_5___default()({
+      className: classnames__WEBPACK_IMPORTED_MODULE_6___default()({
         "header-menu-item": true,
         active: this.state.active === "home"
       }),
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 70
+        lineNumber: 91
       },
       __self: this
-    }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_6___default.a, {
+    }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_7___default.a, {
       href: "/",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 79
+        lineNumber: 100
       },
       __self: this
     }, __jsx("a", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 80
+        lineNumber: 101
       },
       __self: this
     }, "\u9996\u9875"))), __jsx("div", {
       onClick: () => {
         this.changeActive("collect");
       },
-      className: classnames__WEBPACK_IMPORTED_MODULE_5___default()({
+      className: classnames__WEBPACK_IMPORTED_MODULE_6___default()({
         "header-menu-item": true,
         active: this.state.active === "collect"
       }),
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 83
+        lineNumber: 104
       },
       __self: this
-    }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_6___default.a, {
+    }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_7___default.a, {
       href: "/article",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 92
+        lineNumber: 113
       },
       __self: this
     }, __jsx("a", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 93
+        lineNumber: 114
       },
       __self: this
     }, "\u4E13\u8F91"))), __jsx("div", {
       onClick: () => {
         this.changeActive("article");
       },
-      className: classnames__WEBPACK_IMPORTED_MODULE_5___default()({
+      className: classnames__WEBPACK_IMPORTED_MODULE_6___default()({
         "header-menu-item": true,
         active: this.state.active === "article"
       }),
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 96
+        lineNumber: 117
       },
       __self: this
-    }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_6___default.a, {
+    }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_7___default.a, {
       href: "/article",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 105
+        lineNumber: 126
       },
       __self: this
     }, __jsx("a", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 106
+        lineNumber: 127
       },
       __self: this
     }, "\u6587\u7AE0")))), __jsx("div", {
       className: "header-right",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 111
+        lineNumber: 132
       },
       __self: this
     }, __jsx(antd_lib_dropdown__WEBPACK_IMPORTED_MODULE_1___default.a, {
@@ -466,14 +486,14 @@ class Header extends react__WEBPACK_IMPORTED_MODULE_4__["Component"] {
       placement: "bottomCenter",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 112
+        lineNumber: 133
       },
       __self: this
     }, __jsx("div", {
       className: "avatar",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 113
+        lineNumber: 134
       },
       __self: this
     }, __jsx("img", {
@@ -481,14 +501,14 @@ class Header extends react__WEBPACK_IMPORTED_MODULE_4__["Component"] {
       alt: "avatar",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 114
+        lineNumber: 135
       },
       __self: this
     })))), __jsx("div", {
       className: "header-btn",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 122
+        lineNumber: 143
       },
       __self: this
     }, __jsx(antd_lib_button__WEBPACK_IMPORTED_MODULE_0___default.a, {
@@ -496,10 +516,10 @@ class Header extends react__WEBPACK_IMPORTED_MODULE_4__["Component"] {
       ghost: true,
       shape: "round",
       icon: "edit",
-      onClick: () => next_router__WEBPACK_IMPORTED_MODULE_7___default.a.push("/write"),
+      onClick: () => next_router__WEBPACK_IMPORTED_MODULE_8___default.a.push("/write"),
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 123
+        lineNumber: 144
       },
       __self: this
     }, "\u5199\u6587\u7AE0>")))));
@@ -2776,7 +2796,7 @@ class Index extends react__WEBPACK_IMPORTED_MODULE_6__["Component"] {
 
 /***/ }),
 
-/***/ 4:
+/***/ 3:
 /*!*******************************!*\
   !*** multi ./pages/index.tsx ***!
   \*******************************/
