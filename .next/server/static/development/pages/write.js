@@ -494,7 +494,7 @@ class Header extends react__WEBPACK_IMPORTED_MODULE_5__["Component"] {
       },
       __self: this
     }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_7___default.a, {
-      href: "/article",
+      href: "/books",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 126

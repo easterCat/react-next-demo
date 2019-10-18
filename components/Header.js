@@ -123,7 +123,7 @@ export default class Header extends Component {
                   active: this.state.active === "article"
                 })}
               >
-                <Link href="/article">
+                <Link href="/books">
                   <a>文章</a>
                 </Link>
               </div>

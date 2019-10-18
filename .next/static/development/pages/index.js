@@ -384,7 +384,7 @@ function (_Component) {
         },
         __self: this
       }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_12___default.a, {
-        href: "/article",
+        href: "/books",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 126
