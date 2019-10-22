@@ -19,12 +19,7 @@ interface IState {
   hasMore: boolean;
   active: string;
 }
-interface IRes {
-  data: [];
-}
-interface IItem {
-  show: object;
-}
+
 interface IK {
   id: number;
   url: string;
@@ -46,10 +41,10 @@ const IconText = ({ type, text }: any) => (
 
 class Index extends Component<IProps, IState> {
   static async getInitialProps() {
-    const res: IRes = await axios.get("https://api.tvmaze.com/search/shows?q=batman");
+    const res: { data: any[] } = await axios.get("https://api.tvmaze.com/search/shows?q=batman");
     const data = res.data;
     return {
-      shows: data.map((item: IItem): object => item.show)
+      shows: data.map((item: { show: object }): object => item.show)
     };
   }
 
@@ -98,7 +93,6 @@ class Index extends Component<IProps, IState> {
                 最新更新
               </span>
             </div>
-            {console.log("object :", this.props.shows)}
             <List
               itemLayout="vertical"
               size="large"
