@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { NextPage } from "next";
 import Layout from "../components/MyLayout";
 import { withRouter } from "next/router";
 import { Button, Tag, List, Avatar, Icon } from "antd";

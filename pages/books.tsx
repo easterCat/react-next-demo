@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Link from "next/link";
 import Layout from "../components/MyLayout";
 import { Button, Avatar } from "antd";
 import axios from "axios";
@@ -66,6 +67,7 @@ class Books extends Component<IProps, IState> {
   }
 
   render() {
+    const { shows } = this.props;
     return (
       <Layout>
         <div>
@@ -90,10 +92,9 @@ class Books extends Component<IProps, IState> {
                 </span>
               </div>
               <ul className="books-list">
-                {Array(10)
-                  .fill(0)
-                  .map(item => {
-                    return (
+                {shows.map((item: { id: number }) => {
+                  return (
+                    <Link href={`/book/${item.id}`}>
                       <li className="books-item" key={uuid()}>
                         <div className="books-item-left">
                           <img
@@ -124,8 +125,9 @@ class Books extends Component<IProps, IState> {
                           </div>
                         </div>
                       </li>
-                    );
-                  })}
+                    </Link>
+                  );
+                })}
               </ul>
             </div>
           </div>

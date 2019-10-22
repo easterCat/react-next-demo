@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "next -p 6688",
-    "build": "next build",
     "start": "next start -p 8866",
+    "build": "next build",
     "export": "next export",
     "analyze": "cross-env BUNDLE_ANALYZE=both next build",
     "analyze:server": "cross-env BUNDLE_ANALYZE=server next build",
@@ -26,9 +26,11 @@
     "firebase": "^6.5.0",
     "isomorphic-unfetch": "^3.0.0",
     "less": "^3.10.3",
+    "marked": "^0.7.0",
     "next": "^9.0.7",
     "react": "^16.10.1",
     "react-dom": "^16.10.1",
+    "react-highlight": "^0.12.0",
     "react-markdown": "^4.2.2",
     "react-uuid": "^1.0.2",
     "wangeditor": "^3.1.1"

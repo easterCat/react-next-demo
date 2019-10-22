@@ -26,13 +26,27 @@ const menu = (
       <Link href="/about">
         <div>
           <Icon type="user" />
-          我的文章
+          我的书籍
         </div>
       </Link>
     </Menu.Item>
     <Menu.Divider />
-    <Menu.Item key="3">我的收藏</Menu.Item>
-    <Menu.Item key="4">我的钱包</Menu.Item>
+    <Menu.Item key="3">
+      <Link href="/firebase">
+        <div>
+          <Icon type="user" />
+          我的firebase
+        </div>
+      </Link>
+    </Menu.Item>
+    <Menu.Item key="4">
+      <Link href="/awp">
+        <div>
+          <Icon type="user" />
+          我的awp
+        </div>
+      </Link>
+    </Menu.Item>
     <Menu.Item key="5">我的啥</Menu.Item>
     <Menu.Item key="6">我的啥</Menu.Item>
     <Menu.Divider />
@@ -66,12 +80,10 @@ export default class Header extends Component {
     };
 
     if (logged && logged === "1") {
-      state = Object.assign(
-        {},
-        {
-          logged: true
-        }
-      );
+      state = {
+        ...state,
+        logged: true
+      };
     }
 
     this.setState(state);
@@ -124,7 +136,7 @@ export default class Header extends Component {
                 })}
               >
                 <Link href="/books">
-                  <a>文章</a>
+                  <a>书籍</a>
                 </Link>
               </div>
             </div>

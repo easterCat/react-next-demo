@@ -1,0 +1,41 @@
+{
+  "modules": {
+    "byIdentifier": {},
+    "usedIds": {}
+  },
+  "chunks": {
+    "byName": {
+      "pages/_error.js": 0,
+      "pages/about.js": 1,
+      "pages/agent.js": 2,
+      "pages/article.js": 3,
+      "pages/awp.js": 4,
+      "pages/book/[id].js": 5,
+      "pages/books.js": 6,
+      "pages/firebase.js": 7,
+      "pages/firebase/[id].js": 8,
+      "pages/index.js": 9,
+      "pages/marked/[id].js": 10,
+      "pages/page.js": 11,
+      "pages/post.js": 12,
+      "pages/write.js": 13
+    },
+    "bySource": {},
+    "usedIds": [
+      0,
+      1,
+      10,
+      11,
+      12,
+      13,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ]
+  }
+}

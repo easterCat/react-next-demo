@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import Layout from "../components/MyLayout";
-import { withRouter } from "next/router";
 import { List, Avatar, Icon } from "antd";
 import axios from "axios";
 import classnames from "classnames";
 import uuid from "react-uuid";
+import Link from "next/link";
 
 interface IProps {
   router: object;
@@ -97,7 +97,6 @@ class Article extends Component<IProps, IState> {
                 最新更新
               </span>
             </div>
-            {console.log("object :", this.props.shows)}
             <List
               itemLayout="vertical"
               size="large"
@@ -109,29 +108,31 @@ class Article extends Component<IProps, IState> {
               }}
               dataSource={this.props.shows}
               renderItem={(item: IK) => (
-                <List.Item
-                  key={item.summary}
-                  actions={[
-                    <IconText type="star-o" text="156" key="list-vertical-star-o" />,
-                    <IconText type="like-o" text="156" key="list-vertical-like-o" />,
-                    <IconText type="message" text="2" key="list-vertical-message" />
-                  ]}
-                  extra={
-                    <img
-                      width={272}
-                      height={168}
-                      alt="logo"
-                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEGh4jXHhv9fgI7hMGZhagHHz1fyIal1dhOORMXya2RtzTQbPneg"
+                <Link href={`/book/${item.id}`}>
+                  <List.Item
+                    key={item.summary}
+                    actions={[
+                      <IconText type="star-o" text="156" key="list-vertical-star-o" />,
+                      <IconText type="like-o" text="156" key="list-vertical-like-o" />,
+                      <IconText type="message" text="2" key="list-vertical-message" />
+                    ]}
+                    extra={
+                      <img
+                        width={272}
+                        height={168}
+                        alt="logo"
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEGh4jXHhv9fgI7hMGZhagHHz1fyIal1dhOORMXya2RtzTQbPneg"
+                      />
+                    }
+                  >
+                    <List.Item.Meta
+                      avatar={<Avatar size={48} src={item.image.medium} />}
+                      title={<a href={item.url}>{item.name}</a>}
+                      description={<div dangerouslySetInnerHTML={{ __html: item.premiered }} />}
                     />
-                  }
-                >
-                  <List.Item.Meta
-                    avatar={<Avatar size={48} src={item.image.medium} />}
-                    title={<a href={item.url}>{item.name}</a>}
-                    description={<div dangerouslySetInnerHTML={{ __html: item.premiered }} />}
-                  />
-                  {<div dangerouslySetInnerHTML={{ __html: item.summary.slice(0, 90) + "..." }} />}
-                </List.Item>
+                    {<div dangerouslySetInnerHTML={{ __html: item.summary.slice(0, 90) + "..." }} />}
+                  </List.Item>
+                </Link>
               )}
             />
           </div>
