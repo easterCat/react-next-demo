@@ -10,8 +10,8 @@ app
   .then(() => {
     const server = express();
 
-    server.get("/p/:id", (req, res) => {
-      const actualPage = "/post";
+    server.get("/m/:id", (req, res) => {
+      const actualPage = "/marked/[id]";
       const queryParams = { id: req.params.id };
       app.render(req, res, actualPage, queryParams);
     });
@@ -20,9 +20,9 @@ app
       return handle(req, res);
     });
 
-    server.listen(6800, err => {
+    server.listen(6776, err => {
       if (err) throw err;
-      console.log("> Ready on http://localhost:6800");
+      console.log("> Ready on http://localhost:6776");
     });
   })
   .catch(ex => {

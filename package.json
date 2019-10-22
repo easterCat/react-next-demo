@@ -9,6 +9,8 @@
     "start": "next start -p 8866",
     "build": "next build",
     "export": "next export",
+    "server:dev": "node server.js",
+    "server:start": "NODE_ENV=production node server.js",
     "analyze": "cross-env BUNDLE_ANALYZE=both next build",
     "analyze:server": "cross-env BUNDLE_ANALYZE=server next build",
     "analyze:browser": "cross-env BUNDLE_ANALYZE=browser next build"

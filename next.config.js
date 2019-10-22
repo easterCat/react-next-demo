@@ -21,6 +21,7 @@ function HACK_removeMinimizeOptionFromCssLoaders(config) {
 
 module.exports = withBundleAnalyzer(
   withLess({
+    poweredByHeader: false,
     analyzeServer: ["server", "both"].includes(process.env.BUNDLE_ANALYZE),
     analyzeBrowser: ["browser", "both"].includes(process.env.BUNDLE_ANALYZE),
     bundleAnalyzerConfig: {
