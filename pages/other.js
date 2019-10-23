@@ -1,8 +1,8 @@
 import React from "react";
+import Layout from "../components/layout/MyLayout";
 import { connect } from "react-redux";
-
-import { startClock, tickClock } from "../actions";
-import Page from "../components/page";
+import { startClock, tickClock } from "../redux/actions";
+import Page from "../components/clock/page";
 
 class Other extends React.Component {
   static async getInitialProps(props) {
@@ -16,7 +16,11 @@ class Other extends React.Component {
   }
 
   render() {
-    return <Page title="Other Page" linkTo="/" NavigateTo="Index Page" />;
+    return (
+      <Layout>
+        <Page title="Other Page" linkTo="/" NavigateTo="Index Page" />
+      </Layout>
+    );
   }
 }
 

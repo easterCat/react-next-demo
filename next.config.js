@@ -34,6 +34,7 @@ module.exports = withBundleAnalyzer(
         reportFilename: "../bundles/client.html"
       }
     },
+    // export html
     exportPathMap: async function() {
       const paths = {
         "/": { page: "/" },

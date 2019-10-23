@@ -7,8 +7,6 @@ import Head from "./Head";
 import Header from "./Header";
 import Footer from "./Footer";
 
-import "../assets/css/styles.less";
-
 class Layout extends Component {
   render() {
     let { children } = this.props;

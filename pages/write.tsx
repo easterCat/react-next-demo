@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import Layout from "../components/MyLayout";
+import Layout from "../components/layout/MyLayout";
 import { withRouter } from "next/router";
 import dynamic from "next/dynamic";
 
-const DynamicEditor = dynamic(() => import("../components/Editor"), { ssr: false });
+const DynamicEditor = dynamic(() => import("../components/markdown/Editor"), { ssr: false });
 
 interface IProps {
   router: object;

@@ -1,9 +1,11 @@
 import React from "react";
 import App from "next/app";
+
+import "../assets/css/styles.less";
+
 import { Provider } from "react-redux";
 import withRedux from "next-redux-wrapper";
 import withReduxSaga from "next-redux-saga";
-
 import createStore from "../redux/store";
 
 class MyApp extends App {

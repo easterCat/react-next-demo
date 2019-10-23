@@ -4,26 +4,23 @@
     "static/development/dll/dll_492c97d20afdca23aa1f.js.map"
   ],
   "pages": {
-    "/": [
+    "/_app": [
       "static/runtime/webpack.js",
       "static/css/styles.chunk.css",
       "static/chunks/styles.js",
-      "static/css/static/development/pages/index.js.chunk.css",
-      "static/runtime/main.js"
-    ],
-    "/_app": [
-      "static/runtime/webpack.js",
+      "static/css/static/development/pages/_app.js.chunk.css",
       "static/runtime/main.js"
     ],
     "/_error": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/index": [
+    "/books": [
       "static/runtime/webpack.js",
-      "static/css/styles.chunk.css",
-      "static/chunks/styles.js",
-      "static/css/static/development/pages/index.js.chunk.css",
+      "static/runtime/main.js"
+    ],
+    "/other": [
+      "static/runtime/webpack.js",
       "static/runtime/main.js"
     ]
   }

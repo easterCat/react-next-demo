@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Layout from "../components/MyLayout";
+import Layout from "../components/layout/MyLayout";
 import { List, Avatar, Icon } from "antd";
 import axios from "axios";
 import classnames from "classnames";

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { NextPage } from "next";
-import Layout from "../components/MyLayout";
+import Layout from "../components/layout/MyLayout";
 import { withRouter } from "next/router";
 import { Button, Tag, List, Avatar, Icon } from "antd";
 import axios from "axios";
@@ -161,14 +161,14 @@ class Index extends Component<IProps, IState> {
               </div>
             </div>
 
-            <div className="article">
-              <div className="article-header item-header">
-                <div className="article-title title">关注作者</div>
-                <div className="article-more more" onClick={() => {}}>
+            <div className="author">
+              <div className="author-header item-header">
+                <div className="author-title title">关注作者</div>
+                <div className="author-more more" onClick={() => {}}>
                   查看更多 >
                 </div>
               </div>
-              <div className="article-content">
+              <div className="author-content">
                 <List
                   itemLayout="horizontal"
                   dataSource={this.props.shows.slice(0, 4)}

@@ -17033,10 +17033,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_7__);
 /* harmony import */ var next_app__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! next/app */ "./node_modules/next/app.js");
 /* harmony import */ var next_app__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(next_app__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var next_redux_wrapper__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! next-redux-wrapper */ "./node_modules/next-redux-wrapper/es6/index.js");
-/* harmony import */ var next_redux_saga__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! next-redux-saga */ "./node_modules/next-redux-saga/dist/next-redux-saga.es.js");
-/* harmony import */ var _redux_store__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../redux/store */ "./redux/store.js");
+/* harmony import */ var _assets_css_styles_less__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../assets/css/styles.less */ "./assets/css/styles.less");
+/* harmony import */ var _assets_css_styles_less__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_assets_css_styles_less__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var next_redux_wrapper__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! next-redux-wrapper */ "./node_modules/next-redux-wrapper/es6/index.js");
+/* harmony import */ var next_redux_saga__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! next-redux-saga */ "./node_modules/next-redux-saga/dist/next-redux-saga.es.js");
+/* harmony import */ var _redux_store__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../redux/store */ "./redux/store.js");
 
 
 
@@ -17045,6 +17047,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement;
+
 
 
 
@@ -17070,7 +17073,7 @@ function (_App) {
           Component = _this$props.Component,
           pageProps = _this$props.pageProps,
           store = _this$props.store;
-      return __jsx(react_redux__WEBPACK_IMPORTED_MODULE_9__["Provider"], {
+      return __jsx(react_redux__WEBPACK_IMPORTED_MODULE_10__["Provider"], {
         store: store
       }, __jsx(Component, pageProps));
     }
@@ -17125,31 +17128,20 @@ function (_App) {
   return MyApp;
 }(next_app__WEBPACK_IMPORTED_MODULE_8___default.a);
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(next_redux_wrapper__WEBPACK_IMPORTED_MODULE_10__["default"])(_redux_store__WEBPACK_IMPORTED_MODULE_12__["default"])(Object(next_redux_saga__WEBPACK_IMPORTED_MODULE_11__["default"])(MyApp)));
+/* harmony default export */ __webpack_exports__["default"] = (Object(next_redux_wrapper__WEBPACK_IMPORTED_MODULE_11__["default"])(_redux_store__WEBPACK_IMPORTED_MODULE_13__["default"])(Object(next_redux_saga__WEBPACK_IMPORTED_MODULE_12__["default"])(MyApp)));
 
 /***/ }),
 
-/***/ "./redux/actions.js":
-/*!**************************!*\
-  !*** ./redux/actions.js ***!
-  \**************************/
-/*! exports provided: actionTypes, failure, increment, decrement, reset, loadData, loadDataSuccess, startClock, tickClock */
+/***/ "./redux/actionTypes.js":
+/*!******************************!*\
+  !*** ./redux/actionTypes.js ***!
+  \******************************/
+/*! exports provided: actionTypes */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "actionTypes", function() { return actionTypes; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "failure", function() { return failure; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "increment", function() { return increment; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "decrement", function() { return decrement; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "reset", function() { return reset; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "loadData", function() { return loadData; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "loadDataSuccess", function() { return loadDataSuccess; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "startClock", function() { return startClock; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "tickClock", function() { return tickClock; });
-/* harmony import */ var _babel_runtime_corejs2_core_js_date_now__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/date/now */ "./node_modules/@babel/runtime-corejs2/core-js/date/now.js");
-/* harmony import */ var _babel_runtime_corejs2_core_js_date_now__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_date_now__WEBPACK_IMPORTED_MODULE_0__);
-
 var actionTypes = {
   FAILURE: "FAILURE",
   INCREMENT: "INCREMENT",
@@ -17160,46 +17152,71 @@ var actionTypes = {
   START_CLOCK: "START_CLOCK",
   TICK_CLOCK: "TICK_CLOCK"
 };
+
+/***/ }),
+
+/***/ "./redux/actions.js":
+/*!**************************!*\
+  !*** ./redux/actions.js ***!
+  \**************************/
+/*! exports provided: failure, increment, decrement, reset, loadData, loadDataSuccess, startClock, tickClock */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "failure", function() { return failure; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "increment", function() { return increment; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "decrement", function() { return decrement; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "reset", function() { return reset; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "loadData", function() { return loadData; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "loadDataSuccess", function() { return loadDataSuccess; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "startClock", function() { return startClock; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "tickClock", function() { return tickClock; });
+/* harmony import */ var _babel_runtime_corejs2_core_js_date_now__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/date/now */ "./node_modules/@babel/runtime-corejs2/core-js/date/now.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_date_now__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_date_now__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _actionTypes__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./actionTypes */ "./redux/actionTypes.js");
+
+
 function failure(error) {
   return {
-    type: actionTypes.FAILURE,
+    type: _actionTypes__WEBPACK_IMPORTED_MODULE_1__["actionTypes"].FAILURE,
     error: error
   };
 }
 function increment() {
   return {
-    type: actionTypes.INCREMENT
+    type: _actionTypes__WEBPACK_IMPORTED_MODULE_1__["actionTypes"].INCREMENT
   };
 }
 function decrement() {
   return {
-    type: actionTypes.DECREMENT
+    type: _actionTypes__WEBPACK_IMPORTED_MODULE_1__["actionTypes"].DECREMENT
   };
 }
 function reset() {
   return {
-    type: actionTypes.RESET
+    type: _actionTypes__WEBPACK_IMPORTED_MODULE_1__["actionTypes"].RESET
   };
 }
 function loadData() {
   return {
-    type: actionTypes.LOAD_DATA
+    type: _actionTypes__WEBPACK_IMPORTED_MODULE_1__["actionTypes"].LOAD_DATA
   };
 }
 function loadDataSuccess(data) {
   return {
-    type: actionTypes.LOAD_DATA_SUCCESS,
+    type: _actionTypes__WEBPACK_IMPORTED_MODULE_1__["actionTypes"].LOAD_DATA_SUCCESS,
     data: data
   };
 }
 function startClock() {
   return {
-    type: actionTypes.START_CLOCK
+    type: _actionTypes__WEBPACK_IMPORTED_MODULE_1__["actionTypes"].START_CLOCK
   };
 }
 function tickClock(isServer) {
   return {
-    type: actionTypes.TICK_CLOCK,
+    type: _actionTypes__WEBPACK_IMPORTED_MODULE_1__["actionTypes"].TICK_CLOCK,
     light: !isServer,
     ts: _babel_runtime_corejs2_core_js_date_now__WEBPACK_IMPORTED_MODULE_0___default()()
   };
@@ -17218,7 +17235,7 @@ function tickClock(isServer) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "exampleInitialState", function() { return exampleInitialState; });
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/objectSpread */ "./node_modules/@babel/runtime-corejs2/helpers/esm/objectSpread.js");
-/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./actions */ "./redux/actions.js");
+/* harmony import */ var _actionTypes__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./actionTypes */ "./redux/actionTypes.js");
 
 
 var exampleInitialState = {
@@ -17234,32 +17251,32 @@ function reducer() {
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
   switch (action.type) {
-    case _actions__WEBPACK_IMPORTED_MODULE_1__["actionTypes"].FAILURE:
+    case _actionTypes__WEBPACK_IMPORTED_MODULE_1__["actionTypes"].FAILURE:
       return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, state, {
         error: action.error
       });
 
-    case _actions__WEBPACK_IMPORTED_MODULE_1__["actionTypes"].INCREMENT:
+    case _actionTypes__WEBPACK_IMPORTED_MODULE_1__["actionTypes"].INCREMENT:
       return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, state, {
         count: state.count + 1
       });
 
-    case _actions__WEBPACK_IMPORTED_MODULE_1__["actionTypes"].DECREMENT:
+    case _actionTypes__WEBPACK_IMPORTED_MODULE_1__["actionTypes"].DECREMENT:
       return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, state, {
         count: state.count - 1
       });
 
-    case _actions__WEBPACK_IMPORTED_MODULE_1__["actionTypes"].RESET:
+    case _actionTypes__WEBPACK_IMPORTED_MODULE_1__["actionTypes"].RESET:
       return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, state, {
         count: exampleInitialState.count
       });
 
-    case _actions__WEBPACK_IMPORTED_MODULE_1__["actionTypes"].LOAD_DATA_SUCCESS:
+    case _actionTypes__WEBPACK_IMPORTED_MODULE_1__["actionTypes"].LOAD_DATA_SUCCESS:
       return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, state, {
         placeholderData: action.data
       });
 
-    case _actions__WEBPACK_IMPORTED_MODULE_1__["actionTypes"].TICK_CLOCK:
+    case _actionTypes__WEBPACK_IMPORTED_MODULE_1__["actionTypes"].TICK_CLOCK:
       return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, state, {
         lastUpdate: action.ts,
         light: !!action.light
@@ -17290,7 +17307,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var es6_promise__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(es6_promise__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! isomorphic-unfetch */ "./node_modules/isomorphic-unfetch/browser.js");
 /* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./actions */ "./redux/actions.js");
+/* harmony import */ var _actionTypes__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./actionTypes */ "./redux/actionTypes.js");
+/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./actions */ "./redux/actions.js");
 
 
 var _marked =
@@ -17308,6 +17326,7 @@ _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(r
 
 
 
+
 es6_promise__WEBPACK_IMPORTED_MODULE_2___default.a.polyfill();
 
 function runClockSaga() {
@@ -17316,13 +17335,13 @@ function runClockSaga() {
       switch (_context.prev = _context.next) {
         case 0:
           _context.next = 2;
-          return Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["take"])(_actions__WEBPACK_IMPORTED_MODULE_4__["actionTypes"].START_CLOCK);
+          return Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["take"])(_actionTypes__WEBPACK_IMPORTED_MODULE_4__["actionTypes"].START_CLOCK);
 
         case 2:
           if (false) {}
 
           _context.next = 5;
-          return Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["put"])(Object(_actions__WEBPACK_IMPORTED_MODULE_4__["tickClock"])(false));
+          return Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["put"])(Object(_actions__WEBPACK_IMPORTED_MODULE_5__["tickClock"])(false));
 
         case 5:
           _context.next = 7;
@@ -17358,7 +17377,7 @@ function loadDataSaga() {
         case 6:
           data = _context2.sent;
           _context2.next = 9;
-          return Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["put"])(Object(_actions__WEBPACK_IMPORTED_MODULE_4__["loadDataSuccess"])(data));
+          return Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["put"])(Object(_actions__WEBPACK_IMPORTED_MODULE_5__["loadDataSuccess"])(data));
 
         case 9:
           _context2.next = 15;
@@ -17368,7 +17387,7 @@ function loadDataSaga() {
           _context2.prev = 11;
           _context2.t0 = _context2["catch"](0);
           _context2.next = 15;
-          return Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["put"])(Object(_actions__WEBPACK_IMPORTED_MODULE_4__["failure"])(_context2.t0));
+          return Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["put"])(Object(_actions__WEBPACK_IMPORTED_MODULE_5__["failure"])(_context2.t0));
 
         case 15:
         case "end":
@@ -17384,7 +17403,7 @@ function rootSaga() {
       switch (_context3.prev = _context3.next) {
         case 0:
           _context3.next = 2;
-          return Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["all"])([Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["call"])(runClockSaga), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["takeLatest"])(_actions__WEBPACK_IMPORTED_MODULE_4__["actionTypes"].LOAD_DATA, loadDataSaga)]);
+          return Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["all"])([Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["call"])(runClockSaga), Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_1__["takeLatest"])(_actionTypes__WEBPACK_IMPORTED_MODULE_4__["actionTypes"].LOAD_DATA, loadDataSaga)]);
 
         case 2:
         case "end":
@@ -17452,5 +17471,5 @@ module.exports = dll_13346faca0e924a89b24;
 
 /***/ })
 
-},[["./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F_app&absolutePagePath=private-next-pages%2F_app.js!./","static/runtime/webpack.js"]]]);
+},[["./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F_app&absolutePagePath=private-next-pages%2F_app.js!./","static/runtime/webpack.js","styles"]]]);
 //# sourceMappingURL=_app.js.map
