@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import Layout from "../components/MyLayout";
+import Layout from "../../components/MyLayout";
 import Markdown from "react-markdown";
 
 const Content = () => {

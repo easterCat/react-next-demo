@@ -1,6 +1,6 @@
-import Layout from "../components/MyLayout.js";
+import Layout from "../../components/MyLayout.js";
 import Link from "next/link";
-import loadDB from "../lib/load-db";
+import loadDB from "../../lib/load-db";
 
 function PostLink(props) {
   return (

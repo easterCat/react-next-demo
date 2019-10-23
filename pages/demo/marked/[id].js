@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import withPost from "../../lib/with-post";
+import withPost from "../../../lib/with-post";
 import { withRouter } from "next/router";
 
 const data = {
