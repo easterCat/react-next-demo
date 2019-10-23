@@ -41,4 +41,3 @@ export function tickClock(isServer) {
     ts: Date.now()
   };
 }
-
