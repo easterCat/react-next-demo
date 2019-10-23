@@ -4,8 +4,10 @@ import { increment, decrement, reset } from "../../redux/actions";
 import { Button } from "antd";
 
 @connect(
-  state => ({ count: state.count }),
-  dispatch => bindActionCreators({ increment, decrement, reset }, dispatch)
+  state => ({
+    count: state.count
+  }),
+  { increment, decrement, reset }
 )
 class Counter extends Component {
   render() {

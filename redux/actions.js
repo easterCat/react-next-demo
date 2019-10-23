@@ -8,15 +8,21 @@ export function failure(error) {
 }
 
 export function increment() {
-  return { type: actionTypes.INCREMENT };
+  return dispatch => {
+    dispatch({ type: actionTypes.INCREMENT });
+  };
 }
 
 export function decrement() {
-  return { type: actionTypes.DECREMENT };
+  return dispatch => {
+    dispatch({ type: actionTypes.DECREMENT });
+  };
 }
 
 export function reset() {
-  return { type: actionTypes.RESET };
+  return dispatch => {
+    dispatch({ type: actionTypes.RESET });
+  };
 }
 
 export function loadData() {
