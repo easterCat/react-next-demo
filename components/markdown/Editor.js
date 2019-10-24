@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Button } from "antd";
-import wangeditor from "wangeditor";
 import Markdown from "react-markdown/with-html";
 
 let editor = undefined;
@@ -15,7 +14,6 @@ class Index extends Component {
     };
 
     this.showPreview = () => {
-      console.log("object :", editor.txt.html());
       this.setState({
         showMask: true,
         source: editor.txt.text()
@@ -23,7 +21,9 @@ class Index extends Component {
     };
   }
 
-  componentDidMount() {
+  async componentDidMount() {
+    const wangeditor = await import("wangeditor");
+
     editor = new wangeditor(this.refs.Editor);
     editor.create();
   }

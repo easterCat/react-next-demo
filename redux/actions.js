@@ -1,4 +1,5 @@
 import { actionTypes } from "./actionTypes";
+import { rpost } from "../utils/request";
 
 export function failure(error) {
   return {
@@ -9,8 +10,12 @@ export function failure(error) {
 
 export function increment() {
   return dispatch => {
-    dispatch({ type: actionTypes.INCREMENT });
+    dispatch({ type: actionTypes.DECREMENT });
   };
+}
+
+export function createCollect(data) {
+  return rpost("/collect/create_api", "INCREMENT", data);
 }
 
 export function decrement() {

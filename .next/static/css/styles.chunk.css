@@ -21408,6 +21408,55 @@ div.ant-typography-edit-content {
 .ant-dropdown-menu-item {
   padding: 8px 18px;
 }
+.ant-menu {
+  border-right: none;
+  background: rgba(0, 0, 0, 0);
+  color: #fff;
+}
+.ant-menu-item-active {
+  background-color: #666;
+  border-right: 3px solid #ec7259;
+  color: #fff;
+}
+.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+  background-color: #666;
+  border-right: 3px solid #ec7259;
+  color: #fff;
+}
+.ant-menu-vertical .ant-menu-item::after,
+.ant-menu-vertical-left .ant-menu-item::after,
+.ant-menu-vertical-right .ant-menu-item::after,
+.ant-menu-inline .ant-menu-item::after {
+  border-right: none;
+}
+.ant-menu-item:hover {
+  color: #fff;
+}
+.ant-collapse {
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+}
+.ant-collapse-header {
+  color: #fff !important;
+}
+.ant-collapse-content {
+  background-color: rgba(0, 0, 0, 0);
+  border-top: none;
+}
+.ant-collapse > .ant-collapse-item {
+  border-bottom: none;
+}
+.ant-list-header {
+  padding-left: 10px;
+}
+.ant-list-footer {
+  padding-left: 10px;
+}
+.ant-list-lg .ant-list-item {
+  padding-left: 5px;
+  padding-right: 5px;
+}
 .header {
   position: absolute;
   height: 60px;
@@ -21908,8 +21957,32 @@ div.ant-typography-edit-content {
   color: #818181;
   line-height: 23px;
 }
-li {
-  list-style: none;
+.collect-list {
+  position: relative;
+  height: 100%;
+  overflow-y: auto;
+  background-color: #404040;
+  color: #f2f2f2;
+  z-index: 100;
+}
+.article-list {
+  position: relative;
+  height: 100%;
+  overflow-y: auto;
+  background-color: #fff;
+  color: #f2f2f2;
+  z-index: 100;
+  border-right: 1px solid #ebebeb;
+}
+.markdown-area {
+  position: relative;
+  height: 100%;
+  overflow-y: auto;
+  z-index: 100;
+  border-right: 1px solid #ebebeb;
+}
+.back-btn {
+  padding: 20px 20px 0;
 }
 .link {
   display: inline-block;
@@ -21920,6 +21993,32 @@ li {
 }
 .hide {
   display: none !important;
+}
+.editor-preview,
+.editor-preview-side {
+  background: #fcfaf2 !important;
+}
+#__next,
+.document {
+  width: 100%;
+  height: 100%;
+  max-width: 100vw;
+  max-height: 100vh;
+}
+.CodeMirror {
+  min-height: calc(100vh - 85px) !important;
+  border: none !important;
+  border-bottom: 1px solid #ddd !important;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+.editor-toolbar {
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-bottom: 1px solid #ddd !important;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
 }
 
 

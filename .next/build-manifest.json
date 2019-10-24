@@ -15,7 +15,11 @@
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/other": [
+    "/markdown": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
+    "/write": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ]

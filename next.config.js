@@ -2,6 +2,8 @@ const fetch = require("isomorphic-unfetch");
 const withBundleAnalyzer = require("@zeit/next-bundle-analyzer");
 const withLess = require("@zeit/next-less");
 const FilterWarningsPlugin = require("webpack-filter-warnings-plugin");
+// const images = require("remark-images");
+// const emoji = require("remark-emoji");
 
 if (typeof require !== "undefined") {
   require.extensions[".less"] = file => {};
@@ -19,8 +21,15 @@ function HACK_removeMinimizeOptionFromCssLoaders(config) {
   });
 }
 
+// const withMDX = require("@zeit/next-mdx")({
+//   options: {
+//     mdPlugins: [images, emoji]
+//   }
+// });
+
 module.exports = withBundleAnalyzer(
   withLess({
+    pageExtensions: ["js", "jsx", "ts", "tsx", "mdx"],
     poweredByHeader: false,
     analyzeServer: ["server", "both"].includes(process.env.BUNDLE_ANALYZE),
     analyzeBrowser: ["browser", "both"].includes(process.env.BUNDLE_ANALYZE),
