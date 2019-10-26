@@ -21546,7 +21546,7 @@ div.ant-typography-edit-content {
 }
 .header .header-menu .active:after {
   position: absolute;
-  bottom: -5px;
+  bottom: -3px;
   left: 10%;
   right: 0;
   height: 4px;

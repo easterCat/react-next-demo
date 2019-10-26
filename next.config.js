@@ -44,27 +44,27 @@ module.exports = withBundleAnalyzer(
       }
     },
     // export html
-    exportPathMap: async function() {
-      const paths = {
-        "/": { page: "/" },
-        "/books": { page: "/books" },
-        "/article": { page: "/article" },
-        "/write": { page: "/write" }
-      };
+    // exportPathMap: async function() {
+    //   const paths = {
+    //     "/": { page: "/" },
+    //     "/books": { page: "/books" },
+    //     "/article": { page: "/article" },
+    //     "/write": { page: "/write" }
+    //   };
 
-      const res = await fetch("https://api.tvmaze.com/search/shows?q=batman");
-      const data = await res.json();
-      const shows = data.map(entry => entry.show);
+    //   const res = await fetch("https://api.tvmaze.com/search/shows?q=batman");
+    //   const data = await res.json();
+    //   const shows = data.map(entry => entry.show);
 
-      shows.forEach(show => {
-        paths[`/book/${show.id}`] = {
-          page: "/book/[id]",
-          query: { id: show.id }
-        };
-      });
+    //   shows.forEach(show => {
+    //     paths[`/book/${show.id}`] = {
+    //       page: "/book/[id]",
+    //       query: { id: show.id }
+    //     };
+    //   });
 
-      return paths;
-    },
+    //   return paths;
+    // },
     lessLoaderOptions: {
       javascriptEnabled: true
     },
