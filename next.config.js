@@ -30,7 +30,6 @@ function HACK_removeMinimizeOptionFromCssLoaders(config) {
 module.exports = withBundleAnalyzer(
   withLess({
     pageExtensions: ["js", "jsx", "ts", "tsx", "mdx"],
-    poweredByHeader: false,
     analyzeServer: ["server", "both"].includes(process.env.BUNDLE_ANALYZE),
     analyzeBrowser: ["browser", "both"].includes(process.env.BUNDLE_ANALYZE),
     bundleAnalyzerConfig: {
@@ -44,27 +43,32 @@ module.exports = withBundleAnalyzer(
       }
     },
     // export html
-    // exportPathMap: async function() {
-    //   const paths = {
-    //     "/": { page: "/" },
-    //     "/books": { page: "/books" },
-    //     "/article": { page: "/article" },
-    //     "/write": { page: "/write" }
-    //   };
+    exportPathMap: async function() {
+      const paths = {
+        "/": { page: "/" },
+        "/books": { page: "/books" },
+        "/article": { page: "/article" },
+        "/write": { page: "/write" },
+        "/login": { page: "/login" },
+        "/markdown": { page: "/markdown" },
+        "/editor": { page: "/editor" }
+      };
 
-    //   const res = await fetch("https://api.tvmaze.com/search/shows?q=batman");
-    //   const data = await res.json();
-    //   const shows = data.map(entry => entry.show);
+      // const res = await fetch("https://api.tvmaze.com/search/shows?q=batman");
+      // const data = await res.json();
+      // const shows = data.map(entry => entry.show);
 
-    //   shows.forEach(show => {
-    //     paths[`/book/${show.id}`] = {
-    //       page: "/book/[id]",
-    //       query: { id: show.id }
-    //     };
-    //   });
+      // shows.forEach(show => {
+      //   paths[`/book/${show.id}`] = {
+      //     page: "/book/[id]",
+      //     query: { id: show.id }
+      //   };
+      // });
 
-    //   return paths;
-    // },
+      return paths;
+    },
+    useFileSystemPublicRoutes: false,
+    poweredByHeader: false,
     lessLoaderOptions: {
       javascriptEnabled: true
     },

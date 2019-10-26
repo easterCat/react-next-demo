@@ -108,7 +108,7 @@ class Article extends Component<IProps, IState> {
               }}
               dataSource={this.props.shows}
               renderItem={(item: IK) => (
-                <Link href={`/post/${item.id}`}>
+                <Link href={`/book/${item.id}`}>
                   <List.Item
                     key={item.summary}
                     actions={[

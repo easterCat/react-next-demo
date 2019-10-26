@@ -43,8 +43,8 @@ const Post = props => (
 );
 
 Post.getInitialProps = async function(context) {
-  const { id } = context.ctx.query;
-  const res = await fetch(`https://api.tvmaze.com/shows/${id}`);
+  const { currentBookId } = context.ctx.query;
+  const res = await fetch(`https://api.tvmaze.com/shows/${currentBookId}`);
   const show = await res.json();
   return { show };
 };
