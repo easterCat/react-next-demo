@@ -113,7 +113,7 @@ export default class Header extends Component {
                   active: active === "home"
                 })}
               >
-                <Link href="/">
+                <Link href="/home">
                   <a>首页</a>
                 </Link>
               </div>

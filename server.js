@@ -1,8 +1,9 @@
 const express = require("express");
 const next = require("next");
 const dev = process.env.NODE_ENV !== "production";
-const app = next({ dev });
+const app = next({ dir: ".", dev });
 const handle = app.getRequestHandler();
+const compression = require("compression"); //压缩插件
 
 app
   .prepare()
@@ -15,9 +16,11 @@ app
       app.render(req, res, actualPage, queryParams);
     });
 
-    server.get("*", (req, res) => {
-      return handle(req, res);
+    server.get("/article", (req, res) => {
+      app.render(req, res, "/article");
     });
+
+    server.all("*", (req, res) => handle(req, res));
 
     server.listen(6776, err => {
       if (err) throw err;

@@ -29,6 +29,11 @@ function HACK_removeMinimizeOptionFromCssLoaders(config) {
 
 module.exports = withBundleAnalyzer(
   withLess({
+    useFileSystemPublicRoutes: false,
+    poweredByHeader: false,
+    lessLoaderOptions: {
+      javascriptEnabled: true
+    },
     pageExtensions: ["js", "jsx", "ts", "tsx", "mdx"],
     analyzeServer: ["server", "both"].includes(process.env.BUNDLE_ANALYZE),
     analyzeBrowser: ["browser", "both"].includes(process.env.BUNDLE_ANALYZE),
@@ -46,6 +51,7 @@ module.exports = withBundleAnalyzer(
     exportPathMap: async function() {
       const paths = {
         "/": { page: "/" },
+        "/home": { page: "/home" },
         "/books": { page: "/books" },
         "/article": { page: "/article" },
         "/write": { page: "/write" },
@@ -53,24 +59,7 @@ module.exports = withBundleAnalyzer(
         "/markdown": { page: "/markdown" },
         "/editor": { page: "/editor" }
       };
-
-      // const res = await fetch("https://api.tvmaze.com/search/shows?q=batman");
-      // const data = await res.json();
-      // const shows = data.map(entry => entry.show);
-
-      // shows.forEach(show => {
-      //   paths[`/book/${show.id}`] = {
-      //     page: "/book/[id]",
-      //     query: { id: show.id }
-      //   };
-      // });
-
       return paths;
-    },
-    useFileSystemPublicRoutes: false,
-    poweredByHeader: false,
-    lessLoaderOptions: {
-      javascriptEnabled: true
     },
     webpack(config) {
       config.plugins.push(

@@ -133,7 +133,7 @@ class MDEditor extends Component {
                 block
                 ghost
                 onClick={() => {
-                  Router.push("/");
+                  Router.push("/home");
                 }}
               >
                 回首页
