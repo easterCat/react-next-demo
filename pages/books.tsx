@@ -95,7 +95,7 @@ class Books extends Component<IProps, IState> {
                 {shows.map((item: { id: number }) => {
                   return (
                     <Fragment key={uuid()}>
-                      <Link href={`/post?id=${item.id}}`} as={`/post/${item.id}`}>
+                      <Link href={`/post/${item.id}`}>
                         <li className="books-item">
                           <div className="books-item-left">
                             <img
