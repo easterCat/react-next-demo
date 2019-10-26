@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import NextSeo from "next-seo";
+import SEO from "../../seo/home-seo.js";
 import classnames from "classnames";
 import { Menu, Button, Icon, Dropdown } from "antd";
 import Link from "next/link";
@@ -60,6 +62,7 @@ export default class Header extends Component {
     super(props);
 
     this.state = {
+      logged: false,
       active: "home" //home article collect
     };
   }
@@ -90,6 +93,7 @@ export default class Header extends Component {
   }
 
   render() {
+    const { logged, active } = this.state;
     return (
       <div className={"nav nav-main header"}>
         <div className={" header-inner"}>
@@ -106,7 +110,7 @@ export default class Header extends Component {
                 }}
                 className={classnames({
                   "header-menu-item": true,
-                  active: this.state.active === "home"
+                  active: active === "home"
                 })}
               >
                 <Link href="/">
@@ -119,7 +123,7 @@ export default class Header extends Component {
                 }}
                 className={classnames({
                   "header-menu-item": true,
-                  active: this.state.active === "collect"
+                  active: active === "collect"
                 })}
               >
                 <Link href="/article">
@@ -132,7 +136,7 @@ export default class Header extends Component {
                 }}
                 className={classnames({
                   "header-menu-item": true,
-                  active: this.state.active === "article"
+                  active: active === "article"
                 })}
               >
                 <Link href="/books">
@@ -141,22 +145,42 @@ export default class Header extends Component {
               </div>
             </div>
 
-            <div className={"header-right"}>
-              <Dropdown overlay={menu} trigger={["click"]} placement="bottomCenter">
-                <div className={"avatar"}>
-                  <img
-                    src="https://images.xiaozhuanlan.com/photo/2019/2ad6384db0b94cd8e76d11194400df23.jpeg"
-                    alt="avatar"
-                  ></img>
-                </div>
-              </Dropdown>
-            </div>
+            {logged ? (
+              <div className={"header-right"}>
+                <Dropdown overlay={menu} trigger={["hover"]} placement="bottomCenter">
+                  <div className={"avatar"}>
+                    <img
+                      src="https://images.xiaozhuanlan.com/photo/2019/2ad6384db0b94cd8e76d11194400df23.jpeg"
+                      alt="avatar"
+                    ></img>
+                  </div>
+                </Dropdown>
+              </div>
+            ) : null}
 
-            <div className="header-btn">
-              <Button type="danger" ghost shape="round" icon="edit" onClick={() => Router.push("/write")}>
-                写文章>
-              </Button>
-            </div>
+            {logged ? (
+              <div className="header-btn">
+                <Button type="danger" ghost shape="round" icon="edit" onClick={() => Router.push("/write")}>
+                  写文章
+                </Button>
+              </div>
+            ) : (
+              <div className="header-btn">
+                <Button type="danger" ghost shape="round" icon="edit" onClick={() => Router.push("/register")}>
+                  注册
+                </Button>
+                <Button
+                  type="primary"
+                  style={{ marginLeft: "10px" }}
+                  ghost
+                  shape="round"
+                  icon="edit"
+                  onClick={() => Router.push("/login")}
+                >
+                  登录
+                </Button>
+              </div>
+            )}
           </div>
         </div>
       </div>
