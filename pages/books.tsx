@@ -18,13 +18,8 @@ interface IState {
   hasMore: boolean;
   active: string;
 }
-interface IRes {
-  data: [];
-}
+
 interface IItem {
-  show: object;
-}
-interface IK {
   id: number;
   url: string;
   name: string;
@@ -38,10 +33,10 @@ interface IK {
 
 class Books extends Component<IProps, IState> {
   static async getInitialProps() {
-    const res: IRes = await axios.get("https://api.tvmaze.com/search/shows?q=batman");
+    const res: { data: any[] } = await axios.get("https://api.tvmaze.com/search/shows?q=batman");
     const data = res.data;
     return {
-      shows: data.map((item: IItem): object => item.show)
+      shows: data.map((item: { show: object }): object => item.show)
     };
   }
 
@@ -92,10 +87,10 @@ class Books extends Component<IProps, IState> {
                 </span>
               </div>
               <ul className="books-list">
-                {shows.map((item: { id: number }) => {
+                {shows.map((item: IItem) => {
                   return (
                     <Fragment key={uuid()}>
-                      <Link href={`/book/${item.id}`} as={`/b/${item.id}`}>
+                      <Link href={`/book/${item.id}`}>
                         <li className="books-item">
                           <div className="books-item-left">
                             <img
