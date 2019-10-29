@@ -2,7 +2,13 @@ import { Component } from "react";
 import Router from "next/router";
 import { connect } from "react-redux";
 import { Row, Col, Button, Dropdown, Form, Menu, Icon, Collapse, Input, List, Avatar, Modal } from "antd";
-import { getAllArticles, getAllCollects, createNewCollect, getArticleById } from "../../redux/actions";
+import {
+  getAllArticles,
+  createNewArticle,
+  getAllCollects,
+  createNewCollect,
+  getArticleById
+} from "../../redux/actions";
 import uuid from "react-uuid";
 
 const { Panel } = Collapse;
@@ -11,7 +17,7 @@ const { Panel } = Collapse;
   ({ article, articles, collects }) => {
     return { article, articles, collects };
   },
-  { createNewCollect, getAllArticles, getAllCollects, getArticleById }
+  { createNewCollect, getAllArticles, getAllCollects, getArticleById, createNewArticle }
 )
 class MDEditor extends Component {
   constructor(props) {
@@ -148,13 +154,23 @@ class MDEditor extends Component {
     if (type === "editArticle") {
       state = { ...state, modelTitle: "修改文章" };
     }
+    if (type === "newArticle") {
+      state = { ...state, modelTitle: "新建文章" };
+    }
     this.setState(state);
   };
 
   handleOk = e => {
-    this.setState({
-      visible: false
-    });
+    const { modelTitle, newName } = this.state;
+    if (modelTitle === "新建文章") {
+      this.props.createNewArticle({
+        Title: newName || "",
+        collectName: "",
+        collectID: 23,
+        markdown: "",
+        html: ""
+      });
+    }
   };
 
   handleCancel = e => {
@@ -214,7 +230,8 @@ class MDEditor extends Component {
           onCancel={this.handleCancel}
         >
           <p>
-            <span>新名称</span>{" "}
+            <span>名称</span>
+            <span> : </span>
             <Input style={{ width: "80%" }} placeholder="请输入新名称" onChange={this.getNameChange} />
           </p>
         </Modal>
@@ -269,13 +286,23 @@ class MDEditor extends Component {
               <List
                 size="large"
                 header={
-                  <div style={{ cursor: "pointer" }}>
+                  <div
+                    style={{ cursor: "pointer" }}
+                    onClick={() => {
+                      this.showModal("newArticle");
+                    }}
+                  >
                     <Icon type="plus-circle" theme="filled" style={{ marginRight: "8px" }} />
                     新建文章
                   </div>
                 }
                 footer={
-                  <div style={{ cursor: "pointer" }}>
+                  <div
+                    style={{ cursor: "pointer" }}
+                    onClick={() => {
+                      this.showModal("newArticle");
+                    }}
+                  >
                     <Icon type="plus-circle" theme="filled" style={{ marginRight: "8px" }} />
                     在下方新建文章
                   </div>

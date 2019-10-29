@@ -1,11 +1,10 @@
 import React, { Component } from "react";
-import { NextPage } from "next";
 import Layout from "../components/layout/MyLayout";
-import { withRouter } from "next/router";
 import { Button, Tag, List, Avatar, Icon } from "antd";
 import axios from "axios";
 import classnames from "classnames";
 import uuid from "react-uuid";
+import moment from "moment";
 
 interface IProps {
   router: object;
@@ -113,8 +112,7 @@ class Index extends Component<IProps, IState> {
                   ]}
                   extra={
                     <img
-                      width={272}
-                      height={168}
+                      width={232}
                       alt="logo"
                       src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEGh4jXHhv9fgI7hMGZhagHHz1fyIal1dhOORMXya2RtzTQbPneg"
                     />
@@ -122,7 +120,14 @@ class Index extends Component<IProps, IState> {
                 >
                   <List.Item.Meta
                     avatar={<Avatar size={48} src={item.image.medium} />}
-                    title={<a href={item.url}>{item.name}</a>}
+                    title={
+                      <span>
+                        <span>{item.name}</span>
+                        <span style={{ marginLeft: "30px", color: "#ccc", fontSize: "12px" }}>
+                          {moment().fromNow()}
+                        </span>
+                      </span>
+                    }
                     description={<div dangerouslySetInnerHTML={{ __html: item.premiered }} />}
                   />
                   {<div dangerouslySetInnerHTML={{ __html: item.summary.slice(0, 90) + "..." }} />}

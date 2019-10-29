@@ -9,6 +9,10 @@ export function getAllArticles(data) {
   return rget("/article/all", "GET_ALL_ARTICLES", {});
 }
 
+export function createNewArticle(data) {
+  return rpost("/article/create", "CREATE_NEW_ARTICLE", data);
+}
+
 export function createNewCollect(data) {
   return rpost("/collect/create", "CREATE_NEW_COLLECT", data);
 }

@@ -15,15 +15,11 @@
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/articles": [
+    "/book/[currentBookId]": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/books": [
-      "static/runtime/webpack.js",
-      "static/runtime/main.js"
-    ],
-    "/home": [
+    "/markdown": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ]
