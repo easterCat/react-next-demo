@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import NextSeo from "next-seo";
-import SEO from "../../seo/home-seo.js";
 import classnames from "classnames";
 import { Menu, Button, Icon, Dropdown } from "antd";
 import Link from "next/link";
@@ -11,23 +9,23 @@ const menu = (
     <Menu.Item key="0">
       <Link href="/">
         <div>
-          <Icon type="user" />
+          <Icon type="home" />
           我的主页
         </div>
       </Link>
     </Menu.Item>
     <Menu.Item key="1">
-      <Link href="/article">
+      <Link href="/articles">
         <div>
-          <Icon type="user" />
-          我的专辑
+          <Icon type="profile" />
+          我的专栏
         </div>
       </Link>
     </Menu.Item>
     <Menu.Item key="2">
-      <Link href="/about">
+      <Link href="/books">
         <div>
-          <Icon type="user" />
+          <Icon type="book" />
           我的书籍
         </div>
       </Link>
@@ -63,7 +61,7 @@ export default class Header extends Component {
 
     this.state = {
       logged: false,
-      active: "home" //home article collect
+      active: "home" //home articles collect
     };
   }
 
@@ -114,7 +112,7 @@ export default class Header extends Component {
                 })}
               >
                 <Link href="/home">
-                  <a>首页</a>
+                  <div>首页</div>
                 </Link>
               </div>
               <div
@@ -126,21 +124,21 @@ export default class Header extends Component {
                   active: active === "collect"
                 })}
               >
-                <Link href="/article">
-                  <a>专辑</a>
+                <Link href="/articles">
+                  <div>文章</div>
                 </Link>
               </div>
               <div
                 onClick={() => {
-                  this.changeActive("article");
+                  this.changeActive("articles");
                 }}
                 className={classnames({
                   "header-menu-item": true,
-                  active: active === "article"
+                  active: active === "articles"
                 })}
               >
                 <Link href="/books">
-                  <a>书籍</a>
+                  <div>书籍</div>
                 </Link>
               </div>
             </div>

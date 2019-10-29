@@ -1,5 +1,21 @@
 import { actionTypes } from "./actionTypes";
-import { rpost } from "../utils/request";
+import { rpost, rget } from "../utils/request";
+
+export function getArticleById(data) {
+  return rget("/article", "GET_ARTICLE_BY_ID", data);
+}
+
+export function getAllArticles(data) {
+  return rget("/article/all", "GET_ALL_ARTICLES", {});
+}
+
+export function createNewCollect(data) {
+  return rpost("/collect/create", "CREATE_NEW_COLLECT", data);
+}
+
+export function getAllCollects() {
+  return rget("/collect/all", "GET_ALL_COLLECTS", {});
+}
 
 export function failure(error) {
   return {
@@ -12,10 +28,6 @@ export function increment() {
   return dispatch => {
     dispatch({ type: actionTypes.DECREMENT });
   };
-}
-
-export function createCollect(data) {
-  return rpost("/collect/create_api", "INCREMENT", data);
 }
 
 export function decrement() {

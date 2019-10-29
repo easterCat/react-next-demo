@@ -5,26 +5,28 @@ import axios from "axios";
 import classnames from "classnames";
 import uuid from "react-uuid";
 import Link from "next/link";
+import { getAllArticles } from "../redux/actions";
+import { connect } from "react-redux";
 
 interface IProps {
   router: object;
   shows: [];
   homeStore: object;
+  articles: [];
+  getAllArticles(): Promise<any[]>;
 }
-
 interface IState {
   loading: boolean;
   loadingMore: boolean;
   hasMore: boolean;
   active: string;
 }
-interface IRes {
-  data: [];
+interface IArticle {
+  WriteID: number;
+  Title: string;
+  desciprtion: string;
 }
 interface IItem {
-  show: object;
-}
-interface IK {
   id: number;
   url: string;
   name: string;
@@ -43,12 +45,12 @@ const IconText = ({ type, text }: { type: string; text: string }) => (
   </span>
 );
 
-class Article extends Component<IProps, IState> {
+class Articles extends Component<IProps, IState> {
   static async getInitialProps() {
-    const res: IRes = await axios.get("https://api.tvmaze.com/search/shows?q=batman");
+    const res: { data: any[] } = await axios.get("https://api.tvmaze.com/search/shows?q=batman");
     const data = res.data;
     return {
-      shows: data.map((item: IItem): object => item.show)
+      shows: data.map((item: { show: object }): object => item.show)
     };
   }
 
@@ -59,11 +61,8 @@ class Article extends Component<IProps, IState> {
     hasMore: true
   };
 
-  constructor(props: IProps) {
-    super(props);
-  }
-
-  componentDidMount() {
+  async componentDidMount() {
+    await this.props.getAllArticles();
     if (this.props && this.props.shows) {
       this.setState({
         loading: false
@@ -78,6 +77,10 @@ class Article extends Component<IProps, IState> {
   }
 
   render() {
+    const { articles } = this.props;
+
+    console.log("articles :", articles);
+
     return (
       <Layout>
         <div className="article">
@@ -106,11 +109,11 @@ class Article extends Component<IProps, IState> {
                 },
                 pageSize: 10
               }}
-              dataSource={this.props.shows}
-              renderItem={(item: IK) => (
-                <Link href={`/book/${item.id}`}>
+              dataSource={articles || []}
+              renderItem={(item: IArticle) => (
+                <Link href={`/article/${item.WriteID}`}>
                   <List.Item
-                    key={item.summary}
+                    key={uuid}
                     actions={[
                       <IconText type="star-o" text="156" key="list-vertical-star-o" />,
                       <IconText type="like-o" text="156" key="list-vertical-like-o" />,
@@ -126,11 +129,11 @@ class Article extends Component<IProps, IState> {
                     }
                   >
                     <List.Item.Meta
-                      avatar={<Avatar size={48} src={item.image.medium} />}
-                      title={<a href={item.url}>{item.name}</a>}
-                      description={<div dangerouslySetInnerHTML={{ __html: item.premiered }} />}
+                      avatar="https://images.xiaozhuanlan.com/photo/2019/2ad6384db0b94cd8e76d11194400df23.jpeg"
+                      title={<a>{item.Title}</a>}
+                      description={<div dangerouslySetInnerHTML={{ __html: item.Title }} />}
                     />
-                    {<div dangerouslySetInnerHTML={{ __html: item.summary.slice(0, 90) + "..." }} />}
+                    {<div dangerouslySetInnerHTML={{ __html: item.desciprtion }} />}
                   </List.Item>
                 </Link>
               )}
@@ -146,7 +149,7 @@ class Article extends Component<IProps, IState> {
 							</div> */}
               <div className="tag-content">
                 <ul>
-                  {this.props.shows.map((item: IK) => {
+                  {this.props.shows.map((item: IItem) => {
                     return (
                       <li key={uuid()}>
                         <img src={item.image.medium} alt="" />
@@ -165,4 +168,11 @@ class Article extends Component<IProps, IState> {
   }
 }
 
-export default Article;
+const mapStateToProps = (state: { articles: [] }) => {
+  return { articles: state.articles };
+};
+
+export default connect(
+  mapStateToProps,
+  { getAllArticles }
+)(Articles);

@@ -3,6 +3,7 @@
  */
 
 import React from "react";
+import Link from "next/link";
 
 export default class Error extends React.Component {
   static getInitialProps({ res, err }) {
@@ -29,8 +30,12 @@ export default class Error extends React.Component {
             </p>
             <p>
               3.我猜你想要：
-              <a href="https://www.geekjc.com/">返回首页</a>
-              <a href="https://www.geekjc.com/apdl?key=6">意见反馈</a>
+              <Link href="/">
+                <div>返回首页</div>
+              </Link>
+              <Link href="/">
+                <div>意见反馈</div>
+              </Link>
             </p>
             <p>
               {this.props.statusCode

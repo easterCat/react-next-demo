@@ -7,7 +7,7 @@ const defaultConfig = {
   headers: {}
 };
 
-class Aja {
+class Ajax {
   constructor(createConfig) {
     this.configs = Object.assign({}, createConfig);
   }
@@ -30,7 +30,7 @@ class Aja {
 
       xhr.onload = function() {
         resolve({
-          data: JSON.parse(xhr.responseText),
+          data: xhr.responseText,
           status: xhr.status,
           statusText: xhr.statusText
         });
@@ -38,7 +38,7 @@ class Aja {
 
       xhr.onerror = function() {
         reject({
-          data: JSON.parse(xhr.responseText),
+          data: xhr.responseText,
           status: xhr.status,
           statusText: xhr.statusText
         });
@@ -83,9 +83,9 @@ class Aja {
   }
 }
 
-Aja.create = Aja.prototype.create = function(createConfig) {
-  const reqInstance = new Aja(createConfig);
+Ajax.create = Ajax.prototype.create = function(createConfig) {
+  const reqInstance = new Ajax(createConfig);
   return reqInstance;
 };
 
-export default Aja;
+export default Ajax;

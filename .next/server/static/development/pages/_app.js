@@ -2034,16 +2034,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var next_app__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/app */ "./node_modules/next/app.js");
 /* harmony import */ var next_app__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_app__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var next_seo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next-seo */ "next-seo");
-/* harmony import */ var next_seo__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_seo__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _seo_base_seo_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../seo/base-seo.js */ "./seo/base-seo.js");
-/* harmony import */ var _assets_css_styles_less__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../assets/css/styles.less */ "./assets/css/styles.less");
-/* harmony import */ var _assets_css_styles_less__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_assets_css_styles_less__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-redux */ "react-redux");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var next_redux_wrapper__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! next-redux-wrapper */ "next-redux-wrapper");
-/* harmony import */ var next_redux_wrapper__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(next_redux_wrapper__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _redux_store__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../redux/store */ "./redux/store.js");
+/* harmony import */ var _assets_css_styles_less__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../assets/css/styles.less */ "./assets/css/styles.less");
+/* harmony import */ var _assets_css_styles_less__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_assets_css_styles_less__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-redux */ "react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var next_redux_wrapper__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! next-redux-wrapper */ "next-redux-wrapper");
+/* harmony import */ var next_redux_wrapper__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(next_redux_wrapper__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _redux_store__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../redux/store */ "./redux/store.js");
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
@@ -2052,40 +2049,29 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
-
-
 class MyApp extends next_app__WEBPACK_IMPORTED_MODULE_1___default.a {
-  static async getInitialProps({
-    Component,
-    ctx
-  }) {
-    let pageProps = {};
-
-    if (Component.getInitialProps) {
-      pageProps = await Component.getInitialProps({
-        ctx
-      });
-    }
-
-    return {
-      pageProps
-    };
-  }
-
+  //app的getInitialProps会在服务端被调用一次，在前端每次切换页面时被调用。
+  // static async getInitialProps({ Component, ctx }) {
+  //   let pageProps = {};
+  //   if (Component.getInitialProps) {
+  //     pageProps = await Component.getInitialProps({ ctx });
+  //   }
+  //   return { pageProps };
+  // }
   render() {
     const {
       Component,
       pageProps,
       store
     } = this.props;
-    return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx(react_redux__WEBPACK_IMPORTED_MODULE_5__["Provider"], {
+    return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx(react_redux__WEBPACK_IMPORTED_MODULE_3__["Provider"], {
       store: store
     }, __jsx(Component, pageProps)));
   }
 
 }
 
-/* harmony default export */ __webpack_exports__["default"] = (next_redux_wrapper__WEBPACK_IMPORTED_MODULE_6___default()(_redux_store__WEBPACK_IMPORTED_MODULE_7__["default"])(MyApp));
+/* harmony default export */ __webpack_exports__["default"] = (next_redux_wrapper__WEBPACK_IMPORTED_MODULE_4___default()(_redux_store__WEBPACK_IMPORTED_MODULE_5__["default"])(MyApp));
 
 /***/ }),
 
@@ -2107,7 +2093,11 @@ const actionTypes = {
   LOAD_DATA: "LOAD_DATA",
   LOAD_DATA_SUCCESS: "LOAD_DATA_SUCCESS",
   START_CLOCK: "START_CLOCK",
-  TICK_CLOCK: "TICK_CLOCK"
+  TICK_CLOCK: "TICK_CLOCK",
+  GET_ARTICLE_BY_ID: "GET_ARTICLE_BY_ID",
+  GET_ALL_ARTICLES: "GET_ALL_ARTICLES",
+  CREATE_NEW_COLLECT: "CREATE_NEW_COLLECT",
+  GET_ALL_COLLECTS: "GET_ALL_COLLECTS"
 };
 
 /***/ }),
@@ -2131,7 +2121,11 @@ const exampleInitialState = {
   error: false,
   lastUpdate: 0,
   light: false,
-  placeholderData: null
+  placeholderData: null,
+  article: null,
+  articles: [],
+  collect: null,
+  collects: []
 };
 
 function reducer(state = exampleInitialState, action) {
@@ -2167,6 +2161,26 @@ function reducer(state = exampleInitialState, action) {
         light: !!action.light
       });
 
+    case _actionTypes__WEBPACK_IMPORTED_MODULE_1__["actionTypes"].GET_ARTICLE_BY_ID:
+      return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, state, {
+        article: action.payload
+      });
+
+    case _actionTypes__WEBPACK_IMPORTED_MODULE_1__["actionTypes"].GET_ALL_ARTICLES:
+      return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, state, {
+        articles: action.payload
+      });
+
+    case _actionTypes__WEBPACK_IMPORTED_MODULE_1__["actionTypes"].CREATE_NEW_COLLECT:
+      return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, state, {
+        collect: action.payload
+      });
+
+    case _actionTypes__WEBPACK_IMPORTED_MODULE_1__["actionTypes"].GET_ALL_COLLECTS:
+      return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, state, {
+        collects: action.payload
+      });
+
     default:
       return state;
   }
@@ -2198,8 +2212,14 @@ const bindMiddleware = middleware => {
   if (true) {
     const {
       composeWithDevTools
-    } = __webpack_require__(/*! redux-devtools-extension */ "redux-devtools-extension");
+    } = __webpack_require__(/*! redux-devtools-extension */ "redux-devtools-extension"); // 开发模式打印redux信息
 
+
+    const {
+      logger
+    } = __webpack_require__(/*! redux-logger */ "redux-logger");
+
+    middleware.push(logger);
     return composeWithDevTools(Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(...middleware));
   }
 
@@ -2212,31 +2232,6 @@ function configureStore(initialState = _reducer__WEBPACK_IMPORTED_MODULE_2__["ex
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (configureStore);
-
-/***/ }),
-
-/***/ "./seo/base-seo.js":
-/*!*************************!*\
-  !*** ./seo/base-seo.js ***!
-  \*************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ({
-  "title": 'Next.js boilerplate',
-  "Content-Type": 'text/html; charset=utf-8',
-  "X-UA-Compatible": 'IE=edge,chrome=1',
-  "force-rendering": 'webkit',
-  "renderer": 'webkit',
-  "viewport": 'width=device-width, initial-scale=1',
-  "keywords": 'boilerplate',
-  "description": 'Next.js boilerplate !',
-  // "360-site-verification" : '5dda074586814ec11ca818e715f3f8d0',
-  // "google-site-verification" : 'uSG4Wt-p0CWw3m75z9xAKV-LH_QEyVTe-W1el-wrjv8',
-  "author": "geekjc123@gmail.com"
-});
 
 /***/ }),
 
@@ -2340,17 +2335,6 @@ module.exports = require("next-redux-wrapper");
 
 /***/ }),
 
-/***/ "next-seo":
-/*!***************************!*\
-  !*** external "next-seo" ***!
-  \***************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("next-seo");
-
-/***/ }),
-
 /***/ "prop-types":
 /*!*****************************!*\
   !*** external "prop-types" ***!
@@ -2403,6 +2387,17 @@ module.exports = require("redux");
 /***/ (function(module, exports) {
 
 module.exports = require("redux-devtools-extension");
+
+/***/ }),
+
+/***/ "redux-logger":
+/*!*******************************!*\
+  !*** external "redux-logger" ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("redux-logger");
 
 /***/ }),
 

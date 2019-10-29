@@ -5,7 +5,11 @@ export const exampleInitialState = {
   error: false,
   lastUpdate: 0,
   light: false,
-  placeholderData: null
+  placeholderData: null,
+  article: null,
+  articles: [],
+  collect: null,
+  collects: []
 };
 
 function reducer(state = exampleInitialState, action) {
@@ -44,6 +48,28 @@ function reducer(state = exampleInitialState, action) {
       return {
         ...state,
         ...{ lastUpdate: action.ts, light: !!action.light }
+      };
+
+    case actionTypes.GET_ARTICLE_BY_ID:
+      return {
+        ...state,
+        ...{ article: action.payload }
+      };
+
+    case actionTypes.GET_ALL_ARTICLES:
+      return {
+        ...state,
+        ...{ articles: action.payload }
+      };
+    case actionTypes.CREATE_NEW_COLLECT:
+      return {
+        ...state,
+        ...{ collect: action.payload }
+      };
+    case actionTypes.GET_ALL_COLLECTS:
+      return {
+        ...state,
+        ...{ collects: action.payload }
       };
 
     default:
