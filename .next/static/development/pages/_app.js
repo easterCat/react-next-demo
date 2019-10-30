@@ -12339,7 +12339,8 @@ var actionTypes = {
   GET_ALL_ARTICLES: "GET_ALL_ARTICLES",
   CREATE_NEW_COLLECT: "CREATE_NEW_COLLECT",
   GET_ALL_COLLECTS: "GET_ALL_COLLECTS",
-  CREATE_NEW_ARTICLE: "CREATE_NEW_ARTICLE"
+  CREATE_NEW_ARTICLE: "CREATE_NEW_ARTICLE",
+  UPDATE_ARTICLE: "UPDATE_ARTICLE"
 };
 
 /***/ }),
@@ -12354,8 +12355,11 @@ var actionTypes = {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "exampleInitialState", function() { return exampleInitialState; });
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/objectSpread */ "./node_modules/@babel/runtime-corejs2/helpers/esm/objectSpread.js");
-/* harmony import */ var _actionTypes__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./actionTypes */ "./redux/actionTypes.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/object/assign */ "./node_modules/@babel/runtime-corejs2/core-js/object/assign.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/objectSpread */ "./node_modules/@babel/runtime-corejs2/helpers/esm/objectSpread.js");
+/* harmony import */ var _actionTypes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./actionTypes */ "./redux/actionTypes.js");
+
 
 
 var exampleInitialState = {
@@ -12375,55 +12379,60 @@ function reducer() {
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
   switch (action.type) {
-    case _actionTypes__WEBPACK_IMPORTED_MODULE_1__["actionTypes"].FAILURE:
-      return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, state, {
+    case _actionTypes__WEBPACK_IMPORTED_MODULE_2__["actionTypes"].FAILURE:
+      return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_1__["default"])({}, state, {
         error: action.error
       });
 
-    case _actionTypes__WEBPACK_IMPORTED_MODULE_1__["actionTypes"].INCREMENT:
-      return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, state, {
+    case _actionTypes__WEBPACK_IMPORTED_MODULE_2__["actionTypes"].INCREMENT:
+      return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_1__["default"])({}, state, {
         count: state.count + 1
       });
 
-    case _actionTypes__WEBPACK_IMPORTED_MODULE_1__["actionTypes"].DECREMENT:
-      return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, state, {
+    case _actionTypes__WEBPACK_IMPORTED_MODULE_2__["actionTypes"].DECREMENT:
+      return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_1__["default"])({}, state, {
         count: state.count - 1
       });
 
-    case _actionTypes__WEBPACK_IMPORTED_MODULE_1__["actionTypes"].RESET:
-      return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, state, {
+    case _actionTypes__WEBPACK_IMPORTED_MODULE_2__["actionTypes"].RESET:
+      return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_1__["default"])({}, state, {
         count: exampleInitialState.count
       });
 
-    case _actionTypes__WEBPACK_IMPORTED_MODULE_1__["actionTypes"].LOAD_DATA_SUCCESS:
-      return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, state, {
+    case _actionTypes__WEBPACK_IMPORTED_MODULE_2__["actionTypes"].LOAD_DATA_SUCCESS:
+      return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_1__["default"])({}, state, {
         placeholderData: action.data
       });
 
-    case _actionTypes__WEBPACK_IMPORTED_MODULE_1__["actionTypes"].TICK_CLOCK:
-      return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, state, {
+    case _actionTypes__WEBPACK_IMPORTED_MODULE_2__["actionTypes"].TICK_CLOCK:
+      return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_1__["default"])({}, state, {
         lastUpdate: action.ts,
         light: !!action.light
       });
 
-    case _actionTypes__WEBPACK_IMPORTED_MODULE_1__["actionTypes"].GET_ARTICLE_BY_ID:
-      return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, state, {
+    case _actionTypes__WEBPACK_IMPORTED_MODULE_2__["actionTypes"].GET_ARTICLE_BY_ID:
+      return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_1__["default"])({}, state, {
         article: action.payload
       });
 
-    case _actionTypes__WEBPACK_IMPORTED_MODULE_1__["actionTypes"].GET_ALL_ARTICLES:
-      return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, state, {
+    case _actionTypes__WEBPACK_IMPORTED_MODULE_2__["actionTypes"].GET_ALL_ARTICLES:
+      return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_1__["default"])({}, state, {
         articles: action.payload
       });
 
-    case _actionTypes__WEBPACK_IMPORTED_MODULE_1__["actionTypes"].CREATE_NEW_COLLECT:
-      return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, state, {
+    case _actionTypes__WEBPACK_IMPORTED_MODULE_2__["actionTypes"].CREATE_NEW_COLLECT:
+      return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_1__["default"])({}, state, {
         collect: action.payload
       });
 
-    case _actionTypes__WEBPACK_IMPORTED_MODULE_1__["actionTypes"].GET_ALL_COLLECTS:
-      return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, state, {
+    case _actionTypes__WEBPACK_IMPORTED_MODULE_2__["actionTypes"].GET_ALL_COLLECTS:
+      return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_1__["default"])({}, state, {
         collects: action.payload
+      });
+
+    case _actionTypes__WEBPACK_IMPORTED_MODULE_2__["actionTypes"].UPDATE_ARTICLE:
+      return _babel_runtime_corejs2_core_js_object_assign__WEBPACK_IMPORTED_MODULE_0___default()({}, Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_1__["default"])({}, state), {
+        article: action.payload
       });
 
     default:

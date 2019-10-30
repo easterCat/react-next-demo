@@ -1,7 +1,3 @@
-/**
- * Created by easterCat on 2018/3/14.
- */
-
 const defaultConfig = {
   baseURL: "",
   headers: {}

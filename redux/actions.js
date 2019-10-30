@@ -21,6 +21,10 @@ export function getAllCollects() {
   return rget("/collect/all", "GET_ALL_COLLECTS", {});
 }
 
+export function updateArticle(data) {
+  return rpost("/article/update", "UPDATE_ARTICLE", data);
+}
+
 export function failure(error) {
   return {
     type: actionTypes.FAILURE,

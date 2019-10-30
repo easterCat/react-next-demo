@@ -7,7 +7,8 @@ import {
   createNewArticle,
   getAllCollects,
   createNewCollect,
-  getArticleById
+  getArticleById,
+  updateArticle
 } from "../../redux/actions";
 import uuid from "react-uuid";
 
@@ -17,7 +18,7 @@ const { Panel } = Collapse;
   ({ article, articles, collects }) => {
     return { article, articles, collects };
   },
-  { createNewCollect, getAllArticles, getAllCollects, getArticleById, createNewArticle }
+  { createNewCollect, getAllArticles, getAllCollects, getArticleById, createNewArticle, updateArticle }
 )
 class MDEditor extends Component {
   constructor(props) {
@@ -69,6 +70,7 @@ class MDEditor extends Component {
     const SimpleMDE = await import("simplemde");
     const marked = await import("marked");
     const hljs = await import("highlight.js");
+    const _this = this;
 
     document
       .getElementById("markdownEditor")
@@ -112,7 +114,16 @@ class MDEditor extends Component {
         "guide",
         {
           name: "发布文章",
-          action: function customFunction(editor) {},
+          action: async function customFunction(editor) {
+            const { article } = _this.props;
+            _this.props.updateArticle({
+              id: article.WriteID,
+              markdown: editor.value(),
+              html: editor.markdown(editor.value()),
+              collectID: 24,
+              collectName: "默认文集"
+            });
+          },
           className: "fa fa-leanpub",
           title: "发布文章"
         }

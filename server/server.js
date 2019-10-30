@@ -9,7 +9,7 @@ const port = parseInt(process.env.PORT, 10) || 6776;
 const proxy = require("http-proxy-middleware");
 
 const proxyOption = {
-  target: "http://127.0.0.1:6688",
+  target: "http://172.18.12.120:6688",
   pathRewrite: {
     "^/api/": "/api/" // 重写请求，api/解析为/
   },
@@ -21,7 +21,9 @@ app
   .then(() => {
     const server = express();
 
-    server.use("/api/*", proxy(proxyOption));
+    if (dev) {
+      server.use("/api/*", proxy(proxyOption));
+    }
 
     if (!dev) {
       server.use(compression()); //gzip
@@ -45,10 +47,7 @@ app
 
     server.listen(port, err => {
       if (err) throw err;
-      else
-        console.log(
-          `http start at ===> http://localhost:${port} </br> the ip address is ===> http://${ip.address()}:${port}`
-        );
+      else console.log(`http start at ===> \n  http://localhost:${port} \n http://${ip.address()}:${port}`);
     });
   })
   .catch(ex => {
