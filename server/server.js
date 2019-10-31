@@ -7,10 +7,10 @@ const handle = app.getRequestHandler();
 const compression = require("compression");
 const port = parseInt(process.env.PORT, 10) || 6776;
 const proxy = require("http-proxy-middleware");
-const { site } = require("../app.config");
+const { target } = require("../app.config");
 
 const proxyOption = {
-  target: `${site}`,
+  target,
   pathRewrite: {
     "^/api/": "/api/" // 重写请求，api/解析为/
   },
