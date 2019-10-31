@@ -5,4 +5,5 @@ const config = {
   baseURL: `${site}/api`,
   site
 };
-export default config;
+
+module.export = config;
