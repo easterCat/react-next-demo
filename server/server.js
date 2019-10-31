@@ -9,7 +9,7 @@ const port = parseInt(process.env.PORT, 10) || 6776;
 const proxy = require("http-proxy-middleware");
 
 const proxyOption = {
-  target: "http://172.18.12.120:6688",
+  target: "http://localhost:6688",
   pathRewrite: {
     "^/api/": "/api/" // 重写请求，api/解析为/
   },
