@@ -1,11 +1,13 @@
-// const site = "http://172.18.12.120:6776";
-const site = "http://111.231.138.132:6776";
-const target = "http://111.231.138.132:6688";
+// const site = "http://172.18.12.120";
+const site = "http://111.231.138.132";
+const client = site + ":6776";
+const serverApi = site + ":6688";
 
 const config = {
-  baseURL: `${site}/api`,
   site,
-  target
+  client,
+  serverApi,
+  baseURL: client + "/api"
 };
 
-module.export = config;
+module.exports = config;

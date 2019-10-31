@@ -7,22 +7,24 @@ const handle = app.getRequestHandler();
 const compression = require("compression");
 const port = parseInt(process.env.PORT, 10) || 6776;
 const proxy = require("http-proxy-middleware");
-const { target } = require("../app.config");
-
-const proxyOption = {
-  target,
-  pathRewrite: {
-    "^/api/": "/api/" // 重写请求，api/解析为/
-  },
-  changeOrigoin: true
-};
+const config = require("../app.config");
 
 app
   .prepare()
   .then(() => {
     const server = express();
 
-    server.use("/api/*", proxy(proxyOption));
+    console.log(config);
+    server.use(
+      "/api/*",
+      proxy({
+        target: config.serverApi,
+        pathRewrite: {
+          "^/api/": "/api/" // 重写请求，api/解析为/
+        },
+        changeOrigoin: true
+      })
+    );
 
     if (!dev) {
       server.use(compression()); //gzip
