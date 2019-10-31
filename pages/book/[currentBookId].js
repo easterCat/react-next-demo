@@ -4,7 +4,6 @@ import Markdown from "react-markdown";
 import { getArticleById } from "../../redux/actions";
 import { connect } from "react-redux";
 import HeadingBlock from "../../components/markdown/HeadingBlock";
-import { Affix, Button } from "antd";
 
 @connect(
   ({ article }) => {
@@ -38,7 +37,6 @@ class Book extends Component {
         });
       });
       this.setState({ menus });
-      console.log(menus);
     }
   }
 

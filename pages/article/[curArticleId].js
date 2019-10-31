@@ -7,6 +7,7 @@ import HeadingBlock from "../../components/markdown/HeadingBlock";
 import { Affix, BackTop, Button, Comment, Icon, Tooltip, Avatar, Divider, Form, Input, Skeleton } from "antd";
 import uuid from "react-uuid";
 import moment from "moment";
+import Router, { withRouter } from "next/router";
 
 const { TextArea } = Input;
 
@@ -55,7 +56,7 @@ class Article extends Component {
   }
 
   async componentDidMount() {
-    await this.props.getArticleById({ id: 3 });
+    await this.props.getArticleById({ id: this.props.router.query.curArticleId });
 
     this.setState({ SkeletonLoading: false }, () => {
       const linkArr = document.querySelectorAll(".markdown-body .quick-link");
@@ -267,4 +268,4 @@ class Article extends Component {
   }
 }
 
-export default Article;
+export default withRouter(Article);
