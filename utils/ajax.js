@@ -1,25 +1,17 @@
-const defaultConfig = {
-  baseURL: "",
-  headers: {}
-};
-
 class Ajax {
   constructor(createConfig) {
     this.configs = Object.assign({}, createConfig);
   }
 
   handleRequest(method, url, config) {
-    const xurl = this.configs.baseURL + url;
+    const currentConfig = Object.assign({}, this.configs, config);
+    const xurl = currentConfig.baseURL + url;
 
     return new Promise((resolve, reject) => {
       let xhr = this._createAjaxRequest(method, xurl);
 
-      if (config.withCredentials) {
-        xhr.withCredentials = config.withCredentials;
-      }
-
-      if ((method === "post" || method === "put" || method === "delete") && config.params) {
-        xhr.send(JSON.stringify(config.params));
+      if ((method === "post" || method === "put" || method === "delete") && currentConfig.params) {
+        xhr.send(JSON.stringify(currentConfig.params));
       } else {
         xhr.send();
       }
@@ -71,8 +63,16 @@ class Ajax {
     }
 
     //添加header头
-    for (let key in this.configs.headers) {
-      xhr && xhr.setRequestHeader(key, this.configs.headers[key]);
+    Object.keys(this.configs.headers)
+      .filter(i => {
+        return i !== "withCredentials";
+      })
+      .forEach(key => {
+        xhr && xhr.setRequestHeader(key, this.configs.headers[key]);
+      });
+
+    if (this.configs.headers.withCredentials) {
+      xhr.withCredentials = this.configs.headers.withCredentials;
     }
 
     return xhr;

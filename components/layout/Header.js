@@ -3,6 +3,7 @@ import classnames from "classnames";
 import { Menu, Button, Icon, Dropdown } from "antd";
 import Link from "next/link";
 import Router from "next/router";
+import { connect } from "react-redux";
 
 const menu = (
   <Menu>
@@ -55,13 +56,15 @@ const menu = (
   </Menu>
 );
 
+@connect(({ user }) => {
+  return { user };
+})
 export default class Header extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      logged: false,
-      active: "home" //home articles collect
+      active: "" //home articles collect
     };
   }
 
@@ -73,25 +76,13 @@ export default class Header extends Component {
   }
 
   componentDidMount() {
-    const logged = sessionStorage.getItem("logged");
     const active = sessionStorage.getItem("active") || "home";
-
-    let state = {
-      active
-    };
-
-    if (logged && logged === "1") {
-      state = {
-        ...state,
-        logged: true
-      };
-    }
-
-    this.setState(state);
+    this.setState({ active });
   }
 
   render() {
-    const { logged, active } = this.state;
+    const { active } = this.state;
+    const { user } = this.props;
     return (
       <div className={"nav nav-main header"}>
         <div className={" header-inner"}>
@@ -143,20 +134,19 @@ export default class Header extends Component {
               </div>
             </div>
 
-            {logged ? (
+            {user && user.name !== "" ? <div className={"header-name"}>{user.name}</div> : null}
+
+            {user && user.name !== "" ? (
               <div className={"header-right"}>
                 <Dropdown overlay={menu} trigger={["hover"]} placement="bottomCenter">
                   <div className={"avatar"}>
-                    <img
-                      src="https://images.xiaozhuanlan.com/photo/2019/2ad6384db0b94cd8e76d11194400df23.jpeg"
-                      alt="avatar"
-                    ></img>
+                    <img src={user.avatarUrl} alt="avatar"></img>
                   </div>
                 </Dropdown>
               </div>
             ) : null}
 
-            {logged ? (
+            {user && user.name !== "" ? (
               <div className="header-btn">
                 <Button type="danger" ghost shape="round" icon="edit" onClick={() => Router.push("/write")}>
                   写文章

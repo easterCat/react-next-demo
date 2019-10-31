@@ -9,11 +9,19 @@ export const exampleInitialState = {
   article: null,
   articles: [],
   collect: null,
-  collects: []
+  collects: [],
+  token: "",
+  user: null
 };
 
 function reducer(state = exampleInitialState, action) {
   switch (action.type) {
+    case actionTypes.LOGIN:
+      return {
+        ...state,
+        ...{ user: action.payload }
+      };
+
     case actionTypes.FAILURE:
       return {
         ...state,

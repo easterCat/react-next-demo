@@ -18,9 +18,12 @@ class Login extends Component<IProps, IState> {
   };
 
   public login() {
-    sessionStorage.setItem("logged", "1");
-
-    Router.push("/");
+    const CLIENT_ID = "Iv1.59ce08097886630e";
+    const REDIRECT_URL = "ff852c46b449001c9ee0bc2ea48c494b9a467c52";
+    const url = "https://github.com/login/oauth/authorize?client_id=" + CLIENT_ID + `&client_secret=${REDIRECT_URL}`;
+    window.location.href = url;
+    // sessionStorage.setItem("logged", "1");
+    // Router.push("/");
   }
 
   render() {

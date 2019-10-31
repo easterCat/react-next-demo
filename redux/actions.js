@@ -1,6 +1,10 @@
 import { actionTypes } from "./actionTypes";
 import { rpost, rget } from "../utils/request";
 
+export function login(data) {
+  return rget("/user/login", "LOGIN", data);
+}
+
 export function getArticleById(data) {
   return rget("/article", "GET_ARTICLE_BY_ID", data);
 }

@@ -21,9 +21,7 @@ app
   .then(() => {
     const server = express();
 
-    if (dev) {
-      server.use("/api/*", proxy(proxyOption));
-    }
+    server.use("/api/*", proxy(proxyOption));
 
     if (!dev) {
       server.use(compression()); //gzip
@@ -37,6 +35,7 @@ app
     server.get("/markdown", (req, res) => app.render(req, res, "/markdown"));
     server.get("/books", (req, res) => app.render(req, res, "/books"));
     server.get("/write", (req, res) => app.render(req, res, "/write"));
+    server.get("/logged", (req, res) => app.render(req, res, "/logged"));
     server.get("/book/:currentBookId", (req, res) =>
       app.render(req, res, "/book/[currentBookId]", { currentBookId: req.params.currentBookId })
     );
