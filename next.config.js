@@ -53,11 +53,13 @@ module.exports = withBundleAnalyzer(
         "/": { page: "/" },
         "/home": { page: "/home" },
         "/books": { page: "/books" },
-        "/article": { page: "/article" },
+        "/articles": { page: "/articles" },
         "/write": { page: "/write" },
         "/login": { page: "/login" },
         "/markdown": { page: "/markdown" },
-        "/editor": { page: "/editor" }
+        "/editor": { page: "/editor" },
+        "/logged": { page: "/logged" },
+        "/user": { page: "/user" }
       };
       return paths;
     },
