@@ -10,7 +10,7 @@
     "build": "next build",
     "export": "next export",
     "server:dev": "node ./server/server.js",
-    "server:start": "NODE_ENV=production node ./server/server.js",
+    "server:start": "cross-env NODE_ENV=production node ./server/server.js",
     "pm2": "pm2 start pm2.json",
     "deploy": "npm run build && npm run pm2",
     "analyze": "cross-env BUNDLE_ANALYZE=both next build",
