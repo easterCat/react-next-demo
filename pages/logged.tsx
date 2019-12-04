@@ -26,7 +26,7 @@ class Logged extends Component<IProps, IState> {
   public async componentDidMount() {
     const parsed = queryString.parse(window.location.search);
     const result: any = await this.props.login({ name: parsed.name });
-    Cookies.set("ptg-token", result.token);
+    Cookies.set("ptg-token", result.token || "");
 
     this.setState({
       loginStatus: true,
@@ -74,7 +74,4 @@ const mapStateToProps = (state: { user: any }) => {
   return { user: state.user };
 };
 
-export default connect(
-  mapStateToProps,
-  { login }
-)(Logged);
+export default connect(mapStateToProps, { login })(Logged);

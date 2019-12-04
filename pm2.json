@@ -1,9 +1,9 @@
 {
   "apps": {
-    "name": "next-平头哥",
+    "name": "next-ssr-平头哥",
     "script": "npm",
     "cwd": "./",
-    "args": "start",
+    "args": "server:start",
     "error_file": "./logs/app-err.log",
     "out_file": "./logs/app-out.log",
     "merge_logs": true,
