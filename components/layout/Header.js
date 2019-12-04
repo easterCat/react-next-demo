@@ -4,11 +4,13 @@ import { Menu, Button, Icon, Dropdown } from "antd";
 import Link from "next/link";
 import Router from "next/router";
 import { connect } from "react-redux";
+import { logged } from "../../redux/actions";
+import Cookies from "js-cookie";
 
 const menu = (
   <Menu>
     <Menu.Item key="0">
-      <Link href="/">
+      <Link href="/user">
         <div>
           <Icon type="home" />
           我的主页
@@ -56,14 +58,18 @@ const menu = (
   </Menu>
 );
 
-@connect(({ user }) => {
-  return { user };
-})
+@connect(
+  ({ user }) => {
+    return { user };
+  },
+  { logged }
+)
 export default class Header extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      userLoading: false,
       active: "" //home articles collect
     };
   }
@@ -75,13 +81,15 @@ export default class Header extends Component {
     sessionStorage.setItem("active", active);
   }
 
-  componentDidMount() {
+  async componentDidMount() {
+    const user = await this.props.logged({});
+    user && Cookies.set("ptg-token", user.token);
     const active = sessionStorage.getItem("active") || "home";
-    this.setState({ active });
+    this.setState({ active, userLoading: true });
   }
 
   render() {
-    const { active } = this.state;
+    const { active, userLoading } = this.state;
     const { user } = this.props;
     return (
       <div className={"nav nav-main header"}>
@@ -134,9 +142,9 @@ export default class Header extends Component {
               </div>
             </div>
 
-            {user && user.name !== "" ? <div className={"header-name"}>{user.name}</div> : null}
+            {userLoading && user && user.name !== "" ? <div className={"header-name"}>{user.name}</div> : null}
 
-            {user && user.name !== "" ? (
+            {userLoading && user && user.name !== "" ? (
               <div className={"header-right"}>
                 <Dropdown overlay={menu} trigger={["hover"]} placement="bottomCenter">
                   <div className={"avatar"}>
@@ -146,13 +154,15 @@ export default class Header extends Component {
               </div>
             ) : null}
 
-            {user && user.name !== "" ? (
+            {userLoading && user && user.name !== "" ? (
               <div className="header-btn">
                 <Button type="danger" ghost shape="round" icon="edit" onClick={() => Router.push("/write")}>
                   写文章
                 </Button>
               </div>
-            ) : (
+            ) : null}
+
+            {userLoading && (!user || user.name === "") ? (
               <div className="header-btn">
                 <Button type="danger" ghost shape="round" icon="edit" onClick={() => Router.push("/register")}>
                   注册
@@ -168,7 +178,7 @@ export default class Header extends Component {
                   登录
                 </Button>
               </div>
-            )}
+            ) : null}
           </div>
         </div>
       </div>

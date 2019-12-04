@@ -23,7 +23,7 @@ class Logged extends Component<IProps, IState> {
     loading: false
   };
 
-  async componentDidMount() {
+  public async componentDidMount() {
     const parsed = queryString.parse(window.location.search);
     const result: any = await this.props.login({ name: parsed.name });
     Cookies.set("ptg-token", result.token);

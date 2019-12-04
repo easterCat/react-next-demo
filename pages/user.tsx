@@ -1,16 +1,19 @@
-import React, { Component, useRef } from "react";
+import React, { Component } from "react";
 import Layout from "../components/layout/MyLayout";
 import { Button, Tag, List, Avatar, Icon } from "antd";
 import axios from "axios";
 import classnames from "classnames";
 import uuid from "react-uuid";
 import moment from "moment";
-
+import Board from "../components/animation/board";
+import { getAllArticles } from "../redux/actions";
+import { connect } from "react-redux";
 
 interface IProps {
   router: object;
   shows: [];
   homeStore: object;
+  user: any;
 }
 
 interface IState {
@@ -39,7 +42,7 @@ const IconText = ({ type, text }: any) => (
   </span>
 );
 
-class Index extends Component<IProps, IState> {
+class User extends Component<IProps, IState> {
   static async getInitialProps() {
     const res: { data: any[] } = await axios.get("https://api.tvmaze.com/search/shows?q=batman");
     const data = res.data;
@@ -74,10 +77,35 @@ class Index extends Component<IProps, IState> {
   }
 
   render() {
+    const { user } = this.props;
+
     return (
       <Layout>
         <div className="home">
           <div className="left-home">
+            <div className="user">
+              <div className="user-info">
+                <div className="user-avatar">
+                  <Avatar src={`${user ? user.avatarUrl : ""}`} size={90} />
+                </div>
+                <div className="user-name">
+                  <div>
+                    {user ? user.name : ""}{" "}
+                    <span style={{ float: "right", fontSize: "14px", cursor: "pointer" }}>
+                      <Icon type="edit" style={{ padding: "0 5px" }} />
+                      编辑
+                    </span>
+                  </div>
+                  <div>成功者与失败者最大的差异，在于成功者会设法由失败中获益，再尝试别的方法</div>
+                  <div>
+                    <Icon type="github" /> :{" "}
+                    <a href={`${user ? user.avatarUrl : ""}`} style={{ color: "rgba(0, 0, 0, 0.45)" }}>
+                      {user ? user.avatarUrl : ""}
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div className="left-home-order">
               <span
                 onClick={() => this.changeActive("hot")}
@@ -137,6 +165,7 @@ class Index extends Component<IProps, IState> {
             />
           </div>
           <div className="right-home">
+            <Board items={["文章", "动态", "评论", "热门"]}></Board>
             <div className="recommend">
               <div className="recommend-header item-header">
                 <div className="recommend-title title">文章推荐</div>
@@ -211,7 +240,7 @@ class Index extends Component<IProps, IState> {
                 <div className="tag-content">
                   {Array(100)
                     .fill(0)
-                    .map((item, index) => {
+                    .map(() => {
                       return (
                         <Tag key={uuid()} style={{ marginBottom: "10px" }}>
                           Tag 1
@@ -223,9 +252,46 @@ class Index extends Component<IProps, IState> {
             </div>
           </div>
         </div>
+        <style jsx>{`
+          .user-info {
+            display: flex;
+            margin-bottom: 30px;
+          }
+          .user-avatar {
+            padding-right: 20px;
+            flex: 0 0 auto;
+          }
+          .user-name {
+            flex: 1;
+          }
+          .user-name > div:nth-child(1) {
+            font-size: 18px;
+            font-weight: bold;
+          }
+          .user-name > div:nth-child(2) {
+            font-size: 16px;
+            color: "#969696";
+            margin-top: 8px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+          }
+          .user-name > div:nth-child(3) {
+            font-size: 14px;
+            margin-top: 8px;
+            color: rgba(0, 0, 0, 0.45);
+          }
+        `}</style>
       </Layout>
     );
   }
 }
 
-export default Index;
+const mapStateToProps = (state: { user: any }) => {
+  return { user: state.user };
+};
+
+export default connect(
+  mapStateToProps,
+  { getAllArticles }
+)(User);
