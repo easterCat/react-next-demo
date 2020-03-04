@@ -8,17 +8,17 @@ import Header from "./Header";
 import Footer from "./Footer";
 
 class Layout extends Component {
-  render() {
-    let { children } = this.props;
-    return (
-      <Fragment>
-        <Head />
-        <Header />
-        <div className={"content"}>{children}</div>
-        <Footer />
-      </Fragment>
-    );
-  }
+    render() {
+        let { children, hideHeader } = this.props;
+        return (
+            <Fragment>
+                <Head />
+                {hideHeader ? null : <Header />}
+                <div className={"content"}>{children}</div>
+                <Footer />
+            </Fragment>
+        );
+    }
 }
 
 export default Layout;

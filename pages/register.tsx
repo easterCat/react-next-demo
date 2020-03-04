@@ -1,35 +1,27 @@
 import React, { Component } from "react";
 import Layout from "../components/layout/MyLayout";
-import Router from "next/router";
-import { Button } from "antd";
 import { Connect } from "../utils/Connect.js";
-import cookie from "../utils/cookie.js";
-import config from "../app.config";
+import Router from "next/router";
 
 interface IProps {
     router: object;
     homeStore: object;
-    login: Function;
+    register: Function;
 }
 
 interface IState {
     showEditor: boolean;
     account: string;
     password: string;
+    rePassword: string;
 }
 
-class Login extends Component<IProps, IState> {
+class Register extends Component<IProps, IState> {
     public state = {
         showEditor: true,
         account: "",
-        password: ""
-    };
-
-    public githubLogin = () => {
-        // const url = "https://github.com/login/oauth/authorize?client_id=" + config.githubID + `&client_secret=${config.githubSecret}`;
-        // window.location.href = url;
-        // sessionStorage.setItem("logged", "1");
-        // Router.push("/");
+        password: "",
+        rePassword: ""
     };
 
     public formChange = (e: any, type: any) => {
@@ -39,33 +31,27 @@ class Login extends Component<IProps, IState> {
         } as Pick<IState, keyof IState>);
     };
 
-    public login = async () => {
-        const result = await this.props.login({
+    public reg = async () => {
+        const result = await this.props.register({
             account: this.state.account,
             password: this.state.password
         });
         if (result && result.code === 200) {
-            const token = result.data.token;
-            cookie.setItem("ptg-token", token);
-            Router.push({
-                pathname: "/"
-            });
-        } else {
             Router.push({
                 pathname: "/login"
             });
+        } else {
         }
     };
 
     render() {
-        const { login, formChange, githubLogin } = this;
-
+        const { reg, formChange } = this;
         return (
-            <Layout>
-                <div className="login">
+            <Layout hideHeader={true}>
+                <div className="register">
                     <div className="main-form first">
                         <div className="main-form__title">
-                            <h1>登录</h1>
+                            <h1>注册</h1>
                         </div>
                         <div className="main-form__body">
                             <input
@@ -84,19 +70,12 @@ class Login extends Component<IProps, IState> {
                                     formChange(e, "password");
                                 }}
                             />
-                            <button className="btn">注册</button>
-                            <button className="btn" onClick={login}>
-                                登录
+                            <input className="main-form__input" type="password" placeholder="请确认密码" />
+                            <button className="btn">已有账号</button>
+                            <button className="btn" onClick={reg}>
+                                注册
                             </button>
                         </div>
-                    </div>
-                    <div className="login-btns">
-                        <Button type="primary" icon="github" size="large" onClick={githubLogin}>
-                            Github登录
-                        </Button>
-                        <Button type="danger" icon="wechat" size="large">
-                            微信登录
-                        </Button>
                     </div>
                 </div>
             </Layout>
@@ -104,4 +83,4 @@ class Login extends Component<IProps, IState> {
     }
 }
 
-export default Connect(["user"], ["login"], Login);
+export default Connect(["user"], ["register"], Register);
