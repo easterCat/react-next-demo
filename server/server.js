@@ -55,7 +55,7 @@ app.prepare()
 
         server.listen(port, err => {
             if (err) throw err;
-            else console.log(`http start at ===> \n  http://localhost:${port} \n http://${ip.address()}:${port}`);
+            else console.log(`http start at ===> \n http://localhost:${port} \n http://${ip.address()}:${port}`);
         });
     })
     .catch(ex => {
