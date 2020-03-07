@@ -20,16 +20,22 @@ class MyApp extends App {
         const token = cookies.getItem("ptg-token");
         if (token) {
             const user = await this.props.logged({ token });
-            if (!user) {
-                Router.push({
-                    pathname: "/login"
-                });
-                return cookies.removeItem("ptg-token");
-            } else {
+            if (user && user.code === 200) {
                 cookies.setItem("ptg-token", user.data.token);
+            } else {
+                this.clearTokenAndBack();
             }
+        } else {
+            this.clearTokenAndBack();
         }
     }
+
+    clearTokenAndBack = () => {
+        Router.push({
+            pathname: "/login"
+        });
+        cookies.removeItem("ptg-token");
+    };
 
     render() {
         const { Component, pageProps, store } = this.props;

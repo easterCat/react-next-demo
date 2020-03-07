@@ -24,9 +24,10 @@ export function rget(url, type, data) {
                 });
                 return parseResult;
             } else {
-                return null;
+                return parseResult;
             }
         } catch (error) {
+            handleCatchError(error);
             return error;
         }
     };
@@ -45,12 +46,17 @@ export function rpost(url, type, data) {
                 });
                 return parseResult;
             } else {
-                return null;
+                return parseResult;
             }
         } catch (error) {
+            handleCatchError(error);
             return error;
         }
     };
+}
+
+function handleCatchError(error) {
+    return message.error(error);
 }
 
 function handleMessage(result) {

@@ -44,8 +44,14 @@ class Register extends Component<IProps, IState> {
         }
     };
 
+    public goLogin = () => {
+        Router.push({
+            pathname: "/login"
+        });
+    };
+
     render() {
-        const { reg, formChange } = this;
+        const { reg, formChange, goLogin } = this;
         return (
             <Layout hideHeader={true}>
                 <div className="register">
@@ -71,7 +77,9 @@ class Register extends Component<IProps, IState> {
                                 }}
                             />
                             <input className="main-form__input" type="password" placeholder="请确认密码" />
-                            <button className="btn">已有账号</button>
+                            <button className="btn" onClick={goLogin}>
+                                已有账号
+                            </button>
                             <button className="btn" onClick={reg}>
                                 注册
                             </button>

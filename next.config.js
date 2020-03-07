@@ -54,7 +54,8 @@ module.exports = withBundleAnalyzer(
                 "/editor": { page: "/editor" },
                 "/logged": { page: "/logged" },
                 "/user": { page: "/user" },
-                "/register": { page: "/register" }
+                "/register": { page: "/register" },
+                "/collects": { page: "/collects" }
             };
             return paths;
         },

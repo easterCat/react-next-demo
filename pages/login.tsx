@@ -57,8 +57,14 @@ class Login extends Component<IProps, IState> {
         }
     };
 
+    public goReg = () => {
+        Router.push({
+            pathname: "/register"
+        });
+    };
+
     render() {
-        const { login, formChange, githubLogin } = this;
+        const { login, formChange, githubLogin, goReg } = this;
 
         return (
             <Layout>
@@ -84,7 +90,9 @@ class Login extends Component<IProps, IState> {
                                     formChange(e, "password");
                                 }}
                             />
-                            <button className="btn">注册</button>
+                            <button className="btn" onClick={goReg}>
+                                注册
+                            </button>
                             <button className="btn" onClick={login}>
                                 登录
                             </button>

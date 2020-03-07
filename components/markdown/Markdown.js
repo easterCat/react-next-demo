@@ -17,8 +17,8 @@ import {
 const { Panel } = Collapse;
 
 @connect(
-    ({ article, articles, collects }) => {
-        return { article, articles, collects };
+    ({ article, articles, collects, user }) => {
+        return { article, articles, collects, user };
     },
     {
         createNewCollect,
@@ -42,7 +42,8 @@ class MDEditor extends Component {
             visible: false,
             modelTitle: "",
             articleTitle: "",
-            collectMenuSelectedKeys: ["1"]
+            collectMenuSelectedKeys: ["1"],
+            curArticle: {}
         };
 
         this.smde = null;
@@ -64,19 +65,6 @@ class MDEditor extends Component {
         this.setMarkdownValue = value => {
             this.smde.codemirror.setValue(value);
         };
-
-        this.handleArticleMenuClick = async item => {
-            this.setState({
-                curSelectArticleId: item.id
-            });
-            const article = await this.props.getArticleById({ id: item.id });
-            if (article.code === 200) {
-                const data = article.data;
-                if (article.code == 200 && data) {
-                    this.setMarkdownValue(data.markdown || "");
-                }
-            }
-        };
     }
 
     async componentDidMount() {
@@ -91,9 +79,8 @@ class MDEditor extends Component {
         }
         const articles = await this.props.getAllArticles();
         if (articles && articles.code === 200 && articles.data.length > 0) {
-            const article = await this.props.getArticleById({ id: articles.data[0].id });
-            const data = article.data;
-            this.setMarkdownValue((data && data.markdown) || "");
+            const { data } = articles;
+            this.setCurArticle(data[0]);
         }
     }
 
@@ -146,9 +133,10 @@ class MDEditor extends Component {
                 {
                     name: "发布文章",
                     action: async function customFunction(editor) {
-                        const { article } = _this.props;
-                        const result = await _this.props.updateArticleById({
-                            id: article.id,
+                        const { updateArticleById } = _this.props;
+                        const { curArticle } = _this.state;
+                        const result = await updateArticleById({
+                            id: curArticle.id,
                             markdown: editor.value(),
                             html: editor.markdown(editor.value()),
                             collectId: 24,
@@ -183,14 +171,34 @@ class MDEditor extends Component {
         });
     }
 
-    handleSubmit = e => {
+    handleArticleMenuClick = async item => {
+        const article = await this.props.getArticleById({ id: item.id });
+        if (article && article.code === 200) {
+            this.setCurArticle(article.data);
+        } else {
+            message.error(article.message);
+        }
+    };
+
+    setCurArticle = article => {
+        this.setState({ curArticle: article, curSelectArticleId: article.id }, () => {
+            const { curArticle } = this.state;
+            this.setMarkdownValue((curArticle && curArticle.markdown) || "");
+        });
+    };
+
+    confirmCreateCollect = e => {
         e.preventDefault();
+        const { user } = this.props;
+        console.log("user :", user);
         this.props.form.validateFields(async (err, values) => {
             if (!err) {
                 await this.props.createNewCollect({
                     collectName: values.collectName,
                     description: "",
-                    collectTags: ""
+                    collectTags: "",
+                    authorId: user.id,
+                    authorName: user.name
                 });
             }
         });
@@ -212,7 +220,7 @@ class MDEditor extends Component {
 
     handleOk = async e => {
         const { modelTitle, articleTitle, collectMenuSelectedKeys, curSelectArticleId, curCollectId } = this.state;
-        const { updateArticleById, createNewArticle, updateCollectById } = this.props;
+        const { updateArticleById, createNewArticle, updateCollectById, user } = this.props;
 
         if (modelTitle === "新建文章") {
             await createNewArticle({
@@ -264,8 +272,8 @@ class MDEditor extends Component {
 
     render() {
         const { getFieldDecorator } = this.props.form;
-        const { activeKey, visible, modelTitle, collectMenuSelectedKeys } = this.state;
-        const { articles, collects, article } = this.props;
+        const { activeKey, visible, modelTitle, collectMenuSelectedKeys, curSelectArticleId } = this.state;
+        const { articles, collects } = this.props;
 
         const menu = (
             <Menu>
@@ -349,7 +357,7 @@ class MDEditor extends Component {
                             expandIcon={panelProps => <Icon type="plus" />}
                         >
                             <Panel header="新建文集" key="one">
-                                <Form onSubmit={this.handleSubmit} className="login-form">
+                                <Form onSubmit={this.confirmCreateCollect} className="login-form">
                                     <Form.Item>{getFieldDecorator("collectName")(<Input placeholder="请输入文集名称" />)}</Form.Item>{" "}
                                     <Button type="primary" htmlType="submit" type="danger" ghost size="small">
                                         提交
@@ -404,7 +412,7 @@ class MDEditor extends Component {
                                 renderItem={item => (
                                     <List.Item
                                         onClick={() => this.handleArticleMenuClick(item)}
-                                        style={article && article.id === item.id ? { backgroundColor: "#e6e6e6" } : {}}
+                                        style={curSelectArticleId === item.id ? { backgroundColor: "#e6e6e6" } : {}}
                                     >
                                         <List.Item.Meta
                                             avatar={

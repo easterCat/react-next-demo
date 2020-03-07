@@ -70,7 +70,7 @@ export default class Header extends Component {
 
         this.state = {
             userLoading: false,
-            active: "" //home articles collect
+            active: "" // home articles collect book
         };
     }
 
@@ -123,11 +123,11 @@ export default class Header extends Component {
                             </div>
                             <div
                                 onClick={() => {
-                                    this.changeActive("collect");
+                                    this.changeActive("articles");
                                 }}
                                 className={classnames({
                                     "header-menu-item": true,
-                                    active: active === "collect"
+                                    active: active === "articles"
                                 })}
                             >
                                 <Link href="/articles">
@@ -136,11 +136,24 @@ export default class Header extends Component {
                             </div>
                             <div
                                 onClick={() => {
-                                    this.changeActive("articles");
+                                    this.changeActive("collects");
                                 }}
                                 className={classnames({
                                     "header-menu-item": true,
-                                    active: active === "articles"
+                                    active: active === "collects"
+                                })}
+                            >
+                                <Link href="/collects">
+                                    <div>文集</div>
+                                </Link>
+                            </div>
+                            <div
+                                onClick={() => {
+                                    this.changeActive("books");
+                                }}
+                                className={classnames({
+                                    "header-menu-item": true,
+                                    active: active === "books"
                                 })}
                             >
                                 <Link href="/books">
