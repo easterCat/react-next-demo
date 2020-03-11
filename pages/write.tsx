@@ -1,11 +1,11 @@
-import React, { Component } from "react";
-import Link from "next/link";
-import Layout from "../components/layout/MyLayout";
-import dynamic from "next/dynamic";
-import { Row, Col, Button } from "antd";
+import React, { Component } from 'react';
+import Link from 'next/link';
+import Layout from '../components/layout/MyLayout';
+import dynamic from 'next/dynamic';
+import { Row, Col, Button } from 'antd';
 
-const DynamicEditor = dynamic(() => import("./editor"), { ssr: false });
-const DynamicMarkdown = dynamic(() => import("./markdown"), { ssr: false });
+const DynamicEditor = dynamic(() => import('./editor'), { ssr: false });
+const DynamicMarkdown = dynamic(() => import('./markdown'), { ssr: false });
 
 interface IProps {
     router: object;
@@ -23,12 +23,12 @@ class Write extends Component<IProps, IState> {
     }
 
     public state = {
-        showEditor: "button"
+        showEditor: 'button',
     };
 
     public changeShowEditor(showEditor: string): void {
         this.setState({
-            showEditor
+            showEditor,
         });
     }
 
@@ -47,18 +47,18 @@ class Write extends Component<IProps, IState> {
                     }
                 `}</style>
                 <div className="write-content">
-                    {showEditor === "button" ? (
+                    {showEditor === 'button' ? (
                         <Row type="flex">
                             <Col lg={{ span: 6, offset: 6 }}>
                                 <Link href="editor">
-                                    <Button size="large" onClick={() => this.changeShowEditor("editor")}>
+                                    <Button size="large" onClick={() => this.changeShowEditor('editor')}>
                                         富文本编辑器
                                     </Button>
                                 </Link>
                             </Col>
                             <Col lg={{ span: 6 }}>
                                 <Link href="markdown">
-                                    <Button size="large" onClick={() => this.changeShowEditor("markdown")}>
+                                    <Button size="large" onClick={() => this.changeShowEditor('markdown')}>
                                         Markdown编辑器
                                     </Button>
                                 </Link>
@@ -66,8 +66,8 @@ class Write extends Component<IProps, IState> {
                         </Row>
                     ) : null}
 
-                    <div>{showEditor === "editor" ? <DynamicEditor></DynamicEditor> : null}</div>
-                    <div>{showEditor === "markdown" ? <DynamicMarkdown></DynamicMarkdown> : null}</div>
+                    <div>{showEditor === 'editor' ? <DynamicEditor></DynamicEditor> : null}</div>
+                    <div>{showEditor === 'markdown' ? <DynamicMarkdown></DynamicMarkdown> : null}</div>
                 </div>
             </Layout>
         );

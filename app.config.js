@@ -1,6 +1,7 @@
 let site = ""; // 服务器
 
 console.log(`当前环境为=>${process.env.NODE_ENV}`);
+
 if (process.env.NODE_ENV === "production") {
     site = "http://111.231.138.132"; // 线上服务器
 } else {

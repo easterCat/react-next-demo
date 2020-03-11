@@ -1,11 +1,11 @@
-import Document, { Head, Main, NextScript } from "next/document";
+import Document, { Head, Main, NextScript } from 'next/document';
 
 export default class MyDocument extends Document {
     render() {
         return (
             <html>
                 <Head>
-                    <link rel="shortcut icon" href="/static/ptg.ico" />
+                    <link rel="shortcut icon" href="/ptg.ico" />
                 </Head>
                 <body className="custom_class">
                     <Main />

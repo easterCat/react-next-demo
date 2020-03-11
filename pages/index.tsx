@@ -1,11 +1,11 @@
-import React, { Component } from "react";
-import { NextPage } from "next";
-import Layout from "../components/layout/MyLayout";
-import { withRouter } from "next/router";
-import { Button, Tag, List, Avatar, Icon } from "antd";
-import axios from "axios";
-import classnames from "classnames";
-import uuid from "react-uuid";
+import React, { Component } from 'react';
+import { NextPage } from 'next';
+import Layout from '../components/layout/MyLayout';
+import { withRouter } from 'next/router';
+import { Button, Tag, List, Avatar, Icon } from 'antd';
+import axios from 'axios';
+import classnames from 'classnames';
+import uuid from 'react-uuid';
 
 interface IProps {
     router: object;
@@ -41,18 +41,18 @@ const IconText = ({ type, text }: any) => (
 
 class Index extends Component<IProps, IState> {
     static async getInitialProps() {
-        const res: { data: any[] } = await axios.get("https://api.tvmaze.com/search/shows?q=batman");
+        const res: { data: any[] } = await axios.get('https://api.tvmaze.com/search/shows?q=batman');
         const data = res.data;
         return {
-            shows: data.map((item: { show: object }): object => item.show)
+            shows: data.map((item: { show: object }): object => item.show),
         };
     }
 
     public state = {
         loading: true,
-        active: "hot", // hot or new
+        active: 'hot', // hot or new
         loadingMore: false,
-        hasMore: true
+        hasMore: true,
     };
 
     constructor(props: IProps) {
@@ -62,14 +62,14 @@ class Index extends Component<IProps, IState> {
     componentDidMount() {
         if (this.props && this.props.shows) {
             this.setState({
-                loading: false
+                loading: false,
             });
         }
     }
 
     public changeActive(active: string) {
         this.setState({
-            active
+            active,
         });
     }
 
@@ -79,11 +79,11 @@ class Index extends Component<IProps, IState> {
                 <div className="home">
                     <div className="left-home">
                         <div className="left-home-order">
-                            <span onClick={() => this.changeActive("hot")} className={classnames({ active: this.state.active === "hot" })}>
+                            <span onClick={() => this.changeActive('hot')} className={classnames({ active: this.state.active === 'hot' })}>
                                 热门排行
                             </span>
                             <i className="line"></i>
-                            <span onClick={() => this.changeActive("new")} className={classnames({ active: this.state.active === "new" })}>
+                            <span onClick={() => this.changeActive('new')} className={classnames({ active: this.state.active === 'new' })}>
                                 最新更新
                             </span>
                         </div>
@@ -91,10 +91,10 @@ class Index extends Component<IProps, IState> {
                             itemLayout="vertical"
                             size="large"
                             pagination={{
-                                onChange: page => {
+                                onChange: (page) => {
                                     console.log(page);
                                 },
-                                pageSize: 10
+                                pageSize: 10,
                             }}
                             dataSource={this.props.shows}
                             renderItem={(item: IK) => (
@@ -103,7 +103,7 @@ class Index extends Component<IProps, IState> {
                                     actions={[
                                         <IconText type="star-o" text="156" key="list-vertical-star-o" />,
                                         <IconText type="like-o" text="156" key="list-vertical-like-o" />,
-                                        <IconText type="message" text="2" key="list-vertical-message" />
+                                        <IconText type="message" text="2" key="list-vertical-message" />,
                                     ]}
                                     extra={
                                         <img
@@ -119,7 +119,7 @@ class Index extends Component<IProps, IState> {
                                         title={<a href={item.url}>{item.name}</a>}
                                         description={<div dangerouslySetInnerHTML={{ __html: item.premiered }} />}
                                     />
-                                    {<div dangerouslySetInnerHTML={{ __html: item.summary.slice(0, 90) + "..." }} />}
+                                    {<div dangerouslySetInnerHTML={{ __html: item.summary.slice(0, 90) + '...' }} />}
                                 </List.Item>
                             )}
                         />
@@ -170,8 +170,8 @@ class Index extends Component<IProps, IState> {
                                         <List.Item
                                             actions={[
                                                 <Button type="danger" ghost size="small" shape="round">
-                                                    {"关注"}
-                                                </Button>
+                                                    {'关注'}
+                                                </Button>,
                                             ]}
                                         >
                                             <List.Item.Meta
@@ -201,7 +201,7 @@ class Index extends Component<IProps, IState> {
                                         .fill(0)
                                         .map((item, index) => {
                                             return (
-                                                <Tag key={uuid()} style={{ marginBottom: "10px" }}>
+                                                <Tag key={uuid()} style={{ marginBottom: '10px' }}>
                                                     Tag 1
                                                 </Tag>
                                             );

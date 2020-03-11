@@ -1,14 +1,15 @@
-import React, { Fragment } from "react";
-import { fadeIn } from "react-animations";
-import { StyleSheet, css } from "aphrodite";
+import React, { Fragment } from 'react';
+import { fadeIn } from 'react-animations';
+import { StyleSheet, css } from 'aphrodite';
 
 const styles = StyleSheet.create({
     fadeIn: {
         animationName: fadeIn,
-        animationDuration: "1s"
-    }
+        animationDuration: '1s',
+    },
 });
 
+// bing每日壁纸 https://github.com/xCss/bing
 export default function CollectsList(props) {
     const { collects } = props;
     return (
@@ -19,19 +20,9 @@ export default function CollectsList(props) {
                         return (
                             <li key={item.id} className={`${css(styles.fadeIn)} cards__item`}>
                                 <div className="card">
-                                    <div
-                                        className={`card__image ${
-                                            index % 2 === 0
-                                                ? "card__image--fence"
-                                                : index % 3 === 0
-                                                ? "card__image--river"
-                                                : index % 4 === 0
-                                                ? "card__image--record"
-                                                : index % 5 === 0
-                                                ? "card__image--flowers"
-                                                : "card__image--river"
-                                        }`}
-                                    ></div>
+                                    <div className="card__image">
+                                        <img src={`https://bing.ioliu.cn/v1?d=${index}&w=640&h=480`} />
+                                    </div>
                                     <div className="card__content">
                                         <div className="card__title">{item.collectName}</div>
                                         <p className="card__text">{item.description}asdasd. </p>

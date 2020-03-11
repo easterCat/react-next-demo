@@ -1,36 +1,36 @@
-import React, { Component } from "react";
-import Layout from "../../components/layout/MyLayout";
-import Markdown from "react-markdown";
-import { getArticleById } from "../../redux/articles/articles.action";
-import { connect } from "react-redux";
-import HeadingBlock from "../../components/markdown/HeadingBlock";
+import React, { Component } from 'react';
+import Layout from '../../components/layout/MyLayout';
+import Markdown from 'react-markdown';
+import { getArticleById } from '../../redux/articles/articles.action';
+import { connect } from 'react-redux';
+import HeadingBlock from '../../components/markdown/HeadingBlock';
 
 @connect(
     ({ article }) => {
         return { article };
     },
-    { getArticleById }
+    { getArticleById },
 )
 class Book extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            markdown: "",
-            menus: []
+            markdown: '',
+            menus: [],
         };
     }
 
     async componentDidMount() {
         await this.props.getArticleById({ id: 3 });
-        console.log('document.querySelectorAll(".markdown-body .quick-link") :', document.querySelectorAll(".markdown-body .quick-link"));
+        console.log('document.querySelectorAll(".markdown-body .quick-link") :', document.querySelectorAll('.markdown-body .quick-link'));
 
-        const linkArr = document.querySelectorAll(".markdown-body .quick-link");
+        const linkArr = document.querySelectorAll('.markdown-body .quick-link');
         if (linkArr && linkArr.length > 0) {
             let menus = [];
-            linkArr.forEach(item => {
+            linkArr.forEach((item) => {
                 menus.push({
                     name: item.name,
-                    level: item.getAttribute("level")
+                    level: item.getAttribute('level'),
                 });
             });
             this.setState({ menus });
@@ -44,13 +44,13 @@ class Book extends Component {
             <Layout>
                 <div className="book-detail">
                     <div className="markdown-banner">
-                        <img src="../../static/images/article-banner.jpeg" alt="banner" />
+                        <img src="/images/article-banner.jpeg" alt="banner" />
                     </div>
                     <div className="markdown markdown-body">
                         <Markdown
                             source={article && article.data.markdown}
                             renderers={{
-                                heading: HeadingBlock
+                                heading: HeadingBlock,
                             }}
                         />
                     </div>
@@ -81,7 +81,7 @@ class Book extends Component {
 
                         .markdown {
                             float: left;
-                            font-family: "Arial";
+                            font-family: 'Arial';
                             width: 670px;
                             padding: 30px 0 30px 0;
                         }

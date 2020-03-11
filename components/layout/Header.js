@@ -1,11 +1,11 @@
-import React, { Component } from "react";
-import classnames from "classnames";
-import Link from "next/link";
-import Router from "next/router";
-import cookies from "../../utils/cookie.js";
-import { connect } from "react-redux";
-import { logged } from "../../redux/user/user.action";
-import { Menu, Button, Icon, Dropdown } from "antd";
+import React, { Component } from 'react';
+import classnames from 'classnames';
+import Link from 'next/link';
+import Router from 'next/router';
+import cookies from '../../utils/cookie.js';
+import { connect } from 'react-redux';
+import { logged } from '../../redux/user/user.action';
+import { Menu, Button, Icon, Dropdown } from 'antd';
 
 const menu = (
     <Menu>
@@ -21,7 +21,7 @@ const menu = (
             <Link href="/articles">
                 <div>
                     <Icon type="profile" />
-                    我的专栏
+                    我的文章
                 </div>
             </Link>
         </Menu.Item>
@@ -29,29 +29,10 @@ const menu = (
             <Link href="/books">
                 <div>
                     <Icon type="book" />
-                    我的书籍
+                    我的文集
                 </div>
             </Link>
         </Menu.Item>
-        <Menu.Divider />
-        <Menu.Item key="3">
-            <Link href="/firebase">
-                <div>
-                    <Icon type="user" />
-                    我的firebase
-                </div>
-            </Link>
-        </Menu.Item>
-        <Menu.Item key="4">
-            <Link href="/awp">
-                <div>
-                    <Icon type="user" />
-                    我的awp
-                </div>
-            </Link>
-        </Menu.Item>
-        <Menu.Item key="5">我的啥</Menu.Item>
-        <Menu.Item key="6">我的啥</Menu.Item>
         <Menu.Divider />
         <Menu.Item key="7">我的设置</Menu.Item>
         <Menu.Item key="8">退出</Menu.Item>
@@ -62,7 +43,7 @@ const menu = (
     ({ user }) => {
         return { user };
     },
-    { logged }
+    { logged },
 )
 export default class Header extends Component {
     constructor(props) {
@@ -70,26 +51,26 @@ export default class Header extends Component {
 
         this.state = {
             userLoading: false,
-            active: "" // home articles collect book
+            active: '', // home articles collect book
         };
     }
 
     changeActive(active) {
         this.setState({
-            active
+            active,
         });
-        sessionStorage.setItem("active", active);
+        sessionStorage.setItem('active', active);
     }
 
     async componentDidMount() {
-        const token = cookies.getItem("ptg-token");
+        const token = cookies.getItem('ptg-token');
         if (!token) {
             Router.push({
-                pathname: "/login"
+                pathname: '/login',
             });
-            return cookies.removeItem("ptg-token");
+            return cookies.removeItem('ptg-token');
         } else {
-            const active = sessionStorage.getItem("active") || "home";
+            const active = sessionStorage.getItem('active') || 'home';
             this.setState({ active, userLoading: true });
         }
     }
@@ -97,24 +78,24 @@ export default class Header extends Component {
     render() {
         const { active, userLoading } = this.state;
         const { user } = this.props;
-        console.log("user :", user);
+
         return (
-            <div className={"nav nav-main header"}>
-                <div className={" header-inner"}>
-                    <div className={"header-content"}>
-                        <div className={"header-left"}>
-                            <div className={"logo"}>
+            <div className={'nav nav-main header'}>
+                <div className={' header-inner'}>
+                    <div className={'header-content'}>
+                        <div className={'header-left'}>
+                            <div className={'logo'}>
                                 <img src="https://www.freelogodesign.org/Content/img/logo-samples/bakary.png" alt="logo"></img>
                             </div>
                         </div>
                         <div className="header-menu">
                             <div
                                 onClick={() => {
-                                    this.changeActive("home");
+                                    this.changeActive('home');
                                 }}
                                 className={classnames({
-                                    "header-menu-item": true,
-                                    active: active === "home"
+                                    'header-menu-item': true,
+                                    active: active === 'home',
                                 })}
                             >
                                 <Link href="/home">
@@ -123,11 +104,11 @@ export default class Header extends Component {
                             </div>
                             <div
                                 onClick={() => {
-                                    this.changeActive("articles");
+                                    this.changeActive('articles');
                                 }}
                                 className={classnames({
-                                    "header-menu-item": true,
-                                    active: active === "articles"
+                                    'header-menu-item': true,
+                                    active: active === 'articles',
                                 })}
                             >
                                 <Link href="/articles">
@@ -136,11 +117,11 @@ export default class Header extends Component {
                             </div>
                             <div
                                 onClick={() => {
-                                    this.changeActive("collects");
+                                    this.changeActive('collects');
                                 }}
                                 className={classnames({
-                                    "header-menu-item": true,
-                                    active: active === "collects"
+                                    'header-menu-item': true,
+                                    active: active === 'collects',
                                 })}
                             >
                                 <Link href="/collects">
@@ -149,11 +130,11 @@ export default class Header extends Component {
                             </div>
                             <div
                                 onClick={() => {
-                                    this.changeActive("books");
+                                    this.changeActive('books');
                                 }}
                                 className={classnames({
-                                    "header-menu-item": true,
-                                    active: active === "books"
+                                    'header-menu-item': true,
+                                    active: active === 'books',
                                 })}
                             >
                                 <Link href="/books">
@@ -162,38 +143,38 @@ export default class Header extends Component {
                             </div>
                         </div>
 
-                        {userLoading && user && user.name !== "" ? <div className={"header-name"}>{user.name}</div> : null}
+                        {userLoading && user && user.name !== '' ? <div className={'header-name'}>{user.name}</div> : null}
 
-                        {userLoading && user && user.name !== "" ? (
-                            <div className={"header-right"}>
-                                <Dropdown overlay={menu} trigger={["hover"]} placement="bottomCenter">
-                                    <div className={"avatar"}>
-                                        <img src="/static/avatar.png" alt="avatar"></img>
+                        {userLoading && user && user.name !== '' ? (
+                            <div className={'header-right'}>
+                                <Dropdown overlay={menu} trigger={['hover']} placement="bottomCenter">
+                                    <div className={'avatar'}>
+                                        <img src="/avatar.png" alt="avatar"></img>
                                     </div>
                                 </Dropdown>
                             </div>
                         ) : null}
 
-                        {userLoading && user && user.name !== "" ? (
+                        {userLoading && user && user.name !== '' ? (
                             <div className="header-btn">
-                                <Button type="danger" ghost shape="round" icon="edit" onClick={() => Router.push("/write")}>
+                                <Button type="danger" ghost shape="round" icon="edit" onClick={() => Router.push('/write')}>
                                     写文章
                                 </Button>
                             </div>
                         ) : null}
 
-                        {userLoading && (!user || user.name === "") ? (
+                        {userLoading && (!user || user.name === '') ? (
                             <div className="header-btn">
-                                <Button type="danger" ghost shape="round" icon="edit" onClick={() => Router.push("/register")}>
+                                <Button type="danger" ghost shape="round" icon="edit" onClick={() => Router.push('/register')}>
                                     注册
                                 </Button>
                                 <Button
                                     type="primary"
-                                    style={{ marginLeft: "10px" }}
+                                    style={{ marginLeft: '10px' }}
                                     ghost
                                     shape="round"
                                     icon="edit"
-                                    onClick={() => Router.push("/login")}
+                                    onClick={() => Router.push('/login')}
                                 >
                                     登录
                                 </Button>

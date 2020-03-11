@@ -1,6 +1,6 @@
 {
     "apps": {
-        "name": "next-ssr-平头哥",
+        "name": "next-ptg",
         "script": "npm",
         "cwd": "./",
         "args": "start",

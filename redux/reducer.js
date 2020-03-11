@@ -1,11 +1,13 @@
-import { actionTypes } from "./actionTypes";
+import { actionTypes } from './actionTypes';
 
 export const exampleInitialState = {
     article: null,
     articles: [],
     collect: null,
     collects: [],
-    user: null
+    user: null,
+    comment: null,
+    comments: [],
 };
 
 function reducer(state = exampleInitialState, action) {
@@ -13,43 +15,43 @@ function reducer(state = exampleInitialState, action) {
         case actionTypes.LOGIN:
             return {
                 ...state,
-                ...{ user: action.payload }
+                ...{ user: action.payload },
             };
 
         case actionTypes.LOGGED:
             return {
                 ...state,
-                ...{ user: null }
+                ...{ user: null },
             };
 
         case actionTypes.GET_ARTICLE_BY_ID:
             return {
                 ...state,
-                ...{ article: action.payload }
+                ...{ article: action.payload },
             };
 
         case actionTypes.GET_ALL_ARTICLES:
             return {
                 ...state,
-                ...{ articles: action.payload }
+                ...{ articles: action.payload },
             };
 
         case actionTypes.GET_ARTICLE_BY_COLLECT_ID:
             return {
                 ...state,
-                ...{ articles: action.payload }
+                ...{ articles: action.payload },
             };
 
         case actionTypes.CREATE_NEW_COLLECT:
             return {
                 ...state,
-                ...{ collect: action.payload }
+                ...{ collect: action.payload },
             };
 
         case actionTypes.GET_ALL_COLLECTS:
             return {
                 ...state,
-                ...{ collects: action.payload }
+                ...{ collects: action.payload },
             };
 
         case actionTypes.UPDATE_ARTICLE:
@@ -57,8 +59,26 @@ function reducer(state = exampleInitialState, action) {
                 {},
                 { ...state },
                 {
-                    article: action.payload
-                }
+                    article: action.payload,
+                },
+            );
+
+        case actionTypes.CREATE_COMMENT:
+            return Object.assign(
+                {},
+                { ...state },
+                {
+                    comment: action.payload,
+                },
+            );
+
+        case actionTypes.GET_COMMENTS:
+            return Object.assign(
+                {},
+                { ...state },
+                {
+                    comments: action.payload,
+                },
             );
 
         case actionTypes.REGISTER:

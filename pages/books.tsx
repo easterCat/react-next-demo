@@ -1,10 +1,10 @@
-import React, { Component, Fragment } from "react";
-import Link from "next/link";
-import Layout from "../components/layout/MyLayout";
-import { Button, Avatar } from "antd";
-import axios from "axios";
-import classnames from "classnames";
-import uuid from "react-uuid";
+import React, { Component, Fragment } from 'react';
+import Link from 'next/link';
+import Layout from '../components/layout/MyLayout';
+import { Button, Avatar } from 'antd';
+import axios from 'axios';
+import classnames from 'classnames';
+import uuid from 'react-uuid';
 
 interface IProps {
     router: object;
@@ -33,31 +33,31 @@ interface IItem {
 
 class Books extends Component<IProps, IState> {
     static async getInitialProps() {
-        const res: { data: any[] } = await axios.get("https://api.tvmaze.com/search/shows?q=batman");
+        const res: { data: any[] } = await axios.get('https://api.tvmaze.com/search/shows?q=batman');
         const data = res.data;
         return {
-            shows: data.map((item: { show: object }): object => item.show)
+            shows: data.map((item: { show: object }): object => item.show),
         };
     }
 
     public state = {
         loading: true,
-        active: "hot", // hot or new
+        active: 'hot', // hot or new
         loadingMore: false,
-        hasMore: true
+        hasMore: true,
     };
 
     componentDidMount() {
         if (this.props && this.props.shows) {
             this.setState({
-                loading: false
+                loading: false,
             });
         }
     }
 
     public changeActive(active: string) {
         this.setState({
-            active
+            active,
         });
     }
 
@@ -67,21 +67,21 @@ class Books extends Component<IProps, IState> {
             <Layout>
                 <div>
                     <div className="books-banner">
-                        <img src="/static/images/banner.jpg" alt="banner" />
+                        <img src="/images/banner.jpg" alt="banner" />
                     </div>
                     <div className="books">
                         <div className="books-left">
                             <div className="left-home-order">
                                 <span
-                                    onClick={() => this.changeActive("hot")}
-                                    className={classnames({ active: this.state.active === "hot" })}
+                                    onClick={() => this.changeActive('hot')}
+                                    className={classnames({ active: this.state.active === 'hot' })}
                                 >
                                     推荐书籍
                                 </span>
                                 <i className="line"></i>
                                 <span
-                                    onClick={() => this.changeActive("new")}
-                                    className={classnames({ active: this.state.active === "new" })}
+                                    onClick={() => this.changeActive('new')}
+                                    className={classnames({ active: this.state.active === 'new' })}
                                 >
                                     我购买的书籍
                                 </span>
