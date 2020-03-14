@@ -1,5 +1,5 @@
-import React, { PureComponent } from "react";
-import Heading from "./Heading";
+import React, { PureComponent } from 'react';
+import Heading from './Heading';
 
 class HeadingBlock extends PureComponent {
     renderHtml = () => {
@@ -8,7 +8,7 @@ class HeadingBlock extends PureComponent {
         if (children && children.length > 0) {
             const nodeValue = children[0].props.value;
             return (
-                <Heading level={`h${level}`} id={nodeValue} style={{ cursor: "pointer" }}>
+                <Heading level={`h${level}`} id={nodeValue} style={{ cursor: 'pointer' }}>
                     <span className="title">{children}</span>
                     <a href={`#${nodeValue}`} className="quick-link" level={`h${level}`} name={nodeValue}></a>
                 </Heading>

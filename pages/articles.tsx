@@ -87,6 +87,29 @@ class Articles extends Component<IProps, IState> {
             <Layout>
                 <div className="article">
                     <div className="article-left">
+                        <div className="tag">
+                            {/* <div className="recommend-header item-header">
+								<div className="recommend-title title">文章推荐</div>
+								<div className="recommend-more more" onClick={() => {}}>
+									查看更多 >
+								</div>
+							</div> */}
+                            <div className="tag-content">
+                                <ul>
+                                    {this.props.shows.map((item: IItem) => {
+                                        return (
+                                            <li key={uuid()}>
+                                                <img src={item.image.medium} alt="" />
+                                                <div className="name">{item.name.slice(0, 10)}</div>
+                                                <div className="num">111</div>
+                                            </li>
+                                        );
+                                    })}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="article-right">
                         <div className="left-home-order">
                             <span onClick={() => this.changeActive('hot')} className={classnames({ active: this.state.active === 'hot' })}>
                                 热门排行
@@ -137,29 +160,6 @@ class Articles extends Component<IProps, IState> {
                                 </Link>
                             )}
                         />
-                    </div>
-                    <div className="article-right">
-                        <div className="tag">
-                            {/* <div className="recommend-header item-header">
-								<div className="recommend-title title">文章推荐</div>
-								<div className="recommend-more more" onClick={() => {}}>
-									查看更多 >
-								</div>
-							</div> */}
-                            <div className="tag-content">
-                                <ul>
-                                    {this.props.shows.map((item: IItem) => {
-                                        return (
-                                            <li key={uuid()}>
-                                                <img src={item.image.medium} alt="" />
-                                                <div className="name">{item.name.slice(0, 10)}</div>
-                                                <div className="num">111</div>
-                                            </li>
-                                        );
-                                    })}
-                                </ul>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </Layout>

@@ -6,12 +6,12 @@
     width: 1000px;
     margin: 0 auto;
     padding-top: 30px;
-    position: relative;
+    display: flex;
+    justify-content: space-between;
+
     .article-left {
         background-color: rgba(255, 255, 255, 0);
-        position: absolute;
-        right: 0;
-        width: 640px;
+        flex: 0 0 290px;
         box-sizing: border-box;
         z-index: 600;
     }
@@ -52,11 +52,7 @@
 
     .article-right {
         background-color: rgba(255, 255, 255, 0);
-        position: absolute;
-        top: 30px;
-        left: 0;
-        bottom: 0;
-        width: 290px;
+        flex: 0 0 640px;
         box-sizing: border-box;
         z-index: 600;
     }
