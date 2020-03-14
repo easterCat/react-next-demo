@@ -6,8 +6,8 @@
     "scripts": {
         "dev": "next -p 6776",
         "build": "next build",
+        "test": "cross-env NODE_ENV=development node ./server/server.js",
         "start": "cross-env NODE_ENV=production node ./server/server.js",
-        "start:dev": "cross-env NODE_ENV=development node ./server/server.js",
         "export": "next export",
         "pm2": "pm2 start pm2.json",
         "deploy": "npm run build && npm run pm2",

@@ -81,6 +81,15 @@ function reducer(state = exampleInitialState, action) {
                 },
             );
 
+        case actionTypes.DELETE_COLLECT_BY_ID:
+            return Object.assign(
+                {},
+                { ...state },
+                {
+                    collect: null,
+                },
+            );
+
         case actionTypes.REGISTER:
             return Object.assign({}, { ...state }, { user: action.payload });
 

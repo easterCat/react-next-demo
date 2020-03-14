@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import Layout from '../../components/layout/MyLayout';
-import Markdown from 'react-markdown';
+import ReactMarkdown from 'react-markdown';
 import HeadingBlock from '../../components/markdown/HeadingBlock';
 import { Affix, BackTop, Button, Comment, Icon, Tooltip, Avatar, Divider, Input, Skeleton, message } from 'antd';
 import uuid from 'react-uuid';
 import moment from 'moment';
 import { withRouter } from 'next/router';
 import { Connect } from '../../utils/Connect.js';
+import CodeBlock from '../../components/markdown/CodeBlock';
+
 const { TextArea } = Input;
 
 class Article extends Component {
@@ -128,11 +130,12 @@ class Article extends Component {
                     </div>
                     <div className="markdown">
                         <Skeleton loading={SkeletonLoading} paragraph={{ rows: 20 }} active>
-                            <Markdown
+                            <ReactMarkdown
                                 className="markdown-body"
                                 source={article && article.markdown}
                                 renderers={{
                                     heading: HeadingBlock,
+                                    code: CodeBlock,
                                 }}
                             />
                         </Skeleton>
@@ -203,12 +206,6 @@ class Article extends Component {
 
                         .markdown a:hover {
                             opacity: 0.6;
-                        }
-
-                        .markdown h3 {
-                            margin: 0;
-                            padding: 0;
-                            text-transform: uppercase;
                         }
 
                         .markdown-body {

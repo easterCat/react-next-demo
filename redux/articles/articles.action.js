@@ -57,6 +57,13 @@ export function getAllCollects() {
 }
 
 /**
+ * 通过id删除合集
+ */
+export function deleteCollectById(data) {
+    return rpost('/collect/delete', 'DELETE_COLLECT_BY_ID', data);
+}
+
+/**
  * 更新文章合集
  * @param {*} data
  */

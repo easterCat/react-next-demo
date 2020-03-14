@@ -1,13 +1,13 @@
-import React, { Component } from "react";
-import Layout from "../components/layout/MyLayout";
-import { Button, Tag, List, Avatar, Icon } from "antd";
-import axios from "axios";
-import classnames from "classnames";
-import uuid from "react-uuid";
-import moment from "moment";
-import Board from "../components/animation/board";
-import { getAllArticles } from "../redux/articles/articles.action";
-import { connect } from "react-redux";
+import React, { Component } from 'react';
+import Layout from '../components/layout/MyLayout';
+import { Button, Tag, List, Avatar, Icon } from 'antd';
+import axios from 'axios';
+import classnames from 'classnames';
+import uuid from 'react-uuid';
+import moment from 'moment';
+import Board from '../components/animation/board';
+import { getAllArticles } from '../redux/articles/articles.action';
+import { connect } from 'react-redux';
 
 interface IProps {
     router: object;
@@ -44,18 +44,18 @@ const IconText = ({ type, text }: any) => (
 
 class User extends Component<IProps, IState> {
     static async getInitialProps() {
-        const res: { data: any[] } = await axios.get("https://api.tvmaze.com/search/shows?q=batman");
+        const res: { data: any[] } = await axios.get('https://api.tvmaze.com/search/shows?q=batman');
         const data = res.data;
         return {
-            shows: data.map((item: { show: object }): object => item.show)
+            shows: data.map((item: { show: object }): object => item.show),
         };
     }
 
     public state = {
         loading: true,
-        active: "hot", // hot or new
+        active: 'hot', // hot or new
         loadingMore: false,
-        hasMore: true
+        hasMore: true,
     };
 
     constructor(props: IProps) {
@@ -65,14 +65,14 @@ class User extends Component<IProps, IState> {
     componentDidMount() {
         if (this.props && this.props.shows) {
             this.setState({
-                loading: false
+                loading: false,
             });
         }
     }
 
     public changeActive(active: string) {
         this.setState({
-            active
+            active,
         });
     }
 
@@ -86,32 +86,32 @@ class User extends Component<IProps, IState> {
                         <div className="user">
                             <div className="user-info">
                                 <div className="user-avatar">
-                                    <Avatar src={`${user ? user.avatarUrl : ""}`} size={90} />
+                                    <Avatar src={`${user ? user.avatarUrl : ''}`} size={90} />
                                 </div>
                                 <div className="user-name">
                                     <div>
-                                        {user ? user.name : ""}{" "}
-                                        <span style={{ float: "right", fontSize: "14px", cursor: "pointer" }}>
-                                            <Icon type="edit" style={{ padding: "0 5px" }} />
+                                        {user ? user.name : ''}{' '}
+                                        <span style={{ float: 'right', fontSize: '14px', cursor: 'pointer' }}>
+                                            <Icon type="edit" style={{ padding: '0 5px' }} />
                                             编辑
                                         </span>
                                     </div>
                                     <div>成功者与失败者最大的差异，在于成功者会设法由失败中获益，再尝试别的方法</div>
                                     <div>
-                                        <Icon type="github" /> :{" "}
-                                        <a href={`${user ? user.avatarUrl : ""}`} style={{ color: "rgba(0, 0, 0, 0.45)" }}>
-                                            {user ? user.avatarUrl : ""}
+                                        <Icon type="github" /> :{' '}
+                                        <a href={`${user ? user.avatarUrl : ''}`} style={{ color: 'rgba(0, 0, 0, 0.45)' }}>
+                                            {user ? user.avatarUrl : ''}
                                         </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div className="left-home-order">
-                            <span onClick={() => this.changeActive("hot")} className={classnames({ active: this.state.active === "hot" })}>
+                            <span onClick={() => this.changeActive('hot')} className={classnames({ active: this.state.active === 'hot' })}>
                                 热门排行
                             </span>
                             <i className="line"></i>
-                            <span onClick={() => this.changeActive("new")} className={classnames({ active: this.state.active === "new" })}>
+                            <span onClick={() => this.changeActive('new')} className={classnames({ active: this.state.active === 'new' })}>
                                 最新更新
                             </span>
                         </div>
@@ -119,10 +119,10 @@ class User extends Component<IProps, IState> {
                             itemLayout="vertical"
                             size="large"
                             pagination={{
-                                onChange: page => {
+                                onChange: (page) => {
                                     console.log(page);
                                 },
-                                pageSize: 10
+                                pageSize: 10,
                             }}
                             dataSource={this.props.shows}
                             renderItem={(item: IK) => (
@@ -131,7 +131,7 @@ class User extends Component<IProps, IState> {
                                     actions={[
                                         <IconText type="star-o" text="156" key="list-vertical-star-o" />,
                                         <IconText type="like-o" text="156" key="list-vertical-like-o" />,
-                                        <IconText type="message" text="2" key="list-vertical-message" />
+                                        <IconText type="message" text="2" key="list-vertical-message" />,
                                     ]}
                                     extra={
                                         <img
@@ -146,20 +146,20 @@ class User extends Component<IProps, IState> {
                                         title={
                                             <span>
                                                 <span>{item.name}</span>
-                                                <span style={{ marginLeft: "30px", color: "#ccc", fontSize: "12px" }}>
+                                                <span style={{ marginLeft: '30px', color: '#ccc', fontSize: '12px' }}>
                                                     {moment().fromNow()}
                                                 </span>
                                             </span>
                                         }
                                         description={<div dangerouslySetInnerHTML={{ __html: item.premiered }} />}
                                     />
-                                    {<div dangerouslySetInnerHTML={{ __html: item.summary.slice(0, 90) + "..." }} />}
+                                    {<div dangerouslySetInnerHTML={{ __html: item.summary.slice(0, 90) + '...' }} />}
                                 </List.Item>
                             )}
                         />
                     </div>
                     <div className="right-home">
-                        <Board items={["文章", "动态", "评论", "热门"]}></Board>
+                        <Board items={['文章', '动态', '评论', '热门']}></Board>
                         <div className="recommend">
                             <div className="recommend-header item-header">
                                 <div className="recommend-title title">文章推荐</div>
@@ -205,8 +205,8 @@ class User extends Component<IProps, IState> {
                                         <List.Item
                                             actions={[
                                                 <Button type="danger" ghost size="small" shape="round">
-                                                    {"关注"}
-                                                </Button>
+                                                    {'关注'}
+                                                </Button>,
                                             ]}
                                         >
                                             <List.Item.Meta
@@ -236,7 +236,7 @@ class User extends Component<IProps, IState> {
                                         .fill(0)
                                         .map(() => {
                                             return (
-                                                <Tag key={uuid()} style={{ marginBottom: "10px" }}>
+                                                <Tag key={uuid()} style={{ marginBottom: '10px' }}>
                                                     Tag 1
                                                 </Tag>
                                             );
@@ -264,7 +264,7 @@ class User extends Component<IProps, IState> {
                     }
                     .user-name > div:nth-child(2) {
                         font-size: 16px;
-                        color: "#969696";
+                        color: '#969696';
                         margin-top: 8px;
                         overflow: hidden;
                         white-space: nowrap;
