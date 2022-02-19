@@ -164,7 +164,7 @@ class User extends Component<IProps, IState> {
                             <div className="recommend-header item-header">
                                 <div className="recommend-title title">文章推荐</div>
                                 <div className="recommend-more more" onClick={() => {}}>
-                                    查看更多 >
+                                    查看更多
                                 </div>
                             </div>
                             <div className="recommend-content">
@@ -194,7 +194,7 @@ class User extends Component<IProps, IState> {
                             <div className="author-header item-header">
                                 <div className="author-title title">关注作者</div>
                                 <div className="author-more more" onClick={() => {}}>
-                                    查看更多 >
+                                    查看更多
                                 </div>
                             </div>
                             <div className="author-content">
@@ -228,7 +228,7 @@ class User extends Component<IProps, IState> {
                                 <div className="item-header">
                                     <div className="title">热门标签</div>
                                     <div className="more" onClick={() => {}}>
-                                        查看更多 >
+                                        查看更多
                                     </div>
                                 </div>
                                 <div className="tag-content">

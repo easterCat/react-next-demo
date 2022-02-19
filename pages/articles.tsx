@@ -91,7 +91,7 @@ class Articles extends Component<IProps, IState> {
                             {/* <div className="recommend-header item-header">
 								<div className="recommend-title title">文章推荐</div>
 								<div className="recommend-more more" onClick={() => {}}>
-									查看更多 >
+									查看更多
 								</div>
 							</div> */}
                             <div className="tag-content">

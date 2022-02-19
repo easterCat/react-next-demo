@@ -124,7 +124,7 @@ class Index extends Component<IProps, IState> {
                                         }
                                         description={<div dangerouslySetInnerHTML={{ __html: item.premiered }} />}
                                     />
-                                    {<div dangerouslySetInnerHTML={{ __html: item.summary.slice(0, 90) + '...' }} />}
+                                    {<div dangerouslySetInnerHTML={{ __html: item.summary ? item.summary.slice(0, 90) + '...' : '' }} />}
                                 </List.Item>
                             )}
                         />
@@ -134,14 +134,14 @@ class Index extends Component<IProps, IState> {
                             <div className="recommend-header item-header">
                                 <div className="recommend-title title">文章推荐</div>
                                 <div className="recommend-more more" onClick={() => {}}>
-                                    查看更多 >
+                                    查看更多
                                 </div>
                             </div>
                             <div className="recommend-content">
                                 <List
                                     itemLayout="horizontal"
                                     dataSource={this.props.shows.slice(0, 4)}
-                                    renderItem={(item: IK) => (
+                                    renderItem={() => (
                                         <List.Item>
                                             <List.Item.Meta
                                                 avatar={
@@ -164,14 +164,14 @@ class Index extends Component<IProps, IState> {
                             <div className="author-header item-header">
                                 <div className="author-title title">关注作者</div>
                                 <div className="author-more more" onClick={() => {}}>
-                                    查看更多 >
+                                    查看更多
                                 </div>
                             </div>
                             <div className="author-content">
                                 <List
                                     itemLayout="horizontal"
                                     dataSource={this.props.shows.slice(0, 4)}
-                                    renderItem={(item: IK) => (
+                                    renderItem={() => (
                                         <List.Item
                                             actions={[
                                                 <Button type="danger" ghost size="small" shape="round">
@@ -198,13 +198,13 @@ class Index extends Component<IProps, IState> {
                                 <div className="item-header">
                                     <div className="title">热门标签</div>
                                     <div className="more" onClick={() => {}}>
-                                        查看更多 >
+                                        查看更多
                                     </div>
                                 </div>
                                 <div className="tag-content">
                                     {Array(100)
                                         .fill(0)
-                                        .map((item, index) => {
+                                        .map(() => {
                                             return (
                                                 <Tag key={uuid()} style={{ marginBottom: '10px' }}>
                                                     Tag 1
