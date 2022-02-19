@@ -94,7 +94,7 @@ class MDEditor extends Component {
     }
 
     async renderSimpleMarkdown() {
-        const SimpleMDE = await import('simplemde');
+        const easyMDE = await import('EasyMDE');
         const marked = await import('marked');
         const hljs = await import('highlight.js');
         const _this = this;
@@ -104,7 +104,7 @@ class MDEditor extends Component {
             .parentNode // 获取编辑器container
             .addEventListener('click', (e) => e.stopPropagation());
 
-        this.smde = new SimpleMDE.default({
+        this.smde = new easyMDE.default({
             element: document.getElementById('markdownEditor').childElementCount,
             autofocus: true,
             autosave: {
@@ -146,6 +146,7 @@ class MDEditor extends Component {
                 {
                     name: '发布文章',
                     action: async function customFunction(editor) {
+                        console.log(editor);
                         const { updateArticleById } = _this.props;
                         const { curArticle, curCollectId } = _this.state;
                         const result = await updateArticleById({
@@ -165,7 +166,7 @@ class MDEditor extends Component {
                     title: '发布文章',
                 },
             ],
-            previewRender: function(plainText) {
+            previewRender: function (plainText) {
                 if (document.querySelector('.editor-preview')) {
                     document.querySelector('.editor-preview').classList.add('markdown-body');
                 }
@@ -178,7 +179,7 @@ class MDEditor extends Component {
                     breaks: true,
                     smartLists: true,
                     smartypants: true,
-                    highlight: function(code) {
+                    highlight: function (code) {
                         return hljs.default.highlightAuto(code).value;
                     },
                 });
