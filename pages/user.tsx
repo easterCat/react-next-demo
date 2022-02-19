@@ -153,7 +153,7 @@ class User extends Component<IProps, IState> {
                                         }
                                         description={<div dangerouslySetInnerHTML={{ __html: item.premiered }} />}
                                     />
-                                    {<div dangerouslySetInnerHTML={{ __html: item.summary.slice(0, 90) + '...' }} />}
+                                    {<div dangerouslySetInnerHTML={{ __html: item.summary ? item.summary.slice(0, 90) + '...' : '' }} />}
                                 </List.Item>
                             )}
                         />
