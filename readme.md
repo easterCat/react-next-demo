@@ -17,7 +17,7 @@ Next.js 可与 Windows, Mac 和 Linux 一起使用. 您只需要在系统上安�
 
 ## 初始化项目
 
-``` 
+```
 mkdir next-demo
 cd next-demo
 npm init -y // 快速创建package.json而不用进行一些选择
@@ -29,7 +29,7 @@ mkdir pages 这一步是必须创建一个叫 pages 的文件夹, 因为 next �
 
 然后打开 package.json 目录中的 next-demo 文件并替换 scripts 为以下内容:
 
-``` 
+```
 "scripts": {
   "dev": "next",
   "build": "next build",
@@ -45,7 +45,7 @@ npm run dev
 
 现在可以打开 localhost:3000 来查看页面效果, 如果不喜欢 3000 或者端口冲突, 执行下面命令
 
-``` 
+```
 npm run dev -p 6688(你喜欢的端口)
 ```
 
@@ -55,7 +55,7 @@ npm run dev -p 6688(你喜欢的端口)
 
 此时我们在 pages 文件夹下创建一个 index.js 作为首页
 
-``` 
+```
 const Index = () => (
   <div>
     <p>Hello Next.js</p>
@@ -71,7 +71,7 @@ export default Index;
 
 next 中实现路由非常的简便, 新建 pages/about.js
 
-``` 
+```
 export default function About() {
   return (
     <div>
@@ -89,7 +89,7 @@ export default function About() {
 
 修改 pages/index.js
 
-``` 
+```
 import Link from 'next/link';
 
 const Index = () => (
@@ -108,7 +108,7 @@ export default Index;
 
 因为 next/link 只是一个更高阶的组件(高阶组件) , next/link 组件上的设置 props 无效. 只接受 href 和类似的 props. 如果需要向其添加 props, 则需要对下级组件进行添加.next/link 组件不会将那些 props 传递给子组件, 并且还会给你一个错误警告. 在这种情况下, next/link 组件的子组件/元素是接受样式和其他 props 最好承载体. 它可以是任何组件或标签, 唯一要求是它们能够接受 onClick 事件.
 
-``` 
+```
    <Link href="/about">
       <a className="redLink">About Page</a>
     </Link>
@@ -128,7 +128,7 @@ export default Index;
 
 新建 components/Header.js
 
-``` 
+```
 import Link from "next/link";
 
 const linkStyle = {
@@ -154,7 +154,7 @@ export default Header;
 
 然后修改 pages 目录下的 index.js / about.js / show.js
 
-``` 
+```
 import Header from '../components/Header';
 
 export default function Index() {
@@ -177,7 +177,7 @@ export default function Index() {
 
 components/MyLayout.js
 
-``` 
+```
 import Header from './Header';
 
 const layoutStyle = {
@@ -198,7 +198,7 @@ export default Layout;
 
 然后修改 pages 目录下的 index.js / about.js / show.js
 
-``` 
+```
 import Layout from '../components/MyLayout';
 
 export default function Index() {
@@ -218,7 +218,7 @@ export default function Index() {
 
 首先修改 pages/about.js 文件
 
-``` 
+```
 import Layout from "../components/MyLayout";
 import Link from "next/link";
 
@@ -246,7 +246,7 @@ export default function About() {
 
 创建 pages/post.js
 
-``` 
+```
 import { useRouter } from 'next/router';
 import Layout from '../components/MyLayout';
 
@@ -273,7 +273,7 @@ export default Page;
 
 post 页面也可以添加通用 header
 
-``` 
+```
 import { useRouter } from "next/router";
 import Layout from "../components/MyLayout";
 
@@ -301,11 +301,11 @@ export default Page;
 
 ## 动态路由
 
-当前我们的路由是这样的 http://localhost:6688/post?title=Hello%20Next.js , 现在需要更干净的路由 http://localhost:6688/p/10. 添加新页面来创建我们的第一个动态路由 p/[id].js
+当前我们的路由是这样的 <http://localhost:6688/post?title=Hello%20Next.js> , 现在需要更干净的路由 <http://localhost:6688/p/10>. 添加新页面来创建我们的第一个动态路由 p/[id].js
 
 新建 pages/p/[id].js
 
-``` 
+```
 import { useRouter } from 'next/router';
 import Layout from '../../components/MyLayout';
 
@@ -327,7 +327,7 @@ export default function Post() {
 
 在链接多个页面, 新建 pages/page.js
 
-``` 
+```
 import Layout from '../components/MyLayout';
 import Link from 'next/link';
 
@@ -361,13 +361,13 @@ export default function Blog() {
 
 首先需要一个获取数据的库
 
-``` 
+```
 npm install --save isomorphic-unfetch
 ```
 
 然后修改 pages/index.js
 
-``` 
+```
 import Layout from '../components/MyLayout';
 import Link from 'next/link';
 import fetch from 'isomorphic-unfetch';
@@ -407,7 +407,7 @@ export default Index;
 
 新建 pages/detail/[id].js
 
-``` 
+```
 import Layout from "../../components/MyLayout";
 import fetch from "isomorphic-unfetch";
 import Markdown from "react-markdown";
@@ -461,7 +461,7 @@ Next.js 在 JS 框架中预加载了一个称为 styled-jsx 的 CSS, 该 CSS 使
 
 修改 pages/page.js
 
-``` 
+```
 import Layout from "../components/MyLayout";
 import Link from "next/link";
 
@@ -519,7 +519,7 @@ export default function Blog() {
 
 此时修改一下代码
 
-``` 
+```
 import Layout from "../components/MyLayout";
 import Link from "next/link";
 
@@ -581,7 +581,7 @@ export default function Blog() {
 
 解决 1 , 给子组件添加上子组件的样式
 
-``` 
+```
 const PostLink = ({ post }) => (
   <li>
     <Link href="/p/[id]" as={ `/p/${post.id}` }>
@@ -609,7 +609,7 @@ const PostLink = ({ post }) => (
 
 解决 2 , [全局样式](https://github.com/zeit/styled-jsx#one-off-global-selectors)
 
-``` 
+```
  <style jsx global>{`
 ......css
  `}
@@ -625,13 +625,13 @@ const PostLink = ({ post }) => (
 
 安装 react-markdown
 
-``` 
+```
 npm install --save react-markdown
 ```
 
 修改 pages/post.js
 
-``` 
+```
 import { useRouter } from "next/router";
 import Layout from "../components/MyLayout";
 import Markdown from "react-markdown";
@@ -697,7 +697,7 @@ export default Page;
 
 打开 localhost:6688 的 about 页面点击查看样式效果
 
-[其他解决方案]](https://github.com/zeit/next.js#css-in-js)
+[其他解决方案]](<https://github.com/zeit/next.js#css-in-js>)
 
 ## 引入 ui 库
 
@@ -707,7 +707,7 @@ export default Page;
 
 首先安装需要的库
 
-``` 
+```
 npm install --save @zeit/next-less less
 ```
 
@@ -715,7 +715,7 @@ npm install --save @zeit/next-less less
 
 新建 assets/css/styles.less
 
-``` 
+```
 .header {
   display: block;
   z-index: 500;
@@ -772,7 +772,7 @@ npm install --save @zeit/next-less less
 
 修改 next.config.js
 
-``` 
+```
 // next.config.js
 const withLess = require('@zeit/next-less')
 module.exports = withLess({
@@ -782,7 +782,7 @@ module.exports = withLess({
 
 在 MyLayout 里面引入 less
 
-``` 
+```
 import "../assets/css/styles.less";
 ```
 
@@ -792,7 +792,7 @@ import "../assets/css/styles.less";
 
 #### 引入 antd
 
-``` 
+```
 npm install antd --save
 npm install babel-plugin-import --save-dev
 
@@ -801,7 +801,7 @@ touch.babelrc
 
 .babelrc
 
-``` 
+```
 {
   "presets": ["next/babel"],
   "plugins": [
@@ -820,13 +820,13 @@ touch.babelrc
 
 assets/css/styles.less
 
-``` 
+```
 @import "~antd/dist/antd.less";
 ```
 
 这时候就是正常引入 antd 的组件进行使用就可以了
 
-``` 
+```
 import { Typography, Card, Avatar } from "antd";
 const { Title, Paragraph, Text } = Typography;
 ```
@@ -839,7 +839,7 @@ ValidationError: Invalid options object. CSS Loader has been initialised using a
 
 解决方法, 在 next.config.js 添加去除代码
 
-``` 
+```
 const withLess = require("@zeit/next-less");
 
 if (typeof require !== "undefined") {
@@ -877,13 +877,13 @@ module.exports = withLess({
 
 先安装 now, 一个静态资源托管服务器
 
-``` 
+```
 npm i -g now
 
 now
 ```
 
-等待一段时间之后会生成一个静态链接, 点击打开就可以看到自己网页的样子了https://next-demo.fuhuodemao.now.sh/
+等待一段时间之后会生成一个静态链接, 点击打开就可以看到自己网页的样子了<https://next-demo.fuhuodemao.now.sh/>
 
 [zeit now 文档](https://zeit.co/docs#related)
 
@@ -891,7 +891,7 @@ now
 
 查看 package.json 的 script
 
-``` 
+```
     "dev": "next -p 6688",
     "build": "next build",
     "start": "next start -p 6688",
@@ -899,7 +899,7 @@ now
 
 现在执行命令来生成代码并预览
 
-``` 
+```
 npm run build // 构建用于生产的Next.js应用程序
 npm start // 在6688端口上启动Next.js应用程序.该服务器将进行服务器端渲染并提供静态页面
 ```
@@ -910,7 +910,7 @@ npm start // 在6688端口上启动Next.js应用程序.该服务器将进行服�
 
 修改 script 命令
 
-``` 
+```
  "start": "next start -p 6688",
 ```
 
@@ -918,7 +918,7 @@ npm start // 在6688端口上启动Next.js应用程序.该服务器将进行服�
 
 在 window 下需要额外的工具 cross-env
 
-``` 
+```
 npm install cross-env --save-dev
 ```
 
@@ -927,4 +927,3 @@ npm install cross-env --save-dev
 * [官方文档](https://nextjs.org/docs)
 * [learn next](https://nextjs.org/learn/basics/getting-started/setup)
 * [一个中文文档](https://nextjs.frontendx.cn/docs/#%E5%AE%89%E8%A3%85)
-

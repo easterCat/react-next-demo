@@ -2,8 +2,6 @@ const fetch = require('isomorphic-unfetch');
 const withBundleAnalyzer = require('@zeit/next-bundle-analyzer');
 const withLess = require('@zeit/next-less');
 const FilterWarningsPlugin = require('webpack-filter-warnings-plugin');
-// const images = require("remark-images");
-// const emoji = require("remark-emoji");
 
 if (typeof require !== 'undefined') {
     require.extensions['.less'] = (file) => {};
@@ -42,7 +40,7 @@ module.exports = withBundleAnalyzer(
             },
         },
         // export html
-        exportPathMap: async function() {
+        exportPathMap: async function () {
             const paths = {
                 '/': { page: '/' },
                 '/home': { page: '/home' },

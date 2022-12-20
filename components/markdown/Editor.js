@@ -1,56 +1,55 @@
-import React, { Component } from "react";
-import { Button } from "antd";
-import Markdown from "react-markdown/with-html";
+import React, { Component } from 'react';
+import { Button } from 'antd';
+// import Markdown from 'react-markdown';
 
 let editor = undefined;
 
 class Index extends Component {
-  constructor(props) {
-    super(props);
+    constructor(props) {
+        super(props);
 
-    this.state = {
-      showMask: false,
-      source: ""
-    };
+        this.state = {
+            showMask: false,
+            source: '',
+        };
 
-    this.showPreview = () => {
-      this.setState({
-        showMask: true,
-        source: editor.txt.text()
-      });
-    };
-  }
+        this.showPreview = () => {
+            this.setState({
+                showMask: true,
+                source: editor.txt.text(),
+            });
+        };
+    }
 
-  async componentDidMount() {
-    const wangeditor = await import("wangeditor");
+    async componentDidMount() {
+        const wangeditor = (await import('wangeditor')).default;
+        editor = new wangeditor(this.refs.Editor);
+        editor.create();
+    }
 
-    editor = new wangeditor(this.refs.Editor);
-    editor.create();
-  }
+    render() {
+        return (
+            <div className="editor-content">
+                <div ref="Editor" />
 
-  render() {
-    return (
-      <div className="editor-content">
-        <div ref="Editor" />
-
-        <div className="preview">
-          <Button size="small" shape="round" onClick={this.showPreview}>
-            预览
-          </Button>
-        </div>
-        {this.state.showMask ? (
-          <div className="mask">
-            <div className="markdown-content">
-              <div className="markdown-text">
-                {/* <div dangerouslySetInnerHTML={{ __html: this.state.source }}></div> */}
-                <Markdown source={""} escapeHtml={false} />
-              </div>
+                <div className="preview">
+                    <Button size="small" shape="round" onClick={this.showPreview}>
+                        预览
+                    </Button>
+                </div>
+                {this.state.showMask ? (
+                    <div className="mask">
+                        <div className="markdown-content">
+                            <div className="markdown-text">
+                                <div dangerouslySetInnerHTML={{ __html: this.state.source }}></div>
+                                {/* <Markdown source={''} escapeHtml={false} /> */}
+                            </div>
+                        </div>
+                    </div>
+                ) : null}
             </div>
-          </div>
-        ) : null}
-      </div>
-    );
-  }
+        );
+    }
 }
 
 export default Index;
